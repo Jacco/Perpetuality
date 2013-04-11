@@ -163,5 +163,23 @@ namespace Perpetuality.Data
                 return (string)cmd.ExecuteScalar();
             }
         }
+
+        public GetUserProfileResult GetUserProfile(string token, string ipAddress)
+        {
+            Guid id = Guid.Empty;
+            try
+            {
+              id = new Guid(token);
+            }
+            catch
+            {
+              throw new ApplicationException("60100 Supplied token could not be converted to a guid.");
+            }
+            var ctx = new DatabaseDataContext();
+            var x = ctx._GetUserProfile(id, ipAddress);
+            if ((int)x.ReturnValue == 0)
+                throw new ApplicationException("60102 Get user profile failed.");
+            return x.FirstOrDefault();
+        }
     }
 }

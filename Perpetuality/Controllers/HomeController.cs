@@ -12,7 +12,7 @@ using System.Web.Mvc;
 
 namespace Perpetuality.Controllers
 {
-    public partial class HomeController : Controller
+    public partial class HomeController : BaseController
     {
         //
         // GET: /Home/

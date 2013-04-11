@@ -10,7 +10,7 @@
         return true;
     }
 </script>
-<p>@System.Security.Principal.WindowsIdentity.GetCurrent().Name</p>
+<p>@(((HttpContext.Current.User as Perpetuality.GamePrincipal).Identity as Perpetuality.GameIdentity).Name)</p>
 <form id="loginform_facebook" method="post" action="Home/ExternalLogin" onsubmit="authProvider='facebook'; return formValidate();">
     <input type="hidden" name="provider" value="facebook" />
     <input type="hidden" name="returnUrl" value="http://localhost:51127" />

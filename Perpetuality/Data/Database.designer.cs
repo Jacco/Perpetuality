@@ -93,6 +93,93 @@ namespace Perpetuality.Data
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), hash);
 			return ((int)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetUserProfile")]
+		public ISingleResult<GetUserProfileResult> _GetUserProfile([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Session", DbType="UniqueIdentifier")] System.Nullable<System.Guid> session, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="IPAddress", DbType="VarChar(22)")] string iPAddress)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), session, iPAddress);
+			return ((ISingleResult<GetUserProfileResult>)(result.ReturnValue));
+		}
+	}
+	
+	public partial class GetUserProfileResult
+	{
+		
+		private long _autID;
+		
+		private System.DateTime _datCreated;
+		
+		private string _strEmailAddress;
+		
+		private string _strName;
+		
+		public GetUserProfileResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_autID", DbType="BigInt NOT NULL")]
+		public long autID
+		{
+			get
+			{
+				return this._autID;
+			}
+			set
+			{
+				if ((this._autID != value))
+				{
+					this._autID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_datCreated", DbType="DateTime NOT NULL")]
+		public System.DateTime datCreated
+		{
+			get
+			{
+				return this._datCreated;
+			}
+			set
+			{
+				if ((this._datCreated != value))
+				{
+					this._datCreated = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strEmailAddress", DbType="NVarChar(256) NOT NULL", CanBeNull=false)]
+		public string strEmailAddress
+		{
+			get
+			{
+				return this._strEmailAddress;
+			}
+			set
+			{
+				if ((this._strEmailAddress != value))
+				{
+					this._strEmailAddress = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strName", DbType="NVarChar(256)")]
+		public string strName
+		{
+			get
+			{
+				return this._strName;
+			}
+			set
+			{
+				if ((this._strName != value))
+				{
+					this._strName = value;
+				}
+			}
+		}
 	}
 }
 #pragma warning restore 1591

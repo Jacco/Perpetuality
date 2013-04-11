@@ -26,4 +26,14 @@
     <Parameter Name="Hash" Parameter="hash" Type="System.String" DbType="VarChar(32)" />
     <Return Type="System.Int32" />
   </Function>
+  <Function Name="dbo.GetUserProfile" Method="_GetUserProfile">
+    <Parameter Name="Session" Parameter="session" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="IPAddress" Parameter="iPAddress" Type="System.String" DbType="VarChar(22)" />
+    <ElementType Name="GetUserProfileResult">
+      <Column Name="autID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="datCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="strEmailAddress" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="strName" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+    </ElementType>
+  </Function>
 </Database>
