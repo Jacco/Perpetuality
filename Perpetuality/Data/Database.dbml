@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Perpetuality" Class="DatabaseDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=172.16.199.51;Initial Catalog=Perpetuality;Persist Security Info=True;User ID=Casper" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="PerpetualityConnectionString" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.FindUser" Method="FindUser" AccessModifier="Private">
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(256)" />
+    <Parameter Name="Password" Parameter="password" Type="System.String" DbType="NVarChar(256)" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Parameter Name="confirmed" Type="System.Boolean" DbType="Bit" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.RegisterNewUser" Method="RegisterNewUser">
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(256)" />
+    <Parameter Name="Password" Parameter="password" Type="System.String" DbType="NVarChar(256)" />
+    <Parameter Name="ConfirmHash" Parameter="confirmHash" Type="System.String" DbType="VarChar(32)" />
+    <Parameter Name="PartnerMail" Parameter="partnerMail" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AuthenticateUser" Method="AuthenticateUser">
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(256)" />
+    <Parameter Name="Password" Parameter="password" Type="System.String" DbType="NVarChar(256)" />
+    <Parameter Name="IPAddress" Parameter="iPAddress" Type="System.String" DbType="VarChar(22)" />
+    <Parameter Name="Session" Parameter="session" Type="System.Guid" DbType="UniqueIdentifier" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ConfirmEmailAddress" Method="_ConfirmEmailAddress" AccessModifier="Private">
+    <Parameter Name="Hash" Parameter="hash" Type="System.String" DbType="VarChar(32)" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

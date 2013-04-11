@@ -1,0 +1,23 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Inloggen gelukt</title>
+    <script>
+        function redirectTo() {
+            if (window.opener) {
+                window.opener.location = "@ViewBag.ReturnUrl";
+                window.close();
+            } else {
+                window.location = "@ViewBag.ReturnUrl";
+            }
+        }
+    </script>
+</head>
+<body onload="redirectTo();">
+    <a href="@ViewBag.ReturnUrl" style="font-family: Arial;font-size: 10px; color: #000;">Klik hier om verder te gaan.</a>
+</body>
+</html>

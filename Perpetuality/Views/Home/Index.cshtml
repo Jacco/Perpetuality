@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<a href="/nl/home" class="logo"></a>
+<script>
+    var authProvider = "";
+    function formValidate() {
+        window.open("", "myNewWin", "width=900,height=556,menubar=no,location=yes,resizable=yes,scrollbars=yes,status=no,titlebar=no,toolbar=no");
+        document.getElementById("loginform_" + authProvider).target = "myNewWin";
+        return true;
+    }
+</script>
+<p>@System.Security.Principal.WindowsIdentity.GetCurrent().Name</p>
+<form id="loginform_facebook" method="post" action="Home/ExternalLogin" onsubmit="authProvider='facebook'; return formValidate();">
+    <input type="hidden" name="provider" value="facebook" />
+    <input type="hidden" name="returnUrl" value="http://localhost:51127" />
+    <div>
+        <input type="submit" name="submit" class="sociallogin_facebook" value="" style="border: 0px; cursor: pointer" />
+    </div>
+</form>
+<div class="main-container">
+    <div class="main-content">
+        <div class="left-container">
+            <div class="side-nav">
+                <div class="menu-btn first selected">
+                    <a href="/home">
+                        <span>Home</span>
+                    </a>
+                </div>
+                <div class="menu-btn">
+                    <a href="/news">
+                        <span>News</span>
+                    </a>
+                </div>
+                <div class="menu-btn">
+                    <a href="/faqs">
+                        <span>FAQs</span>
+                    </a>
+                </div>
+                <div class="menu-btn">
+                    <a href="/credits">
+                        <span>Credits</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="middle-container">
+        <div class="caroussel">
+
+        </div>
+        <div class="news">
+            <div class="header">
+
+            </div>
+            <div class="news-block">
+                <div class="playnow">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="right-container">
+
+    </div>
+</div>
