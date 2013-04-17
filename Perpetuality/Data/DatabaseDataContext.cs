@@ -152,6 +152,21 @@ namespace Perpetuality.Data
             return session.Value.ToString();
         }
 
+        public void LogoutUser(string token, string ipAddress)
+        {
+            Guid id = Guid.Empty;
+            try
+            {
+                id = new Guid(token);
+            }
+            catch
+            {
+                throw new ApplicationException("60030 Supplied token could not be converted to a guid.");
+            }
+            if (EndSession(id, ipAddress) == 0)
+                throw new ApplicationException("60031 Logging out user failed.");
+        }
+
         public string GetSetting(string name)
         {
             if (Connection.State != ConnectionState.Open)

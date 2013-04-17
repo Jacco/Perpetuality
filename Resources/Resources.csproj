@@ -44,6 +44,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Login.resx</DependentUpon>
     </Compile>
+    <Compile Include="Home\Register.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Register.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Home\Register.nl.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Register.nl.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\_Layout.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -57,10 +67,20 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Home\Login.nl.resx" />
+    <EmbeddedResource Include="Home\Login.nl.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Home\Login.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Login.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Home\Register.nl.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Register.nl.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Home\Register.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Register.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Shared\_Layout.nl.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

@@ -120,6 +120,9 @@
   <data name="MenuHomeText" xml:space="preserve">
     <value>Start</value>
   </data>
+  <data name="MenuLoginText" xml:space="preserve">
+    <value>Aanmelden</value>
+  </data>
   <data name="MenuNewsText" xml:space="preserve">
     <value>Nieuws</value>
   </data>

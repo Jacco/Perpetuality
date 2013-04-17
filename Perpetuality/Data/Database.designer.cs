@@ -100,6 +100,13 @@ namespace Perpetuality.Data
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), session, iPAddress);
 			return ((ISingleResult<GetUserProfileResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.EndSession")]
+		public int EndSession([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Session", DbType="UniqueIdentifier")] System.Nullable<System.Guid> session, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="IPAddress", DbType="VarChar(22)")] string iPAddress)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), session, iPAddress);
+			return ((int)(result.ReturnValue));
+		}
 	}
 	
 	public partial class GetUserProfileResult

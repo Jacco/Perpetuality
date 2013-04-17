@@ -36,4 +36,9 @@
       <Column Name="strName" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
     </ElementType>
   </Function>
+  <Function Name="dbo.EndSession" Method="EndSession">
+    <Parameter Name="Session" Parameter="session" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="IPAddress" Parameter="iPAddress" Type="System.String" DbType="VarChar(22)" />
+    <Return Type="System.Int32" />
+  </Function>
 </Database>

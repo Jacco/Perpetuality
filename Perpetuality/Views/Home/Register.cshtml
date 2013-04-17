@@ -1,0 +1,87 @@
+﻿@using Perpetuality.Data;
+@{
+    Layout = MVC.Shared.Views._LayoutStrip;
+
+    ViewBag.Title = Resources.Home.Register.PageTitle;
+
+    var validationMessages = new
+    {
+        emailAddress = new
+        {
+            required = Resources.Home.Register.ValidationEmailAdressRequired
+        },
+        password = new
+        {
+            required = Resources.Home.Register.ValidationPasswordRequired
+        },
+        passwordConfirm = new
+        {
+            required = Resources.Home.Register.ValidationPasswordConfirmRequired,
+            sameAs = Resources.Home.Register.ValidationPasswordConfirmDifferent
+        }
+    };
+    
+}
+<div id="validationMessages" style="display: none" data="@Newtonsoft.Json.JsonConvert.SerializeObject(validationMessages)"></div>
+<form id="register-Form" method="post">
+    <div class="form-top">
+    </div>
+    <div class="form-middle">
+        <div class="field-row">
+            <div class="field-label">@Resources.Home.Register.EmailAddressLabelText</div>
+            <div class="field-wrapper">
+                <input type="text" name="emailAddress" />
+            </div>
+        </div>
+        <div class="field-row">
+            <div class="field-label">@Resources.Home.Register.PasswordLabelText</div>
+            <div class="field-wrapper">
+                <input type="password" name="password" />
+            </div>
+        </div>
+        <div class="field-row">
+            <div class="field-label">@Resources.Home.Register.RepeatPasswordLabelText</div>
+            <div class="field-wrapper">
+                <input type="password" name="passwordConfirm" />
+            </div>
+        </div>
+        <div class="field-row">
+            <div class="field-label">@Resources.Home.Register.LanguageLabelText</div>
+            <div class="field-wrapper">
+                <select name="language" id="languageDropdown">
+                    @foreach (var lang in Language.Languages)
+                    {
+                        <option value="@lang.Abbreviation">@lang.LocalName</option>
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="form-bottom">
+        <input type="submit" value="@Resources.Home.Register.RegisterButtonText" />
+    </div>
+</form>
+
+@section scripts
+{
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.10.0/jquery.validate.js"></script>
+    <script type="text/javascript">
+        $('#register-Form').validate({
+            onkeyup: false,
+            onfocusout: false,
+            rules: {
+                emailAddress: {
+                    required: true,
+                },
+                password: {
+                    required: true,
+                },
+                passwordConfirm: {
+                    required: true,
+                    sameAs: '#password'
+                },
+            },
+            messages: JSON.parse($('#validationMessages').attr('data'))
+        });
+    </script>
+}

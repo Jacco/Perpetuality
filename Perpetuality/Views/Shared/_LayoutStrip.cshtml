@@ -1,4 +1,5 @@
-﻿@{
+﻿@using Perpetuality.Data;
+@{
     string language = (string)ViewContext.RouteData.Values["language"];
 }
 <!DOCTYPE html>
@@ -12,43 +13,36 @@
 </head>
 <body>
     <ul id="nav">
+        @if (Request.IsAuthenticated)
+        {
+            <li>
+                <a href="/@language/home/profile">@Request.RequestContext.HttpContext.User.Identity.Name</a>
+            </li>
+            <li>
+                <a href="/@language/home/logout">Logout</a>
+            </li>
+        } else {
+            <li>
+                <a href="/@language/home/login">@Resources.Shared._Layout.MenuLoginText</a>
+            </li>
+            <li>
+                <a href="/@language/home/register">Register</a>
+            </li>
+        }
         <li>
-            <a href="/@language/home/login">Login</a>
-        </li>
-        <li>
-            <a href="javascript:void()">current language</a>
+            <a href="javascript:void()">@Language.LanguageByAbbreviation(language).LocalName</a>
             <ul>
-                <li>@Html.ActionLink(
-                    "Español", 
-                    ViewContext.RouteData.Values["action"].ToString(), 
-                    new { language = "es" })</li>
-                <li>@Html.ActionLink(
-                    "Français", 
-                    ViewContext.RouteData.Values["action"].ToString(), 
-                    new { language = "fr" })</li>
-                <li>@Html.ActionLink(
-                    "English", 
-                    ViewContext.RouteData.Values["action"].ToString(), 
-                    new { language = "en" })</li>
-                <li>@Html.ActionLink(
-                    "Deutsch", 
-                    ViewContext.RouteData.Values["action"].ToString(), 
-                    new { language = "de" })</li>
-                <li>@Html.ActionLink(
-                    "Italiano", 
-                    ViewContext.RouteData.Values["action"].ToString(), 
-                    new { language = "it" })</li>
-                <li>@Html.ActionLink(
-                    "Nederlands", 
-                    ViewContext.RouteData.Values["action"].ToString(), 
-                    new { language = "nl" })</li>
-                <li>@Html.ActionLink(
-                    "Português", 
-                    ViewContext.RouteData.Values["action"].ToString(), 
-                    new { language = "pt_PT" })</li>
+                @foreach (var lang in Language.Languages)
+                {
+                    <li>@Html.ActionLink(
+                        lang.LocalName, 
+                        ViewContext.RouteData.Values["action"].ToString(), 
+                        new { language = @lang.Abbreviation })</li>
+                }
              </ul>
         </li>
     </ul>
+    <div style="clear: both"></div>
 
     @RenderBody()
 

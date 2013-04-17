@@ -53,6 +53,27 @@ namespace Perpetuality.Controllers
             return View();
         }
 
+        public ActionResult Logout()
+        {
+            var ctx = new DatabaseDataContext();
+            try
+            {
+                ctx.LogoutUser(JAAPToken, HostIPAddress);
+            }
+            catch
+            {
+                // ignore the exception: 60030 Supplied token could not be converted to a guid.
+            }
+            // FormsAuthentication.SignOut();
+            if (Response.Cookies != null)
+            {
+                var c = new HttpCookie("GameToken");
+                c.Expires = DateTime.Now.AddYears(-1);
+                HttpContext.Response.SetCookie(c);
+            }
+            return RedirectToAction(Index());
+        }
+
         public virtual ActionResult ResetPassword()
         {
             var ctx = new DatabaseDataContext();
@@ -76,6 +97,17 @@ namespace Perpetuality.Controllers
             mail.Body = "this is my test email body";
             client.Send(mail);
 
+            return View();
+        }
+
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Register(string emailAddress)
+        {
             return View();
         }
 

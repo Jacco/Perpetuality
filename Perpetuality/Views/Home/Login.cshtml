@@ -16,13 +16,30 @@
 }
 <div id="validationMessages" style="display: none" data="@Newtonsoft.Json.JsonConvert.SerializeObject(validationMessages)"></div>
 <form id="login-Form" method="post">
-    <input type="text" name="emailAddress" id="emailAddress" />
-    <input type="password" name="password" id="password" />
-    <input type="checkbox" name="rememberMe" id="rememberMeCB" value="true" />
-    <input type="hidden" name="rememberMe" id="rememberMe" value="false"/>
-    <input type="submit" value="Login" />
-    <a href="/@language/home/resetpassword">@Resources.Home.Login.ForgetPasswordText</a>
-    <a href="todo">@Resources.Home.Login.DontHaveAnAccountText</a>
+    <div class="form-middle">
+        <div class="field-row">
+            <div class="field-label">@Resources.Home.Login.EmailAddressLabelText</div>
+            <div class="field-wrapper">
+                <input type="text" name="emailAddress" id="emailAddress" />
+            </div>
+        </div>
+        <div class="field-row">
+            <div class="field-label">@Resources.Home.Login.PasswordLabelText</div>
+            <div class="field-wrapper">
+                <input type="password" name="password" id="password" />
+            </div>
+        </div>
+        <div class="field-row right">
+            <input type="checkbox" name="rememberMe" id="rememberMeCB" value="true" />
+            <input type="hidden" name="rememberMe" id="rememberMe" value="false"/>
+            <label for="rememberMeCB">@Resources.Home.Login.RememberMeLabelText</label>
+            <a href="/@language/home/resetpassword">@Resources.Home.Login.ForgetPasswordText</a>
+        </div>
+    </div>
+    <div class="form-bottom">
+        <input type="submit" value="@Resources.Home.Login.LoginButtonText" />
+        <a href="/@language/home/register">@Resources.Home.Login.DontHaveAnAccountText</a>
+    </div>
 </form>
 
 @section scripts

@@ -79,6 +79,7 @@
     <Build Include="Tables\tblSessionLog.sql" />
     <Build Include="Stored Procedures\ConfirmEmailAddress.sql" />
     <Build Include="Stored Procedures\GetUserProfile.sql" />
+    <Build Include="Stored Procedures\EndSession.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Database.publish.xml" />

@@ -70,6 +70,15 @@ namespace Resources.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Login.
+        /// </summary>
+        public static string MenuLoginText {
+            get {
+                return ResourceManager.GetString("MenuLoginText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to News.
         /// </summary>
         public static string MenuNewsText {

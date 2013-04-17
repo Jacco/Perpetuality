@@ -22,14 +22,14 @@ namespace Resources.Home {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Login {
+    public class Register {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Login() {
+        internal Register() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Resources.Home {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Resources.Home.Login", typeof(Login).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Resources.Home.Register", typeof(Register).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,15 +61,6 @@ namespace Resources.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Don&apos;t have an account?.
-        /// </summary>
-        public static string DontHaveAnAccountText {
-            get {
-                return ResourceManager.GetString("DontHaveAnAccountText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Email Address:.
         /// </summary>
         public static string EmailAddressLabelText {
@@ -79,43 +70,16 @@ namespace Resources.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Forgot password?.
+        ///   Looks up a localized string similar to Language.
         /// </summary>
-        public static string ForgetPasswordText {
+        public static string LanguageLabelText {
             get {
-                return ResourceManager.GetString("ForgetPasswordText", resourceCulture);
+                return ResourceManager.GetString("LanguageLabelText", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Login.
-        /// </summary>
-        public static string LoginButtonText {
-            get {
-                return ResourceManager.GetString("LoginButtonText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Username is no valid e-mailadrress..
-        /// </summary>
-        public static string LoginError_60020 {
-            get {
-                return ResourceManager.GetString("LoginError_60020", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to This combination of username and password is unknown..
-        /// </summary>
-        public static string LoginError_60022 {
-            get {
-                return ResourceManager.GetString("LoginError_60022", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Perpetuality - Login.
+        ///   Looks up a localized string similar to Perpetuality - Registration.
         /// </summary>
         public static string PageTitle {
             get {
@@ -133,11 +97,20 @@ namespace Resources.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remember me.
+        ///   Looks up a localized string similar to Register.
         /// </summary>
-        public static string RememberMeLabelText {
+        public static string RegisterButtonText {
             get {
-                return ResourceManager.GetString("RememberMeLabelText", resourceCulture);
+                return ResourceManager.GetString("RegisterButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm Password:.
+        /// </summary>
+        public static string RepeatPasswordLabelText {
+            get {
+                return ResourceManager.GetString("RepeatPasswordLabelText", resourceCulture);
             }
         }
         
@@ -147,6 +120,24 @@ namespace Resources.Home {
         public static string ValidationEmailAdressRequired {
             get {
                 return ResourceManager.GetString("ValidationEmailAdressRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password does not match.
+        /// </summary>
+        public static string ValidationPasswordConfirmDifferent {
+            get {
+                return ResourceManager.GetString("ValidationPasswordConfirmDifferent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please confirm your password.
+        /// </summary>
+        public static string ValidationPasswordConfirmRequired {
+            get {
+                return ResourceManager.GetString("ValidationPasswordConfirmRequired", resourceCulture);
             }
         }
         

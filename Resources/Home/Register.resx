@@ -117,37 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="DontHaveAnAccountText" xml:space="preserve">
-    <value>Nog geen account?</value>
-  </data>
   <data name="EmailAddressLabelText" xml:space="preserve">
-    <value>E-mailadres:</value>
+    <value>Email Address:</value>
   </data>
-  <data name="ForgetPasswordText" xml:space="preserve">
-    <value>Wachtwoord vergeten?</value>
-  </data>
-  <data name="LoginButtonText" xml:space="preserve">
-    <value>Aanmelden</value>
-  </data>
-  <data name="LoginError_60020" xml:space="preserve">
-    <value>De gebruikersnaam is geen valide e-mailadres.</value>
-  </data>
-  <data name="LoginError_60022" xml:space="preserve">
-    <value>Deze combinatie van gebruikersnaam en wachtwoord is onbekend.</value>
+  <data name="LanguageLabelText" xml:space="preserve">
+    <value>Language</value>
   </data>
   <data name="PageTitle" xml:space="preserve">
-    <value>Perpetuality - Inloggen</value>
+    <value>Perpetuality - Registration</value>
   </data>
   <data name="PasswordLabelText" xml:space="preserve">
-    <value>Wachtwoord:</value>
+    <value>Password:</value>
   </data>
-  <data name="RememberMeLabelText" xml:space="preserve">
-    <value>Onthouden</value>
+  <data name="RegisterButtonText" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="RepeatPasswordLabelText" xml:space="preserve">
+    <value>Confirm Password:</value>
   </data>
   <data name="ValidationEmailAdressRequired" xml:space="preserve">
-    <value>Voer je e-mailadres in</value>
+    <value>Please enter your email</value>
+  </data>
+  <data name="ValidationPasswordConfirmDifferent" xml:space="preserve">
+    <value>Password does not match</value>
+  </data>
+  <data name="ValidationPasswordConfirmRequired" xml:space="preserve">
+    <value>Please confirm your password</value>
   </data>
   <data name="ValidationPasswordRequired" xml:space="preserve">
-    <value>Voer je wachtwoord in</value>
+    <value>Please enter your password</value>
   </data>
 </root>
