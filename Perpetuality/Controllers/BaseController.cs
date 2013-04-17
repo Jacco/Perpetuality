@@ -1,8 +1,10 @@
 ﻿using Perpetuality.Data;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Security.Principal;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -52,7 +54,7 @@ namespace Perpetuality
 
 namespace Perpetuality.Controllers
 {
-    public class BaseController : Controller
+    public partial class BaseController : Controller
     {
         public string JAAPToken;
         public string HostIPAddress;
@@ -73,8 +75,24 @@ namespace Perpetuality.Controllers
             ExtraInitialization();
         }
 
+        private CultureInfo GetCultureInfo(AuthorizationContext filterContext)
+        {
+            switch ((string)filterContext.RouteData.Values["language"])
+            {
+                case "nl":
+                    return CultureInfo.CreateSpecificCulture("nl-NL");
+                case "en":
+                    return CultureInfo.CreateSpecificCulture("en-US");
+                default:
+                    return CultureInfo.CreateSpecificCulture("en-US");
+            }
+        }
+
         protected override void OnAuthorization(AuthorizationContext filterContext)
         {
+            Thread.CurrentThread.CurrentCulture = GetCultureInfo(filterContext);
+            Thread.CurrentThread.CurrentUICulture = GetCultureInfo(filterContext);
+
             var ctx = new DatabaseDataContext();
             bool hasAuthorizeAttribute = filterContext.ActionDescriptor
                 .GetCustomAttributes(typeof(AuthorizeAttribute), false)
@@ -108,7 +126,5 @@ namespace Perpetuality.Controllers
             }
             base.OnAuthorization(filterContext);
         }
-
-
     }
 }

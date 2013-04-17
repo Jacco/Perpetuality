@@ -1,0 +1,70 @@
+﻿@{
+    string language = (string)ViewContext.RouteData.Values["language"];
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/bundledCSS")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <ul id="nav">
+        <li>
+            <a href="/@language/home/login">Login</a>
+        </li>
+        <li>
+            <a href="javascript:void()">current language</a>
+            <ul>
+                <li>@Html.ActionLink(
+                    "Español", 
+                    ViewContext.RouteData.Values["action"].ToString(), 
+                    new { language = "es" })</li>
+                <li>@Html.ActionLink(
+                    "Français", 
+                    ViewContext.RouteData.Values["action"].ToString(), 
+                    new { language = "fr" })</li>
+                <li>@Html.ActionLink(
+                    "English", 
+                    ViewContext.RouteData.Values["action"].ToString(), 
+                    new { language = "en" })</li>
+                <li>@Html.ActionLink(
+                    "Deutsch", 
+                    ViewContext.RouteData.Values["action"].ToString(), 
+                    new { language = "de" })</li>
+                <li>@Html.ActionLink(
+                    "Italiano", 
+                    ViewContext.RouteData.Values["action"].ToString(), 
+                    new { language = "it" })</li>
+                <li>@Html.ActionLink(
+                    "Nederlands", 
+                    ViewContext.RouteData.Values["action"].ToString(), 
+                    new { language = "nl" })</li>
+                <li>@Html.ActionLink(
+                    "Português", 
+                    ViewContext.RouteData.Values["action"].ToString(), 
+                    new { language = "pt_PT" })</li>
+             </ul>
+        </li>
+    </ul>
+
+    @RenderBody()
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#nav li').hover(
+                function () {
+                    $('ul', this).stop().slideDown(100);
+                },
+                function () {
+                    $('ul', this).stop().slideUp(100);
+                }
+            );
+        });
+    </script>
+</body>
+</html>

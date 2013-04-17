@@ -1,0 +1,46 @@
+﻿@{
+    Layout = MVC.Shared.Views._LayoutStrip;
+    
+    ViewBag.Title = Resources.Home.Login.PageTitle;
+
+    string language = (string)ViewContext.RouteData.Values["language"];
+    
+    var validationMessages = new { 
+        emailAddress = new { 
+            required = Resources.Home.Login.ValidationEmailAdressRequired
+        }, 
+        password = new { 
+            required = Resources.Home.Login.ValidationPasswordRequired
+        } 
+    };
+}
+<div id="validationMessages" style="display: none" data="@Newtonsoft.Json.JsonConvert.SerializeObject(validationMessages)"></div>
+<form id="login-Form" method="post">
+    <input type="text" name="emailAddress" id="emailAddress" />
+    <input type="password" name="password" id="password" />
+    <input type="checkbox" name="rememberMe" id="rememberMeCB" value="true" />
+    <input type="hidden" name="rememberMe" id="rememberMe" value="false"/>
+    <input type="submit" value="Login" />
+    <a href="/@language/home/resetpassword">@Resources.Home.Login.ForgetPasswordText</a>
+    <a href="todo">@Resources.Home.Login.DontHaveAnAccountText</a>
+</form>
+
+@section scripts
+{
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.10.0/jquery.validate.js"></script>
+    <script type="text/javascript">
+        $('#login-Form').validate({
+            onkeyup: false,
+            onfocusout: false,
+            rules: {
+                emailAddress: {
+                    required: true,
+                },
+                password: {
+                    required: true,
+                },
+            },
+            messages: JSON.parse($('#validationMessages').attr('data'))
+        });
+    </script>
+}

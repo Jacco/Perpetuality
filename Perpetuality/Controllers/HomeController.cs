@@ -4,6 +4,7 @@ using Perpetuality.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Security.Cryptography;
 using System.ServiceModel;
 using System.Text;
@@ -17,8 +18,64 @@ namespace Perpetuality.Controllers
         //
         // GET: /Home/
 
-        public virtual ActionResult Index()
+        public virtual ActionResult Index(string language)
         {
+            return View();
+        }
+
+        public virtual ActionResult Login(string language)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public virtual ActionResult Login(string language, string emailAddress, string password, bool rememberMe = false)
+        {
+            var ctx = new DatabaseDataContext();
+            var token = "";
+            var message = "";
+            try
+            {
+                ctx.LoginUser(emailAddress, password, HostIPAddress);
+            }
+            catch (Exception e)
+            {
+                switch (e.ErrorCode())
+                {
+                    case 60020: 
+                        message = Resources.Home.Login.LoginError_60020;
+                        break;
+                    case 60022:
+                        message = Resources.Home.Login.LoginError_60022;
+                        break;
+                }
+            }
+            return View();
+        }
+
+        public virtual ActionResult ResetPassword()
+        {
+            var ctx = new DatabaseDataContext();
+
+
+
+            return View();
+        }
+
+        [HttpPost]
+        public virtual ActionResult ResetPassword(string emailAddress)
+        {
+
+            MailMessage mail = new MailMessage("jacco@jaap.nl", "martijn@jaap.nl");
+            SmtpClient client = new SmtpClient();
+            client.Port = 25;
+            client.DeliveryMethod = SmtpDeliveryMethod.Network;
+            client.UseDefaultCredentials = false;
+            client.Host = "stmp.google.com";
+            mail.Subject = "this is a test email.";
+            mail.Body = "this is my test email body";
+            client.Send(mail);
+
             return View();
         }
 

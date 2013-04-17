@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace Perpetuality.Controllers
 {
-    public partial class GameController : Controller
+    public partial class GameController : BaseController
     {
         //
         // GET: /Game/

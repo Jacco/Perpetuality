@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace Perpetuality.Controllers
 {
-    public partial class CreditsController : Controller
+    public partial class CreditsController : BaseController
     {
         //
         // GET: /Credits/

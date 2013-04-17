@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace Perpetuality.Controllers
 {
-    public partial class FAQController : Controller
+    public partial class FAQController : BaseController
     {
         //
         // GET: /FAQ/

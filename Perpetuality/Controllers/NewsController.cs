@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace Perpetuality.Controllers
 {
-    public partial class NewsController : Controller
+    public partial class NewsController : BaseController
     {
         //
         // GET: /News/

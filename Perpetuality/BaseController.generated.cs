@@ -22,13 +22,13 @@ using System.Web.Routing;
 using T4MVC;
 namespace Perpetuality.Controllers
 {
-    public partial class CreditsController
+    public partial class BaseController
     {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public CreditsController() { }
+        public BaseController() { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        protected CreditsController(Dummy d) { }
+        protected BaseController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected RedirectToRouteResult RedirectToAction(ActionResult result)
@@ -46,13 +46,13 @@ namespace Perpetuality.Controllers
 
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public CreditsController Actions { get { return MVC.Credits; } }
+        public BaseController Actions { get { return MVC.Base; } }
         [GeneratedCode("T4MVC", "2.0")]
         public readonly string Area = "";
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Name = "Credits";
+        public readonly string Name = "Base";
         [GeneratedCode("T4MVC", "2.0")]
-        public const string NameConst = "Credits";
+        public const string NameConst = "Base";
 
         static readonly ActionNamesClass s_actions = new ActionNamesClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -60,13 +60,11 @@ namespace Perpetuality.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass
         {
-            public readonly string Index = "Index";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
-            public const string Index = "Index";
         }
 
 
@@ -80,25 +78,14 @@ namespace Perpetuality.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
-                public readonly string Index = "Index";
             }
-            public readonly string Index = "~/Views/Credits/Index.cshtml";
         }
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public partial class T4MVC_CreditsController : Perpetuality.Controllers.CreditsController
+    public partial class T4MVC_BaseController : Perpetuality.Controllers.BaseController
     {
-        public T4MVC_CreditsController() : base(Dummy.Instance) { }
-
-        partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
-
-        public override System.Web.Mvc.ActionResult Index()
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
-            IndexOverride(callInfo);
-            return callInfo;
-        }
+        public T4MVC_BaseController() : base(Dummy.Instance) { }
 
     }
 }

@@ -1,16 +1,36 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/bundledCSS")
-    @Scripts.Render("~/bundles/modernizr")
-</head>
-<body>
-    @RenderBody()
+﻿@{
+    Layout = MVC.Shared.Views._LayoutStrip;
+    string language = (string)ViewContext.RouteData.Values["language"];
+}
+<div class="main-container">
+    <div class="main-content">
+        <div class="left-container">
+            <div class="side-nav">
+                <a href="/@language/home" class="menu-btn @ViewBag.MenuHome">
+                    @Resources.Shared._Layout.MenuHomeText
+                </a>
+                <div class="menu-btn @ViewBag.MenuNews">
+                    <a href="/@language/news">
+                        <span>@Resources.Shared._Layout.MenuNewsText</span>
+                    </a>
+                </div>
+                <div class="menu-btn @ViewBag.MenuFAQs">
+                    <a href="/@language/faqs">
+                        <span>FAQs</span>
+                    </a>
+                </div>
+                <div class="menu-btn @ViewBag.MenuCredits">
+                    <a href="/@language/credits">
+                        <span>Credits</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="middle-container">
+        @RenderBody()
+    </div>
+    <div class="right-container">
 
-    @Scripts.Render("~/bundles/jquery")
-    @RenderSection("scripts", required: false)
-</body>
-</html>
+    </div>
+</div>

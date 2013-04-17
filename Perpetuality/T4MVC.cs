@@ -24,6 +24,7 @@ using T4MVC;
 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
 public static class MVC
 {
+    public static Perpetuality.Controllers.BaseController Base = new Perpetuality.Controllers.T4MVC_BaseController();
     public static Perpetuality.Controllers.CreditsController Credits = new Perpetuality.Controllers.T4MVC_CreditsController();
     public static Perpetuality.Controllers.FAQController FAQ = new Perpetuality.Controllers.T4MVC_FAQController();
     public static Perpetuality.Controllers.GameController Game = new Perpetuality.Controllers.T4MVC_GameController();
