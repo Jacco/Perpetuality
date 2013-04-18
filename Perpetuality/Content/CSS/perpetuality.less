@@ -1,0 +1,162 @@
+// =========================================================
+// PERPETUALITY MAIN FILE (STUFF HERE :D )
+// =========================================================
+
+html { background: rgb(45, 191, 204);}
+body{
+	
+	height: 100%;
+}
+header{
+	h1{
+		float: left;
+		color: white;
+		margin-left: 10%;
+		width: 40%;
+		font-size: 40px;
+	}
+
+	#nav {
+	margin: 0;
+	margin-top: 20px;
+	padding: 0;
+	list-style: none;
+	float:right;
+	width: 500px;
+
+
+
+	ul {
+		position:absolute; 
+        left:0; 
+        display:none; 
+        margin:0 0 0 -1px; 
+        padding:0; 
+        list-style:none;
+		li {
+            width:100px; 
+            float:right;
+			color: black;
+            border-top:1px solid #fff;
+		}
+		a {
+            display:block;  
+            height:15px;
+            
+            color:#666;
+			&:hover {
+				text-decoration:underline;
+				
+			}
+		}
+	}
+	li {
+        float:left; 
+        display:block; 
+        width:100px; 
+        background:white; 
+		border-radius: 3px;
+		
+		
+		
+		font-size: 17px; 
+
+		-mozbox-shadow: inset 4px 2px 19px -4px rgba(163, 138, 138,0.8);
+		-webkit-box-shadow: inset 4px 2px 19px -4px rgba(163, 138, 138,0.8);
+		box-shadow: inset 4px 2px 19px -4px rgba(163, 138, 138,0.8);
+
+		transform-origin: top center;
+		-webkit-transform-origin: top center;
+		transform: rotateX(-5deg);
+		-webkit-transform: rotateX(-5deg); /* Safari and Chrome */
+		-moz-transform: rotateX(-5deg); 
+
+        position:relative;
+        z-index:500; 
+        margin:0 1px;
+		
+		
+		&:after{
+			content: "";
+			position: absolute;
+			bottom: 5px;
+
+			height: 11%;
+
+			z-index: -2;
+			-webkit-box-shadow: 0 10px 18px rgba(0,0,0,0.7);
+			-moz-box-shadow: 0 10px 18px rgba(0,0,0,0.7);
+			box-shadow: 0 10px 18px rgba(0,0,0,0.7);
+			-webkit-transform: rotate(0deg);
+			-moz-transform: rotate(0deg);
+			-ms-transform: rotate(0deg);
+			-o-transform: rotate(0deg);
+			transform: rotate(0deg);
+		}
+	}
+	a {
+			display:block; 
+			
+			-webkit-transition: border-color .15s linear;
+			-moz-transition: border-color .15s linear;
+			-o-transition: border-color .15s linear;
+			transition: border-color .15s linear;
+			border: 3px solid rgba(1,1,1,0);
+
+			font-weight:700;  
+			height: 50px;
+			padding-top:10px;
+			text-decoration:none; 
+			color:#fff; 
+			text-align:center; 
+			color:#333;
+			&:hover {
+				color:grey;
+				text-decoration:none;
+				border-color: #3671e7;
+			}
+			&.selected {
+				color:#f00;
+			}
+	}
+}
+
+}
+.menu-btn {
+	-moz-border-radius: 0.5em;
+	border-radius: 0.5em;
+	-webkit-border-radius: 0.5em;
+	width: 63px;
+	padding: 0.4em 1.5em;
+	margin-top: 10px;
+	&:hover {
+		background-color: rgb(81, 29, 0);
+	}
+	&.selected {
+		background-color: rgb(81, 29, 0);
+	}
+}
+.menu-btn span {
+	color: white;
+	font-weight: bold;
+	font-family: arial;
+}
+
+
+.main-container {
+    margin: 0px auto;
+    width: 1087px;
+
+    .left-container {
+        width: 180px;
+        float: left;
+    }
+    .middle-container {
+        width: 530px;
+        float: left;        
+    }
+    .middle-container {
+        width: 320px;
+        float: left;        
+    }
+}

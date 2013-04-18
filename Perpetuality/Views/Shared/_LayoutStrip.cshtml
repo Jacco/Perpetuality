@@ -12,7 +12,9 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <ul id="nav">
+    <header>
+        <h1>Perpetuality</h1>
+        <ul id="nav">
         @if (Request.IsAuthenticated)
         {
             <li>
@@ -43,6 +45,9 @@
         </li>
     </ul>
     <div style="clear: both"></div>
+
+    </header>
+    
 
     @RenderBody()
 
