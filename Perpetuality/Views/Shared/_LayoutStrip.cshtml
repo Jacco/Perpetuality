@@ -11,8 +11,8 @@
     @Styles.Render("~/Content/bundledCSS")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body>
-    <header>
+
+      <header>
         <h1>Perpetuality</h1>
         <ul id="nav">
         @if (Request.IsAuthenticated)
@@ -48,6 +48,8 @@
 
     </header>
     
+<body>
+  
 
     @RenderBody()
 
@@ -55,14 +57,20 @@
     @RenderSection("scripts", required: false)
     <script type="text/javascript">
         $(document).ready(function () {
+            //Hover must be removed for mobiles
             $('#nav li').hover(
                 function () {
-                    $('ul', this).stop().slideDown(100);
+                    $('ul', this).toggleClass('opened');
                 },
                 function () {
-                    $('ul', this).stop().slideUp(100);
+                    $('ul', this).toggleClass('opened');
                 }
             );
+            $('#nav li').on('click', function () {
+                
+                    $('ul', this).toggleClass('opened');
+                
+            });
         });
     </script>
 </body>

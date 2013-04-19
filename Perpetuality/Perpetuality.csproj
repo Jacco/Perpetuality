@@ -192,7 +192,6 @@
     <Content Include="Content\CSS\fontface.less" />
     <Content Include="Content\CSS\forms.less" />
     <Content Include="Content\CSS\layouts.less" />
-    <Content Include="Content\CSS\mixins.less" />
     <Content Include="Content\CSS\scaffolding.less" />
     <Content Include="Content\CSS\perpetuality.less" />
     <None Include="Content\CSS\site.less" />
@@ -284,6 +283,7 @@
     </Content>
     <Content Include="Content\CSS\type.less" />
     <Content Include="Content\CSS\utilities.less" />
+    <Content Include="Content\font\helvecon-webfont.ttf" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
