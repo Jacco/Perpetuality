@@ -11,8 +11,8 @@
     @Styles.Render("~/Content/bundledCSS")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-
-      <header>
+<body>
+    <header>
         <h1>Perpetuality</h1>
         <ul id="nav">
         @if (Request.IsAuthenticated)
@@ -48,8 +48,6 @@
 
     </header>
     
-<body>
-  
 
     @RenderBody()
 

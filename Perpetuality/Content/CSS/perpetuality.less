@@ -20,7 +20,7 @@ body{
 	margin:0;
 }
 
-
+//HEADER file-layoutStrip.cshtml
 header{
 	.box-shadow(~"4px 2px 19px -4px rgba(5, 4, 4, 0.96)");
 	background-color:white;
@@ -131,28 +131,12 @@ header{
 	}
 
 }
-.menu-btn {
-	.border-radius(4px);
-	width: 63px;
-	padding: 0.4em 1.5em;
-	margin-top: 10px;
-	&:hover {
-		background-color: rgb(81, 29, 0);
-	}
-	&.selected {
-		background-color: rgb(81, 29, 0);
-	}
-}
-.menu-btn span {
-	color: white;
-	font-weight: bold;
-	font-family: arial;
-}
-
-
+//3 COLUMN LAYOUT - FIle layout.cshtml
 .main-container {
     margin: 0px auto;
-    width: 1087px;
+    width: 100%;
+	float:left;
+	min-height:1000px;
 
     .left-container {
         width: 180px;
@@ -167,6 +151,36 @@ header{
         float: left;        
     }
 }
+
+//FOOTER - file layout.cshtml
+footer{
+	width:100%;
+	background-color:white;
+	float:left;
+	height: 100px;
+	ul {
+		width: 100%;
+		li{
+			list-style:none;
+			float:left;
+
+			a{
+				color:black;
+				text-decoration:none;
+				padding: 20px;
+				font-size: 21px;
+			
+			}
+		}
+
+	}
+}
+
+//BUTTONS- file layout.cshtml
+
+
+
+
 
 .animated{-webkit-animation-fill-mode:both;-moz-animation-fill-mode:both;-ms-animation-fill-mode:both;-o-animation-fill-mode:both;animation-fill-mode:both;-webkit-animation-duration:1s;-moz-animation-duration:1s;-ms-animation-duration:1s;-o-animation-duration:1s;animation-duration:1s;}.animated.hinge{-webkit-animation-duration:2s;-moz-animation-duration:2s;-ms-animation-duration:2s;-o-animation-duration:2s;animation-duration:2s;}@-webkit-keyframes flash {
 	0%, 50%, 100% {opacity: 1;}	25%, 75% {opacity: 0;}
