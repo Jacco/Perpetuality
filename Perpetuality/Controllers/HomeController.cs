@@ -53,7 +53,7 @@ namespace Perpetuality.Controllers
             return View();
         }
 
-        public ActionResult Logout()
+        public virtual ActionResult Logout()
         {
             var ctx = new DatabaseDataContext();
             try
@@ -100,13 +100,13 @@ namespace Perpetuality.Controllers
             return View();
         }
 
-        public ActionResult Register()
+        public virtual ActionResult Register()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Register(string emailAddress)
+        public virtual ActionResult Register(string emailAddress)
         {
             return View();
         }

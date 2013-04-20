@@ -86,7 +86,9 @@ namespace Perpetuality.Controllers
         {
             public readonly string Index = "Index";
             public readonly string Login = "Login";
+            public readonly string Logout = "Logout";
             public readonly string ResetPassword = "ResetPassword";
+            public readonly string Register = "Register";
             public readonly string ExternalLogin = "ExternalLogin";
             public readonly string ExternalLoginCallback = "ExternalLoginCallback";
         }
@@ -96,7 +98,9 @@ namespace Perpetuality.Controllers
         {
             public const string Index = "Index";
             public const string Login = "Login";
+            public const string Logout = "Logout";
             public const string ResetPassword = "ResetPassword";
+            public const string Register = "Register";
             public const string ExternalLogin = "ExternalLogin";
             public const string ExternalLoginCallback = "ExternalLoginCallback";
         }
@@ -129,6 +133,14 @@ namespace Perpetuality.Controllers
         {
             public readonly string emailAddress = "emailAddress";
         }
+        static readonly ActionParamsClass_Register s_params_Register = new ActionParamsClass_Register();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Register RegisterParams { get { return s_params_Register; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Register
+        {
+            public readonly string emailAddress = "emailAddress";
+        }
         static readonly ActionParamsClass_ExternalLogin s_params_ExternalLogin = new ActionParamsClass_ExternalLogin();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ActionParamsClass_ExternalLogin ExternalLoginParams { get { return s_params_ExternalLogin; } }
@@ -156,12 +168,18 @@ namespace Perpetuality.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string ChangeEmail = "ChangeEmail";
+                public readonly string ChangePassword = "ChangePassword";
                 public readonly string Index = "Index";
                 public readonly string Login = "Login";
+                public readonly string Register = "Register";
                 public readonly string ResetPassword = "ResetPassword";
             }
+            public readonly string ChangeEmail = "~/Views/Home/ChangeEmail.cshtml";
+            public readonly string ChangePassword = "~/Views/Home/ChangePassword.cshtml";
             public readonly string Index = "~/Views/Home/Index.cshtml";
             public readonly string Login = "~/Views/Home/Login.cshtml";
+            public readonly string Register = "~/Views/Home/Register.cshtml";
             public readonly string ResetPassword = "~/Views/Home/ResetPassword.cshtml";
             static readonly _SharedClass s_Shared = new _SharedClass();
             public _SharedClass Shared { get { return s_Shared; } }
@@ -217,6 +235,15 @@ namespace Perpetuality.Controllers
             return callInfo;
         }
 
+        partial void LogoutOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        public override System.Web.Mvc.ActionResult Logout()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Logout);
+            LogoutOverride(callInfo);
+            return callInfo;
+        }
+
         partial void ResetPasswordOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
 
         public override System.Web.Mvc.ActionResult ResetPassword()
@@ -233,6 +260,25 @@ namespace Perpetuality.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ResetPassword);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "emailAddress", emailAddress);
             ResetPasswordOverride(callInfo, emailAddress);
+            return callInfo;
+        }
+
+        partial void RegisterOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        public override System.Web.Mvc.ActionResult Register()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Register);
+            RegisterOverride(callInfo);
+            return callInfo;
+        }
+
+        partial void RegisterOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string emailAddress);
+
+        public override System.Web.Mvc.ActionResult Register(string emailAddress)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Register);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "emailAddress", emailAddress);
+            RegisterOverride(callInfo, emailAddress);
             return callInfo;
         }
 

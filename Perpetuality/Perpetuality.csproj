@@ -183,18 +183,43 @@
     <Content Include="Config\appSettings.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Content\CSS\variables.less" />
-    <Content Include="Content\CSS\functions.less" />
-    <Content Include="Content\CSS\reset.less" />
-    <Content Include="Content\CSS\buttons.less" />
-    <Content Include="Content\CSS\components.less" />
-    <Content Include="Content\CSS\dropdowns.less" />
-    <Content Include="Content\CSS\fontface.less" />
-    <Content Include="Content\CSS\forms.less" />
-    <Content Include="Content\CSS\layouts.less" />
-    <Content Include="Content\CSS\scaffolding.less" />
-    <Content Include="Content\CSS\perpetuality.less" />
-    <None Include="Content\CSS\site.less" />
+    <Content Include="Content\CSS\less\variables.less" />
+    <Content Include="Content\CSS\less\functions.less">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\CSS\less\reset.less">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\CSS\less\buttons.less">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\CSS\less\components.less">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\CSS\less\dropdowns.less">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\CSS\less\fontface.less">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\CSS\less\forms.less">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\CSS\less\layouts.less">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\CSS\less\scaffolding.less">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\CSS\less\perpetuality.less">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\CSS\site.css">
+      <DependentUpon>T4CSS.tt</DependentUpon>
+    </Content>
+    <Content Include="Content\CSS\site.less">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Compile Include="Controllers\CreditsController.cs" />
     <Compile Include="Controllers\FAQController.cs" />
     <Compile Include="Controllers\GameController.cs" />
@@ -204,6 +229,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Content\Images\down_arrow_select.jpg" />
     <Content Include="Content\Images\main-background.jpg" />
     <Content Include="T4MVC.tt.hooks.t4" />
     <Content Include="T4MVC.tt">
@@ -281,9 +307,21 @@
       <LastGenOutput>Database.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Content\CSS\type.less" />
-    <Content Include="Content\CSS\utilities.less" />
-    <Content Include="Content\font\helvecon-webfont.ttf" />
+    <Content Include="Content\CSS\less\type.less">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\CSS\less\utilities.less">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\CSS\T4CSS.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>T4CSS.log</LastGenOutput>
+    </Content>
+    <Content Include="Content\CSS\T4CSS.log">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>T4CSS.tt</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />

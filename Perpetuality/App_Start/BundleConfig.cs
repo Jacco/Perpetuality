@@ -21,8 +21,8 @@ namespace Perpetuality
         // For more information on Bundling, visit http://go.microsoft.com/fwlink/?LinkId=254725
         public static void RegisterBundles(BundleCollection bundles)
         {
-            var lessBundle = new Bundle("~/Content/bundledCSS", new IBundleTransform[] { new LessTransform(), new CssMinify() }).IncludeDirectory("~/Content/CSS", "*.less");
-            bundles.Add(lessBundle);
+            //var lessBundle = new Bundle("~/Content/bundledCSS", new IBundleTransform[] { new LessTransform(), new CssMinify() }).Include("~/Content/CSS/site.less");
+            //bundles.Add(lessBundle);
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
