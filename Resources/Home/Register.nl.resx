@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="EmailAddressLabelText" xml:space="preserve">
     <value>E-mailadres:</value>
@@ -124,7 +124,7 @@
     <value>Taal</value>
   </data>
   <data name="PageTitle" xml:space="preserve">
-    <value>Perpetuality - Registratie</value>
+    <value>Onbepaaldheid van de looptijd - Registratie</value>
   </data>
   <data name="PasswordLabelText" xml:space="preserve">
     <value>Wachtwoord:</value>
@@ -136,15 +136,15 @@
     <value>Wachtwoord bevestigen:</value>
   </data>
   <data name="ValidationEmailAdressRequired" xml:space="preserve">
-    <value>Voer uw e-mailadres in</value>
+    <value>Vul uw e-mail</value>
   </data>
   <data name="ValidationPasswordConfirmDifferent" xml:space="preserve">
-    <value>Wachtwoord en bevestiging verschillen</value>
+    <value>Wachtwoord komt niet overeen</value>
   </data>
   <data name="ValidationPasswordConfirmRequired" xml:space="preserve">
-    <value>Bevestig het wachtwoord</value>
+    <value>Bevestig je wachtwoord</value>
   </data>
   <data name="ValidationPasswordRequired" xml:space="preserve">
-    <value>Voer een wachtwoord in</value>
+    <value>Vul je wachtwoord in</value>
   </data>
 </root>

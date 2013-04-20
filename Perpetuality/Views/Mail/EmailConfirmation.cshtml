@@ -1,0 +1,32 @@
+﻿@model string
+@{
+    Layout = MVC.Mail.Views._MailLayout;
+    bool cont = true;
+    Perpetuality.App_Code.Model_EmailConfirmation MyModel = null;
+    Exception ex = null;
+    try
+    {
+   
+        MyModel = new Perpetuality.App_Code.Model_EmailConfirmation(Model);
+        ViewBag.PlayerName = MyModel.RecipientEmail;
+        this.Response.AddHeader("X-JaapMail-Subject", @Resources.Mail.EmailConfirmation.Subject);
+        this.Response.AddHeader("X-JaapMail-Recipient-Email", MyModel.RecipientEmail);
+        this.Response.AddHeader("X-JaapMail-Recipient-Name", "");
+    } 
+    catch(Exception e)
+    {
+        cont = false;
+        ex = e;
+        this.Response.AddHeader("X-JaapMail-Error", "error");
+    }
+}
+@if (cont)
+{
+    <p>@Resources.Mail.EmailConfirmation.Message</p>
+    <br />
+    <br />
+    <a href="http://www.perpetuality.org/en/mail/confirm/?reference=@(MyModel.ConfirmHash)">http://www.perpetuality.org/en/mail/confirm/?reference=@(MyModel.ConfirmHash)</a>
+}
+else
+{
+}

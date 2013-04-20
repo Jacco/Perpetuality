@@ -3,8 +3,11 @@ using Microsoft.Web.WebPages.OAuth;
 using Perpetuality.Data;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Mail;
+using System.Net.Mime;
 using System.Security.Cryptography;
 using System.ServiceModel;
 using System.Text;
@@ -83,19 +86,53 @@ namespace Perpetuality.Controllers
             return View();
         }
 
+        private static void SendMail(string recipient, string name, string subject, string body)
+        {
+            using (var mailClient = new SmtpClient())
+            {
+                mailClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+                using (var lMsg = new System.Net.Mail.MailMessage())
+                {
+
+                    lMsg.From = new MailAddress("woning@jaap.nl", "JAAP.NL");
+                    lMsg.ReplyTo = new MailAddress("woning@jaap.nl", "JAAP.NL");
+                    lMsg.Sender = new MailAddress("woning+" + recipient.Replace("@", "=") + "@jaap.nl");
+                    lMsg.To.Add(new MailAddress(recipient, name));
+                    lMsg.Subject = subject;
+                    lMsg.Body = "";
+
+                    if (!String.IsNullOrEmpty(body))
+                    {
+                        Byte[] lBytes = System.Text.Encoding.UTF8.GetBytes(body);
+                        MemoryStream lHtmlStream = new MemoryStream(lBytes);
+                        AlternateView lHtmlView = new AlternateView(lHtmlStream, MediaTypeNames.Text.Html);
+                        lMsg.AlternateViews.Add(lHtmlView);
+                    }
+                    mailClient.Send(lMsg);
+                }
+            }
+        }
+
         [HttpPost]
         public virtual ActionResult ResetPassword(string emailAddress)
         {
+            // find out language
+            var ctx = new DatabaseDataContext();
+            var id = ctx.GetUserIDByEmail(emailAddress.ToLower());
 
-            MailMessage mail = new MailMessage("jacco@jaap.nl", "martijn@jaap.nl");
-            SmtpClient client = new SmtpClient();
-            client.Port = 25;
-            client.DeliveryMethod = SmtpDeliveryMethod.Network;
-            client.UseDefaultCredentials = false;
-            client.Host = "stmp.google.com";
-            mail.Subject = "this is a test email.";
-            mail.Body = "this is my test email body";
-            client.Send(mail);
+            var client = new WebClient();
+            client.Encoding = Encoding.UTF8;
+            var body = client.DownloadString(Request.Url.Host + "/en/mail/?view=EmailConfirmation&id=" + id.ToString());
+            var subject = client.ResponseHeaders["X-JaapMail-Subject"];
+            var recipient = client.ResponseHeaders["X-JaapMail-Recipient-Email"];
+            var name = client.ResponseHeaders["X-JaapMail-Recipient-Name"];
+            if (!string.IsNullOrWhiteSpace(name))
+            {
+                name = name.Replace("<", "");
+                name = name.Replace(">", "");
+            }
+            var error = client.ResponseHeaders["X-JaapMail-Error"];
+            SendMail(recipient, name, subject, body);
 
             return View();
         }

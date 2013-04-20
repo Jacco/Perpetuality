@@ -133,23 +133,6 @@ textarea {
   overflow: auto;
   vertical-align: top;
 }
-html,
-body,
-#pages-container,
-.alt-bgcolor {
-  height: 100%;
-}
-.alt-bgcolor {
-  background-color: #89b32f;
-}
-a {
-  color: #464646;
-  text-decoration: none;
-}
-a:hover,
-a:focus {
-  color: #202020;
-}
 .container-fluid {
   padding-right: 20px;
   padding-left: 20px;
@@ -999,6 +982,13 @@ header h1 {
   font-family: 'Mr Dafoe', cursive;
   font-size: 40px;
 }
+header h1 a {
+  text-decoration: none;
+  color: black;
+}
+header h1 a:hover {
+  color: black;
+}
 header #nav {
   margin: 0;
   padding: 0;
@@ -1056,10 +1046,6 @@ header #nav li {
   font-size: 17px;
   transform-origin: top center;
   -webkit-transform-origin: top center;
-  transform: rotateX(-5deg);
-  -webkit-transform: rotateX(-5deg);
-  /* Safari and Chrome */
-  -moz-transform: rotateX(-5deg);
   position: relative;
   z-index: 500;
 }
@@ -1199,6 +1185,7 @@ footer ul li a {
   margin-bottom: 10px;
   font-size: 15px;
   padding-left: 9px;
+  padding: 0;
   width: 415px;
 }
 #container form select option {
