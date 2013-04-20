@@ -331,16 +331,15 @@
     <Content Include="Content\CSS\perpetuality_map.less">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\CSS\T4CSS.log" />
     <Content Include="Content\CSS\T4CSS.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>T4CSS1.log</LastGenOutput>
     </Content>
-    <None Include="Content\CSS\T4CSS1.log">
+    <Content Include="Content\CSS\T4CSS1.log">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>T4CSS.tt</DependentUpon>
-    </None>
+    </Content>
     <None Include="Properties\PublishProfiles\ToWeb.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />

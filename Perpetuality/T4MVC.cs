@@ -139,7 +139,6 @@ namespace Links
         
             public static readonly string perpetuality_map_less = Url("perpetuality_map.less");
             public static readonly string site_less = Url("site.less");
-            public static readonly string T4CSS_log = Url("T4CSS.log");
             public static readonly string T4CSS_tt = Url("T4CSS.tt");
             public static readonly string game_ui_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/game-ui.min.css") ? Url("game-ui.min.css") : Url("game-ui.css");
                  
