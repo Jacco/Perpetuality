@@ -13,6 +13,7 @@ namespace Perpetuality
 {
     public class GameIdentity : IIdentity
     {
+
         public GameIdentity(string name, long id)
         {
             this.Name = name;
