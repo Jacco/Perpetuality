@@ -118,36 +118,36 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DontHaveAnAccountText" xml:space="preserve">
-    <value>Heb je nog geen account?</value>
+    <value>Não tem uma conta?</value>
   </data>
   <data name="EmailAddressLabelText" xml:space="preserve">
-    <value>E-mailadres:</value>
+    <value>Endereço de E-mail:</value>
   </data>
   <data name="ForgetPasswordText" xml:space="preserve">
-    <value>Wachtwoord vergeten?</value>
+    <value>Esqueceu sua senha?</value>
   </data>
   <data name="LoginButtonText" xml:space="preserve">
-    <value>Inloggen</value>
+    <value>Login</value>
   </data>
   <data name="LoginError_60020" xml:space="preserve">
-    <value>Gebruikersnaam is geen geldig e-mailadrress.</value>
+    <value>Nome de usuário não é válido e-mailadrress.</value>
   </data>
   <data name="LoginError_60022" xml:space="preserve">
-    <value>Deze combinatie van gebruikersnaam en wachtwoord is niet bekend.</value>
+    <value>Esta combinação de nome de usuário e senha é desconhecida.</value>
   </data>
   <data name="PageTitle" xml:space="preserve">
-    <value>Onbepaaldheid van de looptijd - Login</value>
+    <value>Perpetuidade - Entrar</value>
   </data>
   <data name="PasswordLabelText" xml:space="preserve">
-    <value>Wachtwoord:</value>
+    <value>Senha:</value>
   </data>
   <data name="RememberMeLabelText" xml:space="preserve">
-    <value>Onthoud mij</value>
+    <value>Lembre-se de mim</value>
   </data>
   <data name="ValidationEmailAdressRequired" xml:space="preserve">
-    <value>Vul uw e-mail</value>
+    <value>Digite seu e-mail</value>
   </data>
   <data name="ValidationPasswordRequired" xml:space="preserve">
-    <value>Vul je wachtwoord in</value>
+    <value>Por favor, digite a sua senha</value>
   </data>
 </root>
