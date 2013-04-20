@@ -67,17 +67,27 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Home\Login.de.resx" />
+    <EmbeddedResource Include="Home\Login.es.resx" />
+    <EmbeddedResource Include="Home\Login.fr.resx" />
+    <EmbeddedResource Include="Home\Login.it.resx" />
     <EmbeddedResource Include="Home\Login.nl.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Home\Login.pt-pt.resx" />
     <EmbeddedResource Include="Home\Login.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Login.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Home\Register.de.resx" />
+    <EmbeddedResource Include="Home\Register.es.resx" />
+    <EmbeddedResource Include="Home\Register.fr.resx" />
+    <EmbeddedResource Include="Home\Register.it.resx" />
     <EmbeddedResource Include="Home\Register.nl.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Register.nl.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Home\Register.pt-pt.resx" />
     <EmbeddedResource Include="Home\Register.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Register.Designer.cs</LastGenOutput>
@@ -85,10 +95,12 @@
     <EmbeddedResource Include="Shared\_Layout.nl.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>_Layout.nl.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Shared\_Layout.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>_Layout.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
