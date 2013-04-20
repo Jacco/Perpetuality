@@ -133,16 +133,25 @@ header{
 
 }
 //3 COLUMN LAYOUT - FIle layout.cshtml
-.main-container {
-    margin: 0px auto;
+#container{
+  margin: 0px auto;
     width: 100%;
 	float:left;
 	min-height:1000px;
 	width: 100%;
 	height: 100%;
 	margin-left: 95px;
-	color: rgba(0, 0, 0, 0.54);
 	margin-top: 25px;
+	color: rgba(0, 0, 0, 0.54);
+}
+.main-container {
+    margin: 0px auto;
+    width: 100%;
+	width: 100%;
+	height: 100%;
+	
+	
+	
 
     .left-container {
         width: 180px;
@@ -195,17 +204,73 @@ width: 10px;
 border: 1px #eee solid;
 border-radius: 4px;
 background: #777;
--webit-box-shadow: 0 0 8px #555 inset;
+-webkit-box-shadow: 0 0 8px #555 inset;
 box-shadow: 0 0 8px #555 inset;
--webit-transition: all .3s ease-out;
+-webkit-transition: all .3s ease-out;
 transition: all .3s ease-out;
 }
 ::-webkit-scrollbar-track {
--webit-box-shadow: 0 0 2px #ccc;
+-webkit-box-shadow: 0 0 2px #ccc;
 box-shadow: 0 0 2px #ccc;
 }
 
 
+//FORMS FOR LOGIN AND REGISTER
+#container{
+	form{
+		.genericInput{
+			width: 400px;
+			height: 30px;
+			margin-top: 10px;
+			margin-bottom: 10px;
+			font-size: 15px;
+			padding-left: 9px;
+		}
+		input[type="text"]{
+			.genericInput;
+			.error{
+				border: 3px solid red;
+			}
+		}
+		input[type="password"]{
+			.genericInput;
+		}
+
+		select{
+			.genericInput;
+			width:415px;
+		}
+		input[type="submit"]{
+			height: 40px;
+			margin-top: 10px;
+			margin-left: 0;
+			padding: 10px;
+			background: rgb(253, 250, 250);
+			border-radius: 20px;
+			box-shadow: 1px 6px 17px;
+			
+		}
+
+		label{
+			
+				margin: 10px;
+				
+				color: rgba(247, 5, 5, 0.53);
+				font-weight: bold;
+				font-size: 16px;
+			
+		}
+
+		a{
+			color: rgba(1, 1, 1, 0.66);
+			text-decoration: none;
+			font-weight: bold;
+			
+		}
+
+	}
+	
+}
 
 
 
