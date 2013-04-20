@@ -2,20 +2,13 @@
 // PERPETUALITY MAIN FILE (STUFF HERE :D )
 // =========================================================
 
-@font-face {
-  font-family: 'helveticaregular';
-  src: url('"font/helvecon-webfont.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-
 html {
  background: rgb(45, 191, 204);
  height: 1000px;
 }
 body{
-	font-family: "helveticaregular", Helvetica, sans-serif;
+	//font-family: "helveticaregular", Helvetica, sans-serif;
+	font-family: 'Sanchez', serif;
 	height: 100%;
 	margin:0;
 	overflow-x:hidden;
@@ -29,7 +22,7 @@ header{
 		float: left;
 		color: black;
 		margin-left: 10%;
-		
+		font-family: 'Mr Dafoe', cursive;
 		font-size: 40px;
 	}
 
@@ -114,7 +107,7 @@ header{
 			border: 3px solid rgba(155, 140, 140, 0);
 
 			font-weight:700;  
-			height:55px;
+			height:65px;
 			padding:20px;
 			text-decoration:none; 
 			color:rgba(90, 84, 84, 0.69); 
@@ -239,6 +232,9 @@ box-shadow: 0 0 2px #ccc;
 		select{
 			.genericInput;
 			width:415px;
+			option{
+				padding-top: 5px;
+			}
 		}
 		input[type="submit"]{
 			height: 40px;
@@ -272,7 +268,46 @@ box-shadow: 0 0 2px #ccc;
 	
 }
 
+@media (max-width: 610px) {
+	header{
+		h1{
+			font-size: 30px;
+			width: 100%;
+			text-align: center;
+			margin-left: 0;
+		}
+		#nav {
+			width: 100%;
+			li{
+				width: 33%;
+				a{
+					height : 15px;
+					margin: 0;
+					padding-top: 17px;
+					padding-left: 0;
+					padding-right: 0;
+				}
+			}
+		}
+	}
 
+	#container{
+		margin-left: 35px;
+		min-height:600px;
+	}
+
+	form{
+		input[type="text"] {
+			max-width: 280px;
+		}
+		input[type="password"] {
+			max-width: 280px;
+		}
+		select {
+			max-width: 295px;
+		}
+	}
+}
 
 .animated{-webkit-animation-fill-mode:both;-moz-animation-fill-mode:both;-ms-animation-fill-mode:both;-o-animation-fill-mode:both;animation-fill-mode:both;-webkit-animation-duration:1s;-moz-animation-duration:1s;-ms-animation-duration:1s;-o-animation-duration:1s;animation-duration:1s;}.animated.hinge{-webkit-animation-duration:2s;-moz-animation-duration:2s;-ms-animation-duration:2s;-o-animation-duration:2s;animation-duration:2s;}@-webkit-keyframes flash {
 	0%, 50%, 100% {opacity: 1;}	25%, 75% {opacity: 0;}
