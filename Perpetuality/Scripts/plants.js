@@ -1,7 +1,6 @@
 ﻿var perpetuality = perpetuality || {};
 
 perpetuality.plant = function () {
-    alert("");
     var number = 0;
 
     function removePlant(plantId) {

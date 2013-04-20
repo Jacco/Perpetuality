@@ -153,8 +153,14 @@ namespace Links
             private const string URLPATH = "~/Content/Images";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+            public static readonly string default_image_jpeg = Url("default-image.jpeg");
             public static readonly string down_arrow_select_jpg = Url("down_arrow_select.jpg");
+            public static readonly string green_png = Url("green.png");
             public static readonly string main_background_jpg = Url("main-background.jpg");
+            public static readonly string nuclear_power_plant_png = Url("nuclear-power-plant.png");
+            public static readonly string orange_png = Url("orange.png");
+            public static readonly string red_png = Url("red.png");
+            public static readonly string sources = Url("sources");
         }
     
         public static readonly string Site_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Site.min.css") ? Url("Site.min.css") : Url("Site.css");
