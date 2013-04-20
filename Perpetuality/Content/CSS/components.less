@@ -1,0 +1,420 @@
+// =========================================================
+// HEADER
+// =========================================================
+.header {
+  .box-shadow(0 1px 2px rgba(0, 0, 0, .3));
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: @zindexFixedNavbar;
+  height: @navbarHeight;
+  border-bottom: 1px solid #718a3b;
+  background-color: @corporateColor;
+  .container-fluid {
+    padding-left: 10px;
+    padding-right: 0;
+  }
+
+  // Dropdown
+  .dropdown {
+    float: left;
+    height: @navbarHeight;
+  }
+  .dropdown .caret {
+    position: relative;
+    display: inline-block;
+    border-bottom: 11px solid rgba(0, 0, 0, .3);
+    border-left: 11px solid transparent;
+    border-top: 0 solid transparent;
+    border-right: 0 solid transparent;
+    &:before {
+      position: absolute;
+      top: 1px;
+      right: 0;
+      width: 0;
+      height: 0;
+      vertical-align: top;
+      border-bottom: 10px solid @white;
+      border-left: 10px solid transparent;
+      border-top:  0 solid transparent;
+      border-right: 0 solid transparent;
+      content: "";
+    }
+  }
+  .dropdown-menu {
+    left: 25px;
+    min-width: 245px;
+    &:after {
+      left: 20px;
+    }
+    &:before {
+      left: 19px;
+    }
+    &.pull-right {
+      left: auto;
+      right: 0;
+      text-align: right;
+      &:after {
+        left: auto;
+        right: 14px;
+      }
+      &:before {
+        left: auto;
+        right: 13px;
+      }
+    }
+    > li a {
+      .text-overflow();
+      .box-sizing(border-box);
+      width: 245px;
+    }
+  }
+
+  // Heading 1
+  h1 {
+    float: none;
+    position: relative;
+    margin: 0 95px 0 35px;
+    font-size: @baseFontSize * 1.2;
+    line-height: @baseLineHeight * 1.5;
+    text-align: center;
+    [class*="icon"] {
+      position: absolute;
+      top: 0;
+      left: 10px;
+      z-index: 10;
+      margin-right: 8px;
+      font-size: @baseFontSize * 1.2;
+      line-height: @baseLineHeight * 1.4;
+    }
+    [class*="icon"],
+    span, a {
+      float: left;
+    }
+    span, a {
+      .text-overflow();
+      position: relative;
+      //padding: 0 0 0 10px;
+      &.active {
+        background-color: rgba(255, 255, 255, .2);
+      }
+    }
+  }
+  nav, .logo {
+    position: absolute;
+    top: 0;
+    z-index: 10;
+  }
+  nav {
+    right: 5px;
+  }
+  .logo,
+  h1 [class*="chevron"] {
+    left: -35px;
+  }
+  .logo {
+    .size(40px, 39px);
+    display: inline-block;
+    background-image: url("../img/logo-4f.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-indent: -999em;
+  }
+  h1, a, a:visited {
+    color: @white;
+  }
+  h1,
+  nav {
+    [class*="icon"]:before {
+      width: auto;
+      margin: 0;
+    }
+  }
+  h1,
+  [class*="icon"]:before {
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, .4);
+  }
+  .open h1 a {
+    background-color: rgba(255, 255, 255, .2);
+  }
+
+  // Nav
+  nav {
+    [class*="icon"]:before {
+      font-size: @baseFontSize * 1.5;
+      line-height: @baseLineHeight * 1.3;
+    }
+    > ul {
+      margin-bottom: 0;
+    }
+    > ul > li {
+      height: @navbarHeight;
+      padding-right: 0;
+      padding-left: 0;
+    }
+    > ul > li > a {
+      .size(35px, @navbarHeight);
+      display: inline-block;
+      text-align: center;
+    }
+
+    // open dropdown
+    > ul > li.open > a {
+      background-color: rgba(255, 255, 255, .2);
+    }
+
+    // active icon
+    a.active > [class*="icon"]:before {
+      .opacity(50);
+    }
+
+    //dropdown menu icon
+    .dropdown-menu [class*="icon"]:before {
+      width: auto;
+      margin-right: 0;
+      margin-left: 5px;
+      font-size: @baseFontSize * 1.5;
+      line-height: 1;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 1);
+    }
+
+    // dropdown menu active icon
+    .dropdown-menu .active [class*="icon"]:before {
+      color: @corporateColor;
+    }
+  }
+}
+
+
+// =========================================================
+// LOGIN
+// =========================================================
+.login {
+  text-align: center;
+
+  // Header
+  .header {
+    .box-shadow(none);
+    position: relative;
+    height: auto;
+    border-bottom: 0;
+    background-color: transparent;
+    .container-fluid {
+      padding-right: 10px;
+    }
+    [class*="icon"]:before {
+      color: @white;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+    }
+    .icon-plus:before {
+      font-size: @baseFontSize + 12;
+      font-style: italic;
+    }
+    .icon-twitter:before,
+    .icon-globe:before {
+      font-size: @baseFontSize + 20;
+    }
+    .icon-twitter:before {
+      color: #32baec;
+    }
+    [class*="icon-chevron"]:before {
+      font-size: @baseFontSize + 5;
+    }
+  }
+  h1 {
+    margin: 20px 0 0;
+    .logo {
+      position: static;
+    }
+  }
+
+  // main
+  .main {
+    padding-top: 0;
+  }
+
+  // Login buttons
+  .login-by {
+    height: 34px;
+    margin-top: -12px;
+    color: @white;
+    font-size: @baseFontSize + 4;
+    img {
+      margin-right: -10px;
+    }
+  }
+  li {
+    margin: 0 auto 10px;
+    .btn [class*="icon"] {
+      vertical-align: text-bottom;
+    }
+  }
+  .divider {
+    margin-top: 74px;
+  }
+  .login-nav {
+    position: absolute;
+    top: 50%;
+    left: -10px;
+    margin-top: -30px;
+  }
+
+  // Login form
+  .form-login {
+    margin: 0 auto;
+  }
+  .control {
+    display: block;
+  }
+  .alert-form {
+    height: 38px;
+  }
+}
+
+
+// =========================================================
+// ALERT MESSAGE
+// =========================================================
+.alert-message {
+  border-bottom: 1px solid #b6b6b6;
+  padding: 15px;
+  line-height: @baseLineHeight - 10%;
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.alert-suspended .alert-message {
+  padding: 0;
+}
+
+
+// =========================================================
+// OPTIONS LIST, ARTICLE LIST, ARTICLE DETAILS
+// =========================================================
+.results-list,
+.options-list,
+.articles-list {
+  margin-bottom: 0;
+  > li {
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 1);
+    > a {
+      display: block;
+    }
+  }
+  .text-overflow {
+    .text-overflow();
+    float: left;
+  }
+}
+
+.results-list,
+.articles-list,
+.article-detail {
+  time, .feed, .divider, .suscribers {
+    color: lighten(@grayLighter, 5%);
+  }
+  time, .feed, .suscribers {
+    font-weight: normal;
+    line-height: @baseLineHeight - 10%;
+  }
+  [class*="icon"].active:before {
+    color: @corporateColor;
+  }
+}
+
+// Options list
+// =========================================================
+.options-list {
+  .appended-input {
+    input {
+      margin-bottom: 0;
+    }
+    input + div {
+      display: inline-block;
+      vertical-align: center;
+    }
+  }
+  .aside {
+    float: right;
+    text-align: right;
+  }
+}
+
+// Articles list
+// =========================================================
+.articles-list {
+  .image {
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+
+
+// =========================================================
+// ALERT SUSPENDED
+// =========================================================
+.alert-suspended {
+  .box-shadow(0 1px 2px rgba(0, 0, 0, .4));
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  background-color: #e3e3e3;
+  z-index: 1000;
+  margin-top: 1px;
+  padding: 15px;
+  .icon-cancel:before {
+    margin-right: 0;
+  }
+  .btn + p {
+    margin-right: 30px;
+  }
+}
+
+
+// =========================================================
+// SEARCH FORM
+// =========================================================
+.form-search {
+  
+  [class*="icon"]:before {
+    text-shadow: none;
+  }
+  .control {
+    .box-shadow(~"inset 0 3px 2px -2px rgba(0, 0, 0, .12)");
+    display: inherit;
+    border: 1px solid #c9c9c9;
+    margin-bottom: 0;
+    background-color: #f0f0f0;
+  }
+  .add-on,
+  input[type="text"] {
+    .box-shadow(none);
+    border: 0;
+    background-color: transparent;
+  }
+  input[type="text"] {
+    width: 74%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .add-on {
+    width: 13%;
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center;
+  }
+  [class*="icon"]:before {
+    margin-top: -8px;
+    margin-right: 0;
+    font-size: @baseFontSize * 1.5;
+  }
+  .icon-cancel {
+    color: @grayLight;
+  }
+  .add-on.icon-search:before {
+    color: #c0c0c0;
+  }
+}

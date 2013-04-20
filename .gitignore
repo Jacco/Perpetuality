@@ -21,6 +21,7 @@ Config/
 [Rr]elease/
 x64/
 Database/Database.publish.xml
+*.dbmdl
 *_i.c
 *_p.c
 *.ilk

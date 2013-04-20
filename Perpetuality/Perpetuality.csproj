@@ -180,7 +180,20 @@
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Content Include="Config\connectionStrings.config" />
-    <Content Include="Config\appSettings.config" />
+    <Content Include="Config\appSettings.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Content\CSS\variables.less" />
+    <Content Include="Content\CSS\functions.less" />
+    <Content Include="Content\CSS\reset.less" />
+    <Content Include="Content\CSS\buttons.less" />
+    <Content Include="Content\CSS\components.less" />
+    <Content Include="Content\CSS\dropdowns.less" />
+    <Content Include="Content\CSS\fontface.less" />
+    <Content Include="Content\CSS\forms.less" />
+    <Content Include="Content\CSS\layouts.less" />
+    <Content Include="Content\CSS\scaffolding.less" />
+    <Content Include="Content\CSS\perpetuality.less" />
     <None Include="Content\CSS\site.less" />
     <Compile Include="Controllers\CreditsController.cs" />
     <Compile Include="Controllers\FAQController.cs" />
@@ -268,6 +281,9 @@
       <LastGenOutput>Database.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Content\CSS\type.less" />
+    <Content Include="Content\CSS\utilities.less" />
+    <Content Include="Content\font\helvecon-webfont.ttf" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
