@@ -1,0 +1,27 @@
+﻿@model string
+@{
+    bool cont = true;
+    Layout = null;
+    Perpetuality.App_Code.Model_EmailConfirmation MyModel = null;
+    Exception ex = null;
+    try
+    {
+        MyModel = new Perpetuality.App_Code.Model_EmailConfirmation(Model);
+        this.Response.AddHeader("X-JaapMail-Subject", MyModel.Context.subject);
+        this.Response.AddHeader("X-JaapMail-Recipient-Email", MyModel.Context.recipientEmail);
+        this.Response.AddHeader("X-JaapMail-Recipient-Name", MyModel.Context.recipientName);
+    } 
+    catch(Exception e)
+    {
+        cont = false;
+        ex = e;
+        this.Response.AddHeader("X-JaapMail-Error", "error");
+    }
+}
+@if (cont)
+{
+    <p>This is mail content</p>
+}
+else
+{
+}
