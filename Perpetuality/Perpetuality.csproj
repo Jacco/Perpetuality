@@ -208,6 +208,14 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Content\Images\main-background.jpg" />
+    <Content Include="Content\Images\original\Background_home.jpg" />
+    <Content Include="Content\Images\original\Buttons_active.png" />
+    <Content Include="Content\Images\original\Buttons_inactive.png" />
+    <Content Include="Content\Images\original\logo.png" />
+    <Content Include="Content\Images\original\logo2.png" />
+    <Content Include="Content\Images\original\start_game_down.png" />
+    <Content Include="Content\Images\original\start_game_up.png" />
+    <Content Include="Content\Images\original\Text-background.png" />
     <Content Include="Scripts\perpetuality_map.js" />
     <Content Include="Scripts\plants.js" />
     <Content Include="T4MVC.tt.hooks.t4" />

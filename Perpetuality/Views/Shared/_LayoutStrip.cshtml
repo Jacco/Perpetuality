@@ -15,7 +15,7 @@
 </head>
 <body>
     <header>
-        <h1><a href="/">Perpetuality</a></h1>
+        <h1><a href="/"><img src="~/Content/Images/original/logo2.png" /></a></h1>
         <ul id="nav">
         @if (Request.IsAuthenticated)
         {
@@ -52,32 +52,32 @@
     
     <div id="container">
              @RenderBody()          
-    
-    </div>
-    <footer>
+     <footer>
         <ul class="footer-nav">
             <li>
                 <a href="/@language/home" class="menu-btn @ViewBag.MenuHome">
-                        @Resources.Shared._Layout.MenuHomeText
+                      <div class="btn_image"> @Resources.Shared._Layout.MenuHomeText</div> 
                     </a>
             </li>
             <li>
                     <a href="/@language/news" class="menu-btn @ViewBag.MenuNews">
-                    <span>@Resources.Shared._Layout.MenuNewsText</span>
+                   <div class="btn_image"> @Resources.Shared._Layout.MenuNewsText</div> 
                 </a>
             </li>
             <li>
                 <a href="/@language/faqs" class="menu-btn @ViewBag.MenuFAQs">
-                    <span>FAQs</span>
+                    <div class="btn_image"> FAQs</div> 
                 </a>
             </li>
             <li>
                 <a href="/@language/credits" class="menu-btn @ViewBag.MenuCredits">
-                    <span>Credits</span>
+                    <div class="btn_image"> Credits</div> 
                 </a>
             </li>
         </ul>
      </footer>
+    </div>
+   
 
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)

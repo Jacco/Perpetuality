@@ -3,21 +3,22 @@
 // =========================================================
 
 html {
- background: rgb(45, 191, 204);
  
 }
 body{
-	//font-family: "helveticaregular", Helvetica, sans-serif;
+	background: url(/Content/Images/original/Background_home.jpg) ;
+	min-height: 1000px;
+	background-size: cover;
+	bakground-repeat: no-repeat;
 	font-family: 'Sanchez', serif;
-	height: 100%;
+	
 	margin:0;
 	overflow-x:hidden;
 }
 
 //HEADER file-layoutStrip.cshtml
 header{
-	.box-shadow(~"4px 2px 19px -4px rgba(5, 4, 4, 0.96)");
-	background-color:white;
+	
 	h1{
 		float: left;
 		color: black;
@@ -135,13 +136,14 @@ header{
 //3 COLUMN LAYOUT - FIle layout.cshtml
 #container{
   margin: 0px auto;
-    width: 100%;
+    width: 904px;
 	float:left;
-	min-height:1000px;
-	width: 100%;
-	height: 100%;
-	margin-left: 95px;
-	margin-top: 25px;
+	min-height:714px;
+	position:relative; 
+	.border-radius(10px);
+	background-color: white;
+	margin-left: 144px;
+	margin-top: 15px;
 	color: rgba(0, 0, 0, 0.54);
 }
 .main-container {
@@ -172,21 +174,36 @@ header{
 
 //FOOTER - file layout.cshtml
 footer{
-	width:100%;
-	background-color:white;
-	float:left;
-	height: 100px;
+	width:108%;
+	position:absolute; 
+	bottom: 0;
+	left: -25px;
+	
+	height: 190px;
 	ul {
 		width: 100%;
 		li{
 			list-style:none;
 			float:left;
-
+			margin-right:4.5%;
 			a{
 				color:black;
 				text-decoration:none;
 				padding: 20px;
 				font-size: 21px;
+				.btn_image{
+					background-color:black;
+					.border-radius(10px);
+					height: 174px;
+					width: 194px;
+					.transition( ~"border-color .15s linear") ;
+				}
+				&:hover{
+					.btn_image{
+						border: 3px solid green;
+
+					}
+				}
 			
 			}
 		}
