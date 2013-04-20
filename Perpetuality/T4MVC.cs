@@ -29,6 +29,7 @@ public static class MVC
     public static Perpetuality.Controllers.FAQController FAQ = new Perpetuality.Controllers.T4MVC_FAQController();
     public static Perpetuality.Controllers.GameController Game = new Perpetuality.Controllers.T4MVC_GameController();
     public static Perpetuality.Controllers.HomeController Home = new Perpetuality.Controllers.T4MVC_HomeController();
+    public static Perpetuality.Controllers.MailController Mail = new Perpetuality.Controllers.T4MVC_MailController();
     public static Perpetuality.Controllers.NewsController News = new Perpetuality.Controllers.T4MVC_NewsController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
@@ -138,6 +139,7 @@ namespace Links
         
             public static readonly string perpetuality_map_less = Url("perpetuality_map.less");
             public static readonly string site_less = Url("site.less");
+            public static readonly string T4CSS_log = Url("T4CSS.log");
             public static readonly string T4CSS_tt = Url("T4CSS.tt");
             public static readonly string game_ui_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/game-ui.min.css") ? Url("game-ui.min.css") : Url("game-ui.css");
                  
@@ -145,7 +147,7 @@ namespace Links
                  
             public static readonly string site_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/site.min.css") ? Url("site.min.css") : Url("site.css");
                  
-            public static readonly string T4CSS_log = Url("T4CSS.log");
+            public static readonly string T4CSS1_log = Url("T4CSS1.log");
         }
     
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -153,14 +155,7 @@ namespace Links
             private const string URLPATH = "~/Content/Images";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
-            public static readonly string default_image_jpeg = Url("default-image.jpeg");
-            public static readonly string down_arrow_select_jpg = Url("down_arrow_select.jpg");
-            public static readonly string green_png = Url("green.png");
             public static readonly string main_background_jpg = Url("main-background.jpg");
-            public static readonly string nuclear_power_plant_png = Url("nuclear-power-plant.png");
-            public static readonly string orange_png = Url("orange.png");
-            public static readonly string red_png = Url("red.png");
-            public static readonly string sources = Url("sources");
         }
     
         public static readonly string Site_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Site.min.css") ? Url("Site.min.css") : Url("Site.css");

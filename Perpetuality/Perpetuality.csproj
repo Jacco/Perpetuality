@@ -137,6 +137,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Code\Model_EmailConfirmation.cs" />
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -146,6 +147,7 @@
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\MailController.cs" />
     <Compile Include="CreditsController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -168,6 +170,9 @@
     <Compile Include="HomeController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
+    <Compile Include="MailController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="NewsController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -180,46 +185,10 @@
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Content Include="Config\connectionStrings.config" />
-    <Content Include="Config\appSettings.config">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="Config\appSettings.config" />
     <Content Include="Content\CSS\game-ui.css">
       <DependentUpon>T4CSS.tt</DependentUpon>
     </Content>
-    <Content Include="Content\CSS\less\variables.less" />
-    <Content Include="Content\CSS\less\functions.less">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\CSS\less\reset.less">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\CSS\less\buttons.less">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\CSS\less\components.less">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\CSS\less\dropdowns.less">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\CSS\less\fontface.less">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\CSS\less\forms.less">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\CSS\less\layouts.less">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\CSS\less\scaffolding.less">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\CSS\less\perpetuality.less">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <None Include="Content\CSS\perpetuality_map.less">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <Content Include="Content\CSS\perpetuality_map.css">
       <DependentUpon>T4CSS.tt</DependentUpon>
     </Content>
@@ -238,13 +207,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Content Include="Content\Images\default-image.jpeg" />
-    <Content Include="Content\Images\down_arrow_select.jpg" />
-    <Content Include="Content\Images\green.png" />
     <Content Include="Content\Images\main-background.jpg" />
-    <Content Include="Content\Images\nuclear-power-plant.png" />
-    <Content Include="Content\Images\orange.png" />
-    <Content Include="Content\Images\red.png" />
     <Content Include="Scripts\perpetuality_map.js" />
     <Content Include="Scripts\plants.js" />
     <Content Include="T4MVC.tt.hooks.t4" />
@@ -323,26 +286,62 @@
       <LastGenOutput>Database.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Content\CSS\less\buttons.less">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\CSS\less\components.less">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\CSS\less\dropdowns.less">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\CSS\less\fontface.less">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\CSS\less\forms.less">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\CSS\less\functions.less">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\CSS\less\layouts.less">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\CSS\less\perpetuality.less">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\CSS\less\reset.less">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\CSS\less\scaffolding.less">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\CSS\less\type.less">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\CSS\less\utilities.less">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\CSS\T4CSS.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>T4CSS.log</LastGenOutput>
-    </Content>
-    <Content Include="Content\CSS\T4CSS.log">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>T4CSS.tt</DependentUpon>
+    <Content Include="Content\CSS\less\variables.less">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\CSS\game-ui.less">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Images\sources" />
-    <None Include="Properties\PublishProfiles\ToTest.pubxml" />
+    <Content Include="Content\CSS\perpetuality_map.less">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\CSS\T4CSS.log" />
+    <Content Include="Content\CSS\T4CSS.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>T4CSS1.log</LastGenOutput>
+    </Content>
+    <None Include="Content\CSS\T4CSS1.log">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>T4CSS.tt</DependentUpon>
+    </None>
+    <None Include="Properties\PublishProfiles\ToWeb.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
@@ -373,6 +372,10 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Game\Index.cshtml" />
+    <Content Include="Views\Mail\EmailConfirmation.cshtml" />
+    <Content Include="Views\Mail\GameUpdate.cshtml" />
+    <Content Include="Views\Mail\PasswordRequest.cshtml" />
+    <Content Include="Views\Mail\_MailLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
