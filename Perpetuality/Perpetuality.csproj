@@ -181,7 +181,9 @@
     </Compile>
     <Content Include="Config\connectionStrings.config" />
     <Content Include="Config\appSettings.config" />
-    <None Include="Content\CSS\site.less" />
+    <Content Include="Content\CSS\site.less">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Compile Include="Controllers\CreditsController.cs" />
     <Compile Include="Controllers\FAQController.cs" />
     <Compile Include="Controllers\GameController.cs" />
@@ -268,6 +270,7 @@
       <LastGenOutput>Database.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
+    <None Include="Properties\PublishProfiles\ToWeb.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
