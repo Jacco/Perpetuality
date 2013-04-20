@@ -231,6 +231,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Content\Images\down_arrow_select.jpg" />
     <Content Include="Content\Images\main-background.jpg" />
+    <Content Include="Scripts\plants.js" />
     <Content Include="T4MVC.tt.hooks.t4" />
     <Content Include="T4MVC.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

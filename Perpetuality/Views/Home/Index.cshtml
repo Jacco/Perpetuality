@@ -3,6 +3,20 @@
     ViewBag.MenuHome = "selected";
 }
 <a href="/nl/home" class="logo"></a>
+<style type="text/css">
+    #plantsource {
+        top: 200px;
+        left: 200px;
+    }
+
+    .plant {
+        border-radius: 50%;
+        height: 40px;
+        width: 40px;
+        background-color: green;
+        position: absolute;
+    }
+</style>
 <script>
     var authProvider = "";
     function formValidate() {
@@ -12,6 +26,11 @@
     }
 </script>
 @* <p>@(((HttpContext.Current.User as Perpetuality.GamePrincipal).Identity as Perpetuality.GameIdentity).Name)</p> *@
+@* Comment in this code for working prototype of plant UI
+<script src="@Links.Scripts.jquery_1_7_1_min_js"></script>
+<script src="@Links.Scripts.jquery_ui_1_8_20_min_js"></script>
+<div class="plant" id="plantsource" style=""></div>
+<script src="@Links.Scripts.plants_js"></script>*@
 <form id="loginform_facebook" method="post" action="Home/ExternalLogin" onsubmit="authProvider='facebook'; return formValidate();">
     <input type="hidden" name="provider" value="facebook" />
     <input type="hidden" name="returnUrl" value="http://localhost:51127" />
@@ -19,16 +38,13 @@
         <input type="submit" name="submit" class="sociallogin_facebook" value="" style="border: 0px; cursor: pointer" />
     </div>
 </form>
-            <div class="caroussel">
-
-            </div>
-            <div class="news">
-                <div class="header">
-
-                </div>
-                <div class="news-block">
-                    <div class="playnow">
-
-                    </div>
-                </div>
-            </div>
+<div class="caroussel">
+</div>
+<div class="news">
+    <div class="header">
+    </div>
+    <div class="news-block">
+        <div class="playnow">
+        </div>
+    </div>
+</div>
