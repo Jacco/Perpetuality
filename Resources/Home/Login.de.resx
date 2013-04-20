@@ -130,7 +130,7 @@
     <value>Anmelden</value>
   </data>
   <data name="LoginError_60020" xml:space="preserve">
-    <value>Benutzername ist keine gültige E-mailadrress.</value>
+    <value>Benutzername ist keine gültige E-mail-Adresse.</value>
   </data>
   <data name="LoginError_60022" xml:space="preserve">
     <value>Diese Kombination von Benutzername und Passwort ist nicht bekannt.</value>
