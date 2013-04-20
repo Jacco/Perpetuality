@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="EmailAddressLabelText" xml:space="preserve">
     <value>E-Mail-Adresse:</value>
@@ -136,7 +136,7 @@
     <value>Passwort bestätigen:</value>
   </data>
   <data name="ValidationEmailAdressRequired" xml:space="preserve">
-    <value>Bitte geben Sie Ihre E-Mail-</value>
+    <value>Bitte geben Sie Ihre E-Mail-Adresse ein</value>
   </data>
   <data name="ValidationPasswordConfirmDifferent" xml:space="preserve">
     <value>Passwort stimmt nicht mit</value>
@@ -145,6 +145,6 @@
     <value>Bitte bestätigen Sie Ihr Passwort</value>
   </data>
   <data name="ValidationPasswordRequired" xml:space="preserve">
-    <value>Bitte geben Sie Ihr Passwort</value>
+    <value>Bitte geben Sie Ihr Passwort ein</value>
   </data>
 </root>

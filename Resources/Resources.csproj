@@ -96,25 +96,51 @@
     <EmbeddedResource Include="Home\Register.nl.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Register.nl.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Home\Register.pt-pt.resx" />
+    <EmbeddedResource Include="Home\Register.pt-pt.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Home\Register.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Register.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Mail\Common.de.resx" />
+    <EmbeddedResource Include="Mail\Common.es.resx" />
+    <EmbeddedResource Include="Mail\Common.fr.resx" />
+    <EmbeddedResource Include="Mail\Common.it.resx" />
+    <EmbeddedResource Include="Mail\Common.nl.resx" />
+    <EmbeddedResource Include="Mail\Common.pt-pt.resx" />
     <EmbeddedResource Include="Mail\Common.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Common.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mail\EmailConfirmation.de.resx" />
+    <EmbeddedResource Include="Mail\EmailConfirmation.es.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mail\EmailConfirmation.fr.resx" />
+    <EmbeddedResource Include="Mail\EmailConfirmation.it.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mail\EmailConfirmation.nl.resx" />
+    <EmbeddedResource Include="Mail\EmailConfirmation.pt-pt.resx">
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Mail\EmailConfirmation.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>EmailConfirmation.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Shared\_Layout.de.resx" />
+    <EmbeddedResource Include="Shared\_Layout.es.resx" />
+    <EmbeddedResource Include="Shared\_Layout.fr.resx" />
+    <EmbeddedResource Include="Shared\_Layout.it.resx" />
     <EmbeddedResource Include="Shared\_Layout.nl.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>_Layout.nl.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Shared\_Layout.pt-pt.resx" />
     <EmbeddedResource Include="Shared\_Layout.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>_Layout.Designer.cs</LastGenOutput>

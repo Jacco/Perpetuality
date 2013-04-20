@@ -117,37 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="DontHaveAnAccountText" xml:space="preserve">
-    <value>Heb je nog geen account?</value>
+  <data name="Message" xml:space="preserve">
+    <value>Obrigado por se registar com Perpetuality!</value>
   </data>
-  <data name="EmailAddressLabelText" xml:space="preserve">
-    <value>Emailadres:</value>
-  </data>
-  <data name="ForgetPasswordText" xml:space="preserve">
-    <value>Wachtwoord vergeten?</value>
-  </data>
-  <data name="LoginButtonText" xml:space="preserve">
-    <value>Inloggen</value>
-  </data>
-  <data name="LoginError_60020" xml:space="preserve">
-    <value>Gebruikersnaam is geen geldig emailadres.</value>
-  </data>
-  <data name="LoginError_60022" xml:space="preserve">
-    <value>Deze combinatie van gebruikersnaam en wachtwoord is niet bekend.</value>
-  </data>
-  <data name="PageTitle" xml:space="preserve">
-    <value>Onbepaaldheid van de looptijd - Login</value>
-  </data>
-  <data name="PasswordLabelText" xml:space="preserve">
-    <value>Wachtwoord:</value>
-  </data>
-  <data name="RememberMeLabelText" xml:space="preserve">
-    <value>Onthoud mijn gegevens</value>
-  </data>
-  <data name="ValidationEmailAdressRequired" xml:space="preserve">
-    <value>Vul je email in</value>
-  </data>
-  <data name="ValidationPasswordRequired" xml:space="preserve">
-    <value>Vul je wachtwoord in</value>
+  <data name="Subject" xml:space="preserve">
+    <value>Perpetuality - Confirme o seu endereço de email</value>
   </data>
 </root>
