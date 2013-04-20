@@ -3,7 +3,6 @@
     ViewBag.MenuHome = "selected";
 }
 <a href="/nl/home" class="logo"></a>
-<link rel="stylesheet" href="@Links.Content.CSS.game_ui_css">
 <script>
     var authProvider = "";
     function formValidate() {
@@ -13,11 +12,6 @@
     }
 </script>
 @* <p>@(((HttpContext.Current.User as Perpetuality.GamePrincipal).Identity as Perpetuality.GameIdentity).Name)</p> *@
-@* Comment in this code for working prototype of plant UI
-<script src="@Links.Scripts.jquery_1_7_1_min_js"></script>
-<script src="@Links.Scripts.jquery_ui_1_8_20_min_js"></script>
-<div class="plant" id="plantsource" style=""></div>
-<script src="@Links.Scripts.plants_js"></script>*@
 <form id="loginform_facebook" method="post" action="Home/ExternalLogin" onsubmit="authProvider='facebook'; return formValidate();">
     <input type="hidden" name="provider" value="facebook" />
     <input type="hidden" name="returnUrl" value="http://localhost:51127" />
