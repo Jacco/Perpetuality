@@ -31,7 +31,6 @@ public static class MVC
     public static Perpetuality.Controllers.HomeController Home = new Perpetuality.Controllers.T4MVC_HomeController();
     public static Perpetuality.Controllers.MailController Mail = new Perpetuality.Controllers.T4MVC_MailController();
     public static Perpetuality.Controllers.NewsController News = new Perpetuality.Controllers.T4MVC_NewsController();
-    public static T4MVC.MapController Map = new T4MVC.MapController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
 
@@ -101,6 +100,10 @@ namespace Links
                       
         public static readonly string modernizr_2_5_3_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/modernizr-2.5.3.min.js") ? Url("modernizr-2.5.3.min.js") : Url("modernizr-2.5.3.js");
                       
+        public static readonly string perpetuality_map_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/perpetuality_map.min.js") ? Url("perpetuality_map.min.js") : Url("perpetuality_map.js");
+                      
+        public static readonly string plants_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/plants.min.js") ? Url("plants.min.js") : Url("plants.js");
+                      
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -113,6 +116,7 @@ namespace Links
             private const string URLPATH = "~/Content/CSS";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+            public static readonly string game_ui_less = Url("game-ui.less");
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
             public static class less {
                 private const string URLPATH = "~/Content/CSS/less";
@@ -133,11 +137,17 @@ namespace Links
                 public static readonly string variables_less = Url("variables.less");
             }
         
+            public static readonly string perpetuality_map_less = Url("perpetuality_map.less");
             public static readonly string site_less = Url("site.less");
+            public static readonly string T4CSS_log = Url("T4CSS.log");
             public static readonly string T4CSS_tt = Url("T4CSS.tt");
+            public static readonly string game_ui_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/game-ui.min.css") ? Url("game-ui.min.css") : Url("game-ui.css");
+                 
+            public static readonly string perpetuality_map_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/perpetuality_map.min.css") ? Url("perpetuality_map.min.css") : Url("perpetuality_map.css");
+                 
             public static readonly string site_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/site.min.css") ? Url("site.min.css") : Url("site.css");
                  
-            public static readonly string T4CSS_log = Url("T4CSS.log");
+            public static readonly string T4CSS1_log = Url("T4CSS1.log");
         }
     
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -145,16 +155,6 @@ namespace Links
             private const string URLPATH = "~/Content/Images";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
-            public static readonly string down_arrow_select_jpg = Url("down_arrow_select.jpg");
-            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class Email {
-                private const string URLPATH = "~/Content/Images/Email";
-                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
-                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
-                public static readonly string footer_jpg = Url("footer.jpg");
-                public static readonly string header_jpg = Url("header.jpg");
-            }
-        
             public static readonly string main_background_jpg = Url("main-background.jpg");
         }
     
