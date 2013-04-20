@@ -230,6 +230,8 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Content\Images\down_arrow_select.jpg" />
+    <Content Include="Content\Images\Email\footer.jpg" />
+    <Content Include="Content\Images\Email\header.jpg" />
     <Content Include="Content\Images\main-background.jpg" />
     <Content Include="T4MVC.tt.hooks.t4" />
     <Content Include="T4MVC.tt">
