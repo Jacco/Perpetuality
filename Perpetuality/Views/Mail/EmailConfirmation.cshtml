@@ -1,15 +1,14 @@
 ﻿@model string
 @{
-    bool cont = true;
     Layout = MVC.Mail.Views._MailLayout;
+    bool cont = true;
     Perpetuality.App_Code.Model_EmailConfirmation MyModel = null;
     Exception ex = null;
     try
     {
-        string email = "";
-        ViewBag.DatabaseDataContext.GetUserEmail(long.Parse(Model), ref email);
-        var hash = ViewBag.DatabaseDataContext.GetConfirmationHash(email).SingleOrDefault().strConfirmHash;
-        MyModel = new Perpetuality.App_Code.Model_EmailConfirmation(Model, hash);
+   
+        MyModel = new Perpetuality.App_Code.Model_EmailConfirmation(Model);
+        ViewBag.PlayerName = MyModel.RecipientEmail;
         this.Response.AddHeader("X-JaapMail-Subject", @Resources.Mail.EmailConfirmation.Subject);
         this.Response.AddHeader("X-JaapMail-Recipient-Email", MyModel.RecipientEmail);
         this.Response.AddHeader("X-JaapMail-Recipient-Name", "");

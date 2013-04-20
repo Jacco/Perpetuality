@@ -11,10 +11,12 @@ namespace Perpetuality.App_Code
     {
         public string RecipientEmail = "jacco@jaap.nl";
         public string ConfirmHash;
-        public Model_EmailConfirmation(string id, string hash)
+        public Model_EmailConfirmation(string id)
         {
             var ctx = new DatabaseDataContext();
-            ConfirmHash = hash;
+            string email = "";
+            ctx.GetUserEmail(long.Parse(id), ref email);
+            ConfirmHash = ctx.GetConfirmationHash(email).SingleOrDefault().strConfirmHash;
         }
     }
 }
