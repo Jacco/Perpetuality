@@ -111,7 +111,40 @@ namespace Links
             private const string URLPATH = "~/Content/CSS";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class less {
+                private const string URLPATH = "~/Content/CSS/less";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                public static readonly string buttons_less = Url("buttons.less");
+                public static readonly string components_less = Url("components.less");
+                public static readonly string dropdowns_less = Url("dropdowns.less");
+                public static readonly string fontface_less = Url("fontface.less");
+                public static readonly string forms_less = Url("forms.less");
+                public static readonly string functions_less = Url("functions.less");
+                public static readonly string layouts_less = Url("layouts.less");
+                public static readonly string perpetuality_less = Url("perpetuality.less");
+                public static readonly string reset_less = Url("reset.less");
+                public static readonly string scaffolding_less = Url("scaffolding.less");
+                public static readonly string type_less = Url("type.less");
+                public static readonly string utilities_less = Url("utilities.less");
+                public static readonly string variables_less = Url("variables.less");
+            }
+        
             public static readonly string site_less = Url("site.less");
+            public static readonly string T4CSS_tt = Url("T4CSS.tt");
+            public static readonly string site_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/site.min.css") ? Url("site.min.css") : Url("site.css");
+                 
+            public static readonly string T4CSS_log = Url("T4CSS.log");
+        }
+    
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class Images {
+            private const string URLPATH = "~/Content/Images";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+            public static readonly string down_arrow_select_jpg = Url("down_arrow_select.jpg");
+            public static readonly string main_background_jpg = Url("main-background.jpg");
         }
     
         public static readonly string Site_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Site.min.css") ? Url("Site.min.css") : Url("Site.css");

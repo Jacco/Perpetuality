@@ -1,92 +1,37 @@
-﻿html { background: #B85C1E url(/Content/Images/main-background.jpg) no-repeat top center; }
+﻿// Core variables and mixins
 
-.menu-btn {
-	-moz-border-radius: 0.5em;
-	border-radius: 0.5em;
-	-webkit-border-radius: 0.5em;
-	width: 63px;
-	padding: 0.4em 1.5em;
-	margin-top: 10px;
-	&:hover {
-		background-color: rgb(81, 29, 0);
-	}
-	&.selected {
-		background-color: rgb(81, 29, 0);
-	}
-}
-.menu-btn span {
-	color: white;
-	font-weight: bold;
-	font-family: arial;
-}
+@import "less/variables.less";
 
-#nav {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-	ul {
-		position:absolute; 
-        left:0; 
-        display:none; 
-        margin:0 0 0 -1px; 
-        padding:0; 
-        list-style:none;
-		li {
-            width:100px; 
-            float:left; 
-            border-top:1px solid #fff;
-		}
-		a {
-            display:block;  
-            height:15px;
-            padding: 8px 5px; 
-            color:#666;
-			&:hover {
-				text-decoration:underline;
-			}
-		}
-	}
-	li {
-        float:left; 
-        display:block; 
-        width:100px; 
-        background:#ccc; 
-        position:relative;
-        z-index:500; 
-        margin:0 1px;
-		a {
-			display:block; 
-			padding:8px 5px 0 5px; 
-			font-weight:700;  
-			height:23px; 
-			text-decoration:none; 
-			color:#fff; 
-			text-align:center; 
-			color:#333;
-			&:hover {
-				color:#fff;
-			}
-			&.selected {
-				color:#f00;
-			}
-		}
-	}
-}
+@import "less/functions.less";
 
-.main-container {
-    margin: 0px auto;
-    width: 1087px;
+// CSS Reset
+@import "less/reset.less";
 
-    .left-container {
-        width: 180px;
-        float: left;
-    }
-    .middle-container {
-        width: 530px;
-        float: left;        
-    }
-    .middle-container {
-        width: 320px;
-        float: left;        
-    }
-}
+// Grid system and page structure
+@import "less/scaffolding.less";
+@import "less/layouts.less";
+
+// Base CSS
+@import "less/type.less";
+@import "less/forms.less";
+
+// Components: common
+
+@import "less/fontface.less";
+@import "less/dropdowns.less";
+
+// Components: Buttons & Alerts
+@import "less/buttons.less";
+
+// Components: Misc
+@import "less/components.less";
+
+// Utility classes
+@import "less/utilities.less"; // Has to be last to override when necessary
+
+@import "less/perpetuality.less";
+
+//@import "less/perpetuality-tablet.less";
+
+//@import "less/perpetuality-mobile.less";
+

@@ -10,9 +10,13 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/bundledCSS")
     @Scripts.Render("~/bundles/modernizr")
+  <link href='http://fonts.googleapis.com/css?family=Mr+Dafoe' rel='stylesheet' type='text/css'>
+   <link href='http://fonts.googleapis.com/css?family=Sanchez' rel='stylesheet' type='text/css'>
 </head>
 <body>
-    <ul id="nav">
+    <header>
+        <h1>Perpetuality</h1>
+        <ul id="nav">
         @if (Request.IsAuthenticated)
         {
             <li>
@@ -44,20 +48,55 @@
     </ul>
     <div style="clear: both"></div>
 
-    @RenderBody()
+    </header>
+    
+    <div id="container">
+             @RenderBody()          
+    
+    </div>
+    <footer>
+        <ul class="footer-nav">
+            <li>
+                <a href="/@language/home" class="menu-btn @ViewBag.MenuHome">
+                        @Resources.Shared._Layout.MenuHomeText
+                    </a>
+            </li>
+            <li>
+                    <a href="/@language/news" class="menu-btn @ViewBag.MenuNews">
+                    <span>@Resources.Shared._Layout.MenuNewsText</span>
+                </a>
+            </li>
+            <li>
+                <a href="/@language/faqs" class="menu-btn @ViewBag.MenuFAQs">
+                    <span>FAQs</span>
+                </a>
+            </li>
+            <li>
+                <a href="/@language/credits" class="menu-btn @ViewBag.MenuCredits">
+                    <span>Credits</span>
+                </a>
+            </li>
+        </ul>
+     </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
     <script type="text/javascript">
         $(document).ready(function () {
+            //Hover must be removed for mobiles
             $('#nav li').hover(
                 function () {
-                    $('ul', this).stop().slideDown(100);
+                    $('ul', this).toggleClass('opened');
                 },
                 function () {
-                    $('ul', this).stop().slideUp(100);
+                    $('ul', this).toggleClass('opened');
                 }
             );
+            $('#nav li').on('click', function () {
+                
+                    $('ul', this).toggleClass('opened');
+                
+            });
         });
     </script>
 </body>
