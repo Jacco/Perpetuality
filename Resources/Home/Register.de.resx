@@ -136,7 +136,7 @@
     <value>Passwort bestätigen:</value>
   </data>
   <data name="ValidationEmailAdressRequired" xml:space="preserve">
-    <value>Bitte geben Sie Ihre E-Mail-</value>
+    <value>Bitte geben Sie Ihre E-Mail-Adresse ein</value>
   </data>
   <data name="ValidationPasswordConfirmDifferent" xml:space="preserve">
     <value>Passwort stimmt nicht mit</value>

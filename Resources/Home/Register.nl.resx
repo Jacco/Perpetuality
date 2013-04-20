@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="EmailAddressLabelText" xml:space="preserve">
-    <value>E-mailadres:</value>
+    <value>Emailadres:</value>
   </data>
   <data name="LanguageLabelText" xml:space="preserve">
     <value>Taal</value>
@@ -136,7 +136,7 @@
     <value>Wachtwoord bevestigen:</value>
   </data>
   <data name="ValidationEmailAdressRequired" xml:space="preserve">
-    <value>Vul uw e-mail</value>
+    <value>Vul je email in</value>
   </data>
   <data name="ValidationPasswordConfirmDifferent" xml:space="preserve">
     <value>Wachtwoord komt niet overeen</value>
