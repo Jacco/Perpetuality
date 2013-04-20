@@ -145,7 +145,7 @@
     <value>Onthoud mijn gegevens</value>
   </data>
   <data name="ValidationEmailAdressRequired" xml:space="preserve">
-    <value>Vul uw email</value>
+    <value>Vul je email in</value>
   </data>
   <data name="ValidationPasswordRequired" xml:space="preserve">
     <value>Vul je wachtwoord in</value>
