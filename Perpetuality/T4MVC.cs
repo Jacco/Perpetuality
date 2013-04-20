@@ -99,6 +99,8 @@ namespace Links
                       
         public static readonly string modernizr_2_5_3_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/modernizr-2.5.3.min.js") ? Url("modernizr-2.5.3.min.js") : Url("modernizr-2.5.3.js");
                       
+        public static readonly string plants_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/plants.min.js") ? Url("plants.min.js") : Url("plants.js");
+                      
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
