@@ -29,7 +29,9 @@ public static class MVC
     public static Perpetuality.Controllers.FAQController FAQ = new Perpetuality.Controllers.T4MVC_FAQController();
     public static Perpetuality.Controllers.GameController Game = new Perpetuality.Controllers.T4MVC_GameController();
     public static Perpetuality.Controllers.HomeController Home = new Perpetuality.Controllers.T4MVC_HomeController();
+    public static Perpetuality.Controllers.MailController Mail = new Perpetuality.Controllers.T4MVC_MailController();
     public static Perpetuality.Controllers.NewsController News = new Perpetuality.Controllers.T4MVC_NewsController();
+    public static T4MVC.MapController Map = new T4MVC.MapController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
 
@@ -144,6 +146,15 @@ namespace Links
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
             public static readonly string down_arrow_select_jpg = Url("down_arrow_select.jpg");
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class Email {
+                private const string URLPATH = "~/Content/Images/Email";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                public static readonly string footer_jpg = Url("footer.jpg");
+                public static readonly string header_jpg = Url("header.jpg");
+            }
+        
             public static readonly string main_background_jpg = Url("main-background.jpg");
         }
     

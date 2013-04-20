@@ -1,1 +1,36 @@
-﻿
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+    </head>
+    <body bgcolor="#ffffff">
+        <table width="650" cellspacing="0" cellpadding="0" border="0">
+            <tr>
+                <td colspan="3">
+                    <img src="http://test.perpetuality.org/Content/Images/Email/header.jpg" alt="Perpetuality.org | Dominate the world sustainably!" width="650" height="241" />
+                </td>
+            </tr>
+            <tr>
+                <td bgcolor="#ffffff" width="27">&nbsp;</td>
+                <td bgcolor="#ffffff" width="503">
+                    <font face="Verdana, Helvetica, Arial" color="#555555">
+                    <p>@string.Format(Resources.Mail.Common.Greeting, "XXX")</p>
+
+                    @RenderBody()
+
+                    </font>
+                </td>
+                <td bgcolor="#ffffff" width="30">&nbsp;</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <img src="http://test.perpetuality.org/Content/Images/Email/footer.jpg" alt="Perpetuality.org | Dominate the world sustainably!" width="650" height="26" />
+                </td>
+            </tr>
+			<tr>
+				<td colspan="3" align="center"><br />
+				<font face="courier" color="#555555">&copy; 2013 - <a href="http://www.perpetuality.org">Perpetuality.org</a></font>
+				</td>
+			</tr>
+        </table>
+</body>
+</html>

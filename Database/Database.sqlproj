@@ -80,6 +80,8 @@
     <Build Include="Stored Procedures\ConfirmEmailAddress.sql" />
     <Build Include="Stored Procedures\GetUserProfile.sql" />
     <Build Include="Stored Procedures\EndSession.sql" />
+    <Build Include="Stored Procedures\GetConfirmationHash.sql" />
+    <Build Include="Stored Procedures\GetUserEmail.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Database.publish.xml" />

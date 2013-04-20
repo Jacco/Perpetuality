@@ -1,15 +1,18 @@
 ﻿@model string
 @{
     bool cont = true;
-    Layout = null;
+    Layout = MVC.Mail.Views._MailLayout;
     Perpetuality.App_Code.Model_EmailConfirmation MyModel = null;
     Exception ex = null;
     try
     {
-        MyModel = new Perpetuality.App_Code.Model_EmailConfirmation(Model);
-        this.Response.AddHeader("X-JaapMail-Subject", MyModel.Context.subject);
-        this.Response.AddHeader("X-JaapMail-Recipient-Email", MyModel.Context.recipientEmail);
-        this.Response.AddHeader("X-JaapMail-Recipient-Name", MyModel.Context.recipientName);
+        string email = "";
+        ViewBag.DatabaseDataContext.GetUserEmail(long.Parse(Model), ref email);
+        var hash = ViewBag.DatabaseDataContext.GetConfirmationHash(email).SingleOrDefault().strConfirmHash;
+        MyModel = new Perpetuality.App_Code.Model_EmailConfirmation(Model, hash);
+        this.Response.AddHeader("X-JaapMail-Subject", @Resources.Mail.EmailConfirmation.Subject);
+        this.Response.AddHeader("X-JaapMail-Recipient-Email", MyModel.RecipientEmail);
+        this.Response.AddHeader("X-JaapMail-Recipient-Name", "");
     } 
     catch(Exception e)
     {
@@ -20,7 +23,10 @@
 }
 @if (cont)
 {
-    <p>This is mail content</p>
+    <p>@Resources.Mail.EmailConfirmation.Message</p>
+    <br />
+    <br />
+    <a href="http://www.perpetuality.org/en/mail/confirm/?reference=@(MyModel.ConfirmHash)">http://www.perpetuality.org/en/mail/confirm/?reference=@(MyModel.ConfirmHash)</a>
 }
 else
 {

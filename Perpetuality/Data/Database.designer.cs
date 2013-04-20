@@ -107,6 +107,21 @@ namespace Perpetuality.Data
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), session, iPAddress);
 			return ((int)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetConfirmationHash")]
+		public ISingleResult<GetConfirmationHashResult> GetConfirmationHash([global::System.Data.Linq.Mapping.ParameterAttribute(Name="EmailAddress", DbType="NVarChar(265)")] string emailAddress)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), emailAddress);
+			return ((ISingleResult<GetConfirmationHashResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetUserEmail")]
+		public int GetUserEmail([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="BigInt")] System.Nullable<long> userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Email", DbType="NVarChar(256)")] ref string email)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userID, email);
+			email = ((string)(result.GetParameterValue(1)));
+			return ((int)(result.ReturnValue));
+		}
 	}
 	
 	public partial class GetUserProfileResult
@@ -184,6 +199,32 @@ namespace Perpetuality.Data
 				if ((this._strName != value))
 				{
 					this._strName = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GetConfirmationHashResult
+	{
+		
+		private string _strConfirmHash;
+		
+		public GetConfirmationHashResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strConfirmHash", DbType="VarChar(32) NOT NULL", CanBeNull=false)]
+		public string strConfirmHash
+		{
+			get
+			{
+				return this._strConfirmHash;
+			}
+			set
+			{
+				if ((this._strConfirmHash != value))
+				{
+					this._strConfirmHash = value;
 				}
 			}
 		}

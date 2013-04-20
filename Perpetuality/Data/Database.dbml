@@ -41,4 +41,15 @@
     <Parameter Name="IPAddress" Parameter="iPAddress" Type="System.String" DbType="VarChar(22)" />
     <Return Type="System.Int32" />
   </Function>
+  <Function Name="dbo.GetConfirmationHash" Method="GetConfirmationHash">
+    <Parameter Name="EmailAddress" Parameter="emailAddress" Type="System.String" DbType="NVarChar(265)" />
+    <ElementType Name="GetConfirmationHashResult">
+      <Column Name="strConfirmHash" Type="System.String" DbType="VarChar(32) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetUserEmail" Method="GetUserEmail">
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(256)" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
 </Database>
