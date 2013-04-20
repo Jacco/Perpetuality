@@ -35,70 +35,37 @@ perpetuality.map.prototype.deRegisterPane = function(name) {
   delete this.panes[name];
 };
 
-perpetuality.map.prototype.makeOverlayControlPane = function(overlayList, extraClass) {
+perpetuality.map.prototype.makePane = function(name, contentList, extraClass) {
   var pane = document.createElement("div");
-  pane.id = "overlay-pane";
+  pane.id = name + "-pane";
   $(pane).addClass("pane");
   if (extraClass != undefined) {
     $(pane).addClass(extraClass);
   }
-  for (var i = 0; i < overlayList.length; i++) {
-    var overlayDiv = document.createElement("div");
-    var overlay = new perpetuality.map.OverlayControl();
-    overlay.title = overlayList[i].title || "Title";
-    overlay.action = overlayList[i].action || function() {};
+  for (var i = 0; i < contentList.length; i++) {
+    var contentDiv = document.createElement("div");
+    var content = new perpetuality.map.PaneItem();
+    content.title = contentList[i].title;
+    content.action = contentList[i].action;
     var title = document.createElement("div");
-    title.innerHTML = overlay.title;
+    title.innerHTML = content.title;
     var image = document.createElement("img");
-    image.src = overlayList[i].image || "images/default-image.jpeg";
-    $(image).click(overlay.action);
-    overlay.image = image;
-    overlayDiv.appendChild(image);
-    overlayDiv.appendChild(title);
-    this.overlays.push(overlay);
-    pane.appendChild(overlayDiv);
+    image.src = contentList[i].image;
+    $(image).click(content.action);
+    content.image = image;
+    contentDiv.appendChild(image);
+    contentDiv.appendChild(title);
+    pane.appendChild(contentDiv);
   }
   return pane;
 };
-
-perpetuality.map.prototype.makeSpritePane = function(spriteList, extraClass) {
-  var pane = document.createElement("div");
-  pane.id = "sprite-pane";
-  $(pane).addClass("pane");
-  if (extraClass != undefined) {
-    $(pane).addClass(extraClass);
-  }
-  for (var i = 0; i < spriteList.length; i++) {
-    var spriteDiv = document.createElement("div");
-    var sprite = new perpetuality.map.Sprite();
-    sprite.title = spriteList[i].title || "Object";
-    sprite.action = spriteList[i].action || function() {};
-    var title = document.createElement("div");
-    title.innerHTML = sprite.title;
-    var image = document.createElement("img");
-    image.src = spriteList[i].image || "images/default-image.jpeg";
-    $(image).click(sprite.action);
-    sprite.image = image;
-    spriteDiv.appendChild(image);
-    spriteDiv.appendChild(title);
-    this.sprites.push(sprite);
-    pane.appendChild(spriteDiv);
-  }
-  return pane;
-}
 
 /**
  * Pane Contents.
  */
-perpetuality.map.OverlayControl = function() {
-  this.image = "";
+perpetuality.map.PaneItem = function() {
+  this.image = undefined;
   this.title = "Title";
-  this.action = function() {};
-};
-
-perpetuality.map.Sprite = function() {
-  this.image = "";
-  this.title = "Object";
   this.action = function() {};
 };
 
@@ -112,14 +79,16 @@ $(document).ready(function() {
   /**
    * Panes.
    */
-  var overlayControlPane = map.makeOverlayControlPane([{
+  var overlayControlPane = map.makePane("overlay", [{
     "title": "HeatMap",
-    "action": function() { alert("HeatMap") }
+    "action": function() { alert("HeatMap") },
+    "image": "images/default-image.jpeg"
   }], "bottom");
 
-  var spritePane = map.makeSpritePane([{
+  var spritePane = map.makePane("sprite", [{
     "title": "Plant",
-    "action": function() { alert("Plant action") }
+    "action": function() { alert("Plant action") },
+    "image": "images/default-image.jpeg"
   }], "right");
 
   /**
