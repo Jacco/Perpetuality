@@ -13,7 +13,7 @@ namespace Perpetuality.App_Code
         public string ConfirmHash;
         public Model_EmailConfirmation(string id, string hash)
         {
-            // casper var ctx = new DatabaseDataContext();
+            var ctx = new DatabaseDataContext();
             ConfirmHash = hash;
         }
     }
