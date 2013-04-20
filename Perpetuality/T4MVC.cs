@@ -113,6 +113,7 @@ namespace Links
             private const string URLPATH = "~/Content/CSS";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+            public static readonly string game_ui_less = Url("game-ui.less");
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
             public static class less {
                 private const string URLPATH = "~/Content/CSS/less";
@@ -135,6 +136,8 @@ namespace Links
         
             public static readonly string site_less = Url("site.less");
             public static readonly string T4CSS_tt = Url("T4CSS.tt");
+            public static readonly string game_ui_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/game-ui.min.css") ? Url("game-ui.min.css") : Url("game-ui.css");
+                 
             public static readonly string site_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/site.min.css") ? Url("site.min.css") : Url("site.css");
                  
             public static readonly string T4CSS_log = Url("T4CSS.log");

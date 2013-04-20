@@ -183,6 +183,9 @@
     <Content Include="Config\appSettings.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Content\CSS\game-ui.css">
+      <DependentUpon>T4CSS.tt</DependentUpon>
+    </Content>
     <Content Include="Content\CSS\less\variables.less" />
     <Content Include="Content\CSS\less\functions.less">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -322,6 +325,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>T4CSS.tt</DependentUpon>
+    </Content>
+    <Content Include="Content\CSS\game-ui.less">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Properties\PublishProfiles\ToTest.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
