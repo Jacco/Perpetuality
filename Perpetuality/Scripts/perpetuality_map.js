@@ -321,7 +321,7 @@ $(document).ready(function () {
         title: "Solar Field",
         button: "solarfieldbutton",
         itemExtraClass: "map-pane-item-vertical",
-        action: function (e) { perpetuality.plant.placePlant(new perpetuality.plant("solarfield", 200000, 100, 160)) }
+        action: function (e) { perpetuality.plant.placePlant(map, new perpetuality.plant("solarfield", 200000, 100, 160)) }
     },
     {
         title: "Solar Plant",
