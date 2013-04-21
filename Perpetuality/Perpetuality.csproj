@@ -207,7 +207,15 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Content\Images\cloudy.jpg" />
+    <Content Include="Content\Images\default-image.jpeg" />
+    <Content Include="Content\Images\down_arrow_select.jpg" />
+    <Content Include="Content\Images\Email\footer.jpg" />
+    <Content Include="Content\Images\Email\header.jpg" />
+    <Content Include="Content\Images\green.png" />
     <Content Include="Content\Images\main-background.jpg" />
+    <Content Include="Content\Images\nuclear-power-plant.png" />
+    <Content Include="Content\Images\orange.png" />
     <Content Include="Content\Images\original\Background_home.jpg" />
     <Content Include="Content\Images\original\Buttons_active.png" />
     <Content Include="Content\Images\original\Buttons_inactive.png" />
@@ -219,6 +227,8 @@
     <Content Include="Content\Images\original\start_game_down.png" />
     <Content Include="Content\Images\original\start_game_up.png" />
     <Content Include="Content\Images\original\Text-background.png" />
+    <Content Include="Content\Images\red.png" />
+    <Content Include="Content\Images\solar_panel.jpg" />
     <Content Include="Scripts\perpetuality_map.js" />
     <Content Include="Scripts\plants.js" />
     <Content Include="T4MVC.tt.hooks.t4" />
@@ -351,6 +361,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>T4CSS.tt</DependentUpon>
     </None>
+    <Content Include="Content\Images\sources" />
     <None Include="Properties\PublishProfiles\ToWeb.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />

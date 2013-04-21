@@ -1,14 +1,25 @@
 ﻿@{
     Layout = null;
 }
-
 <!DOCTYPE html>
-<script type="text/javascript" src="@Links.Scripts.jquery_1_7_1_min_js"></script>
-<script src="@Links.Scripts.jquery_ui_1_8_20_min_js"></script>
-<script type="text/javascript" src="@Links.Scripts.knockout_2_1_0_js"></script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxynbvhnTHYl8nIIAoct1AjbJCxWZSwPw&sensor=false"></script>
-<script src="@Links.Scripts.plants_js"></script>
-<script type="text/javascript" src="@Links.Scripts.perpetuality_map_js"></script>
-<link rel="stylesheet" href="@Links.Content.CSS.perpetuality_map_css">
-<link rel="stylesheet" href="@Links.Content.CSS.game_ui_css">
-<div id="map"></div>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <title>Perpetuality</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="@Links.Content.CSS.perpetuality_map_css">
+    <link rel="stylesheet" href="@Links.Content.CSS.game_ui_css">
+    <script type="text/javascript" src="@Links.Scripts.jquery_1_7_1_min_js"></script>
+    <script src="@Links.Scripts.jquery_ui_1_8_20_min_js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=visualization&key=AIzaSyDxynbvhnTHYl8nIIAoct1AjbJCxWZSwPw&sensor=false"></script>
+    <script src="@Links.Scripts.plants_js"></script>
+    <script type="text/javascript" src="@Links.Scripts.perpetuality_map_js"></script>
+  </head>
+  <body>
+    <div id="map"></div>
+  </body>
+</html>
