@@ -1,4 +1,5 @@
 from django.contrib.gis.db import models
+from django.contrib.gis.geos import Point
 from django.db import connection
 
 class Urban(models.Model):
@@ -19,3 +20,16 @@ class Solar(models.Model):
         solar = cls
         solar.value = row[0]
         return solar
+
+class WindSpeed(models.Model):
+    gid = models.IntegerField()
+    geom = models.GeometryField()
+    total = models.FloatField()
+
+    @classmethod
+    def get_point(cls, long, lat):
+        p = Point(long, lat)
+        return cls.objects.filter(geom__contains=Point).get()
+
+    class Meta:
+        db_table = 'windspeed'
