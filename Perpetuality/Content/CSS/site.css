@@ -1201,6 +1201,11 @@ footer ul li a:hover .btn_image {
   -webkit-box-shadow: 0 0 2px #cccccc;
   box-shadow: 0 0 2px #cccccc;
 }
+#container form {
+  margin-left: 21px;
+  margin-top: 23px;
+  color: black;
+}
 #container form .genericInput {
   width: 400px;
   height: 30px;
@@ -1208,6 +1213,7 @@ footer ul li a:hover .btn_image {
   margin-bottom: 10px;
   font-size: 15px;
   padding-left: 9px;
+  border: 1px solid grey;
 }
 #container form input[type="text"] {
   width: 400px;
@@ -1216,6 +1222,7 @@ footer ul li a:hover .btn_image {
   margin-bottom: 10px;
   font-size: 15px;
   padding-left: 9px;
+  border: 1px solid grey;
 }
 #container form input[type="text"] .error {
   border: 3px solid red;
@@ -1227,6 +1234,7 @@ footer ul li a:hover .btn_image {
   margin-bottom: 10px;
   font-size: 15px;
   padding-left: 9px;
+  border: 1px solid grey;
 }
 #container form select {
   width: 400px;
@@ -1235,6 +1243,7 @@ footer ul li a:hover .btn_image {
   margin-bottom: 10px;
   font-size: 15px;
   padding-left: 9px;
+  border: 1px solid grey;
   padding: 0;
   width: 415px;
 }
