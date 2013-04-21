@@ -67,8 +67,7 @@ perpetuality.map.prototype.init = function() {
           me.buildHeatMapLayer(data);
         },
         error: function(jqXHR, textStatus, errorThrown) {
-            // Ignore for now.
-            //          alert("failed to update heat map data!");
+            alert("failed to update heat map data!");
         }
       });
     }
@@ -241,7 +240,7 @@ $(document).ready(function () {
 
   var map = new perpetuality.map;
   map.init();
-//  map.dataServer = "http://localhost:3000" Change to proper address.
+  map.dataServer = "http://94.100.114.61/"
   /**
    * Use current location if available.
    */

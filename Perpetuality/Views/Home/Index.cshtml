@@ -1,7 +1,9 @@
 ﻿@{
     ViewBag.Title = "Index";
     ViewBag.MenuHome = "selected";
-}
+
+    string language = (string)ViewContext.RouteData.Values["language"];
+    }
 <a href="/nl/home" class="logo"></a>
 <script>
     var authProvider = "";
@@ -32,3 +34,4 @@
         </div>
     </div>
 </div>
+<form id="starter" method="get" action="/@language/Game"></form>
