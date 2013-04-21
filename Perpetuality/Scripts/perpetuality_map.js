@@ -56,6 +56,7 @@ perpetuality.map.prototype.makeItemizedPane = function (name, contentList, extra
         title.innerHTML = content.title;
         var image = document.createElement("img");
         image.src = contentList[i].image;
+        var imageClass = contentList[i].imageClass;
         var imageSize = contentList[i].imageSize;
         if (imageSize) {
             if (imageSize.width) { image.width = imageSize.width }
@@ -115,7 +116,13 @@ perpetuality.map.TextPaneItem = function() {
 /**
  * Application's map.
  */
-$(document).ready(function() {
+$(document).ready(function () {
+    function getToday() {
+        // Should come from the game
+        var today = new Date();
+        return today.getDate() + "-" + today.getMonth() + 1 + "-" + today.getFullYear();
+    };
+
   var map = new perpetuality.map;
   map.init();
     /**
@@ -130,22 +137,21 @@ $(document).ready(function() {
 
   var statusPane = map.makeItemizedPane("status", [
     {
-        "title": "KWh",
-        "image": "/Content/Images/green.png",
-        "imageSize": { "width": 16 },
+        "title": getToday(),
+        "image": "/Content/Images/original/logo2.png",
         "itemExtraClass": "map-pane-item-horizontal"
     },
     {
-        "title": "Awesomeness",
+        "title": "KwH",
         "image": "/Content/Images/orange.png",
         "imageSize": { "width": 16 },
         "itemExtraClass": "map-pane-item-horizontal"
     },
     {
-        "title": "YA Hard-coded Value",
-        "image": "/Content/Images/red.png",
-        "imageSize": { "width": 16 },
-        "itemExtraClass": "map-pane-item-horizontal"
+        title: "Credits",
+        image: "/Content/Images/red.png",
+        imageSize: { width: 16 },
+        itemExtraClass: "map-pane-item-horizontal"
     },
   ], "map-pane-top");
 
@@ -153,10 +159,10 @@ $(document).ready(function() {
       "title": "Detail Title",
       "content": "Detail Contents."
   }], "map-pane-left");
-
+  var nummer = 0;
   var spritePane = map.makeItemizedPane("sprite", [{
       "title": "Plant",
-      "action": function () { alert("Plant action") },
+      "action": function (e) { perpetuality.Plant.placePlant(++nummer * 50 + "px", nummer * 50 + "px") },
       "image": "/Content/Images/nuclear-power-plant.png",
       "itemExtraClass": "map-pane-item-vertical"
   }], "map-pane-right");
@@ -173,7 +179,7 @@ $(document).ready(function() {
         },
         {
             "name": "status",
-            "position": google.maps.ControlPosition.TOP_CENTER,
+            "position": google.maps.ControlPosition.TOP_LEFT,
             "pane": statusPane
         },
         {

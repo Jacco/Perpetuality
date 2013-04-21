@@ -45,6 +45,9 @@ body {
   -moz-border-bottom-right-radius: 15px;
   -webkit-border-bottom-right-radius: 15px;
   border-bottom-right-radius: 15px;
+  height: 95px;
+  width: 80%;
+  left: 0px;
 }
 .map-pane-bottom {
   -moz-border-top-left-radius: 15px;

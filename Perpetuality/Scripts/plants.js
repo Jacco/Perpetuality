@@ -1,32 +1,17 @@
 ﻿var perpetuality = perpetuality || {};
 
-perpetuality.plant = function () {
-    var number = 0;
+perpetuality.Plant = perpetuality.Plant || function () { };
 
-    function removePlant(plantId) {
-        $("#" + plantId).remove();
-    }
+perpetuality.Plant.number = 0;
 
-    function placePlant(x, y) {
-        var plantId = "plant" + number++;
-        var newPlant = $("<div />", {
-            id: plantId,
-            "class": "plant",
-            style: "top: " + y + "px; " + "left: " + x + "px;"
-        });
-        newPlant.click(function (e) { removePlant(plantId) });
-        newPlant.appendTo("#map");
-    }
-
-    var plant = $("<div />", {
-        id: "plantsource",
-        "class": "plant"
+perpetuality.Plant.placePlant = function(x, y) {
+    var plantId = "plant" + perpetuality.Plant.number++;
+    var newPlant = $("<div />", {
+        id: plantId,
+        "class": "plant",
+        style: "top: " + y + "px; " + "left: " + x + "px;"
     });
-    plant.draggable({ revert: true });
-    plant.on({ mouseup: function (e) { placePlant(e.pageX, e.pageY) } });
-    plant.appendTo("body")
-
-    return plant;
+    newPlant.click(function (e) { removePlant(plantId) });
+    newPlant.appendTo("body");
+    alert(x + y);
 };
-
-$(document).ready(perpetuality.plant)
