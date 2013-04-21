@@ -937,6 +937,7 @@ input[type="button"].btn-block {
   top: 145px;
   right: 52px;
   position: absolute;
+  cursor: pointer;
 }
 .startgame.leverup {
   background-image: url("../Images/original/start_game_up.png");
