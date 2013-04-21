@@ -1,16 +1,16 @@
 ﻿var perpetuality = perpetuality || {};
 
-perpetuality.plant = perpetuality.plant || function () { };
+perpetuality.plant = perpetuality.plant || function (type, basecost, standardsize, energypermeter) {
+    this.type = type;
+    this.basecost = basecost;
+    this.standardsize = standardsize;
+    this.energypermeter = energypermeter;
+};
 
 perpetuality.plant.number = 0;
 
-perpetuality.plant.placePlant = function (x, y) {
-    var plantId = "plant" + perpetuality.plant.number++;
-    var newPlant = $("<div />", {
-        id: plantId,
-        "class": "plant",
-        style: "top: " + y + "px; " + "left: " + x + "px;"
-    });
-    newPlant.click(function (e) { $("#" + plantId).remove() });
-    newPlant.appendTo("body");
+perpetuality.plant.placePlant = function(plant) {
+    $("#" + plant.type + "button").addClass("selected");
+    $("#plantcost").empty().html(plant.basecost);
+    $("#plantsize").empty().html(plant.standardsize);
 };
