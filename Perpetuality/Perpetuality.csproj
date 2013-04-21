@@ -209,12 +209,16 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Content\Images\cloudy.jpg" />
+    <Content Include="Content\Images\Credits.png" />
     <Content Include="Content\Images\default-image.jpeg" />
     <Content Include="Content\Images\down_arrow_select.jpg" />
     <Content Include="Content\Images\Email\footer.jpg" />
     <Content Include="Content\Images\Email\header.jpg" />
+    <Content Include="Content\Images\Faq-button.png" />
     <Content Include="Content\Images\green.png" />
+    <Content Include="Content\Images\home-button.png" />
     <Content Include="Content\Images\main-background.jpg" />
+    <Content Include="Content\Images\news-button.png" />
     <Content Include="Content\Images\nuclear-power-plant.png" />
     <Content Include="Content\Images\orange.png" />
     <Content Include="Content\Images\original\Background_home.jpg" />
