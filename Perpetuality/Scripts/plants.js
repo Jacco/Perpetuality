@@ -15,14 +15,24 @@ perpetuality.plant.prototype.build = function (map, event) {
 
 perpetuality.plant.number = 0;
 
+perpetuality.plant.doPlacePlant = function (event) {
+    plant.build(map, event);
+}
+
 perpetuality.plant.placePlant = function (map, plant) {
     $("#" + plant.type + "button").addClass("selected");
     $("#plantcost").empty().html("" + plant.basecost + " €");
     $("#plantsize").empty().html("" + plant.standardsize + " m²");
 
-    google.maps.event.addListener(map.root, 'click', function(event) {
-        plant.build(map, event);
-    });
+    google.maps.event.addListener(map.root, 'click', perpetuality.plant.doPlacePlant);
+};
+
+perpetuality.plant.deselectPlant = function (map, plant) {
+    $(".plantbutton").removeClass("selected");
+    $("#plantcost").empty();
+    $("#plantsize").empty();
+
+    google.maps.event.removeListener(map.root, 'click', perpetuality.plant.doPlacePlant);
 };
 
 perpetuality.plant.CustomMarker = function (gmap, url, house) {

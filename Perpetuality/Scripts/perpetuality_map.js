@@ -269,11 +269,32 @@ $(document).ready(function () {
      * Panes.
      */
   var overlayControlPane = map.makeItemizedPane("overlay", [{
-      "title": "HeatMap",
+      "title": "Geotherm",
       action: function() {
         map.heatMap.setMap(map.heatMap.getMap() ? null : map.root);
       },
-      "image": "/Content/Images/default-image.jpeg",
+      "image": "/Content/Images/button-geothermal-overlay.png",
+      "itemExtraClass": "map-pane-item-horizontal"
+  }, {
+      "title": "Solar",
+      action: function () {
+          map.heatMap.setMap(map.heatMap.getMap() ? null : map.root);
+      },
+      "image": "/Content/Images/button-solar-overlay.png",
+      "itemExtraClass": "map-pane-item-horizontal"
+  }, {
+      "title": "Water",
+      action: function () {
+          map.heatMap.setMap(map.heatMap.getMap() ? null : map.root);
+      },
+      "image": "/Content/Images/button-water-overlay.png",
+      "itemExtraClass": "map-pane-item-horizontal"
+  }, {
+      "title": "Wind",
+      action: function () {
+          map.heatMap.setMap(map.heatMap.getMap() ? null : map.root);
+      },
+      "image": "/Content/Images/button-wind-overlay.png",
       "itemExtraClass": "map-pane-item-horizontal"
   }], "map-pane-bottom");
 
@@ -331,6 +352,12 @@ $(document).ready(function () {
         button: "solartowerbutton",
         itemExtraClass: "map-pane-item-vertical",
         action: function (e) { }
+    },
+    {
+        title: "Deselect",
+        button: "deselectbutton",
+        itemExtraClass: "map-pane-item-vertical",
+        action: function (e) { perpetuality.plant.deselectPlant(); }
     }
   ], "map-pane-right");
 

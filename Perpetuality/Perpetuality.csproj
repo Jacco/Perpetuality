@@ -173,7 +173,9 @@
     <Compile Include="MailController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
-    <Compile Include="MapController.generated.cs" />
+    <Compile Include="MapController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="NewsController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -208,6 +210,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Content\Images\button-geothermal-overlay.png" />
+    <Content Include="Content\Images\button-solar-overlay.png" />
+    <Content Include="Content\Images\button-water-overlay.png" />
+    <Content Include="Content\Images\button-wind-overlay.png" />
     <Content Include="Content\Images\cloudy.jpg" />
     <Content Include="Content\Images\Credits.png" />
     <Content Include="Content\Images\default-image.jpeg" />

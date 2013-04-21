@@ -51,18 +51,22 @@ namespace T4MVC
                 public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
                 public class _ViewNamesClass
                 {
+                    public readonly string cloudy = "cloudy";
                     public readonly string default_image = "default-image";
                     public readonly string green = "green";
                     public readonly string nuclear_power_plant = "nuclear-power-plant";
                     public readonly string orange = "orange";
                     public readonly string red = "red";
+                    public readonly string solar_panel = "solar_panel";
                     public readonly string sources = "sources";
                 }
+                public readonly string cloudy = "~/Views/Map/images/cloudy.jpg";
                 public readonly string default_image = "~/Views/Map/images/default-image.jpeg";
                 public readonly string green = "~/Views/Map/images/green.png";
                 public readonly string nuclear_power_plant = "~/Views/Map/images/nuclear-power-plant.png";
                 public readonly string orange = "~/Views/Map/images/orange.png";
                 public readonly string red = "~/Views/Map/images/red.png";
+                public readonly string solar_panel = "~/Views/Map/images/solar_panel.jpg";
                 public readonly string sources = "~/Views/Map/images/sources";
             }
         }
