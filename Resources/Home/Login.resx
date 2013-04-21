@@ -133,7 +133,7 @@
     <value>Username is no valid e-mailadrress.</value>
   </data>
   <data name="LoginError_60022" xml:space="preserve">
-    <value>This combination of username and password is unknown.</value>
+    <value>This combination of username and password is unknown. </value>
   </data>
   <data name="PageTitle" xml:space="preserve">
     <value>Perpetuality - Login</value>
