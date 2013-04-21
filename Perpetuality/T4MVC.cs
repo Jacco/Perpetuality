@@ -155,6 +155,22 @@ namespace Links
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
             public static readonly string main_background_jpg = Url("main-background.jpg");
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class original {
+                private const string URLPATH = "~/Content/Images/original";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                public static readonly string Background_home_jpg = Url("Background_home.jpg");
+                public static readonly string Buttons_active_png = Url("Buttons_active.png");
+                public static readonly string Buttons_inactive_png = Url("Buttons_inactive.png");
+                public static readonly string icoon_paneelpark_png = Url("icoon_paneelpark.png");
+                public static readonly string logo_png = Url("logo.png");
+                public static readonly string logo2_png = Url("logo2.png");
+                public static readonly string start_game_down_png = Url("start_game_down.png");
+                public static readonly string start_game_up_png = Url("start_game_up.png");
+                public static readonly string Text_background_png = Url("Text-background.png");
+            }
+        
         }
     
         public static readonly string Site_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Site.min.css") ? Url("Site.min.css") : Url("Site.css");

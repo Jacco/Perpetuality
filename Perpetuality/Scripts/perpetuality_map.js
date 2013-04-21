@@ -36,6 +36,20 @@ perpetuality.map.prototype.deRegisterPane = function(name) {
 };
 
 perpetuality.map.prototype.makeItemizedPane = function (name, contentList, extraClass) {
+    function createImage(content) {
+        var image = document.createElement("img");
+        image.src = content.image;
+        var imageClass = content.imageClass;
+        var imageSize = content.imageSize;
+        if (imageSize) {
+            if (imageSize.width) { image.width = imageSize.width }
+            if (imageSize.height) { image.height = imageSize.height }
+        }
+        $(image).click(content.action);
+
+        return image;
+    };
+
     var pane = document.createElement("div");
     pane.id = name + "-pane";
     $(pane).addClass("map-pane");
@@ -43,28 +57,31 @@ perpetuality.map.prototype.makeItemizedPane = function (name, contentList, extra
         $(pane).addClass(extraClass);
     }
     for (var i = 0; i < contentList.length; i++) {
+        var content = contentList[i];
         var contentDiv = document.createElement("div");
         $(contentDiv).addClass("map-pane-item");
-        var itemExtraClass = contentList[i].itemExtraClass;
+        var itemExtraClass = content.itemExtraClass;
         if (itemExtraClass) {
             $(contentDiv).addClass(itemExtraClass);
         }
-        var content = new perpetuality.map.ItemizedPaneItem();
-        content.title = contentList[i].title;
-        content.action = contentList[i].action;
+        var contentPane = new perpetuality.map.ItemizedPaneItem();
+        contentPane.title = content.title;
+        contentPane.action = content.action;
         var title = document.createElement("div");
         title.innerHTML = content.title;
-        var image = document.createElement("img");
-        image.src = contentList[i].image;
-        var imageClass = contentList[i].imageClass;
-        var imageSize = contentList[i].imageSize;
-        if (imageSize) {
-            if (imageSize.width) { image.width = imageSize.width }
-            if (imageSize.height) { image.height = imageSize.height }
+        if (content.image) {
+            var image = createImage(content);
+            contentPane.image = image;
+            contentDiv.appendChild(image);
         }
-        $(image).click(content.action);
-        content.image = image;
-        contentDiv.appendChild(image);
+        else if (content.button) {
+            var button = document.createElement("div");
+            button.id = content.button;
+            var jButton = $(button);
+            jButton.click(content.action);
+            jButton.addClass("plantbutton");
+            contentDiv.appendChild(button);
+        }
         contentDiv.appendChild(title);
         pane.appendChild(contentDiv);
     }
@@ -154,19 +171,20 @@ $(document).ready(function () {
         itemExtraClass: "map-pane-item-horizontal"
     },
   ], "map-pane-top");
-
+  alert("here");
   var detailPane = map.makeTextPane("detail", [{
       "title": "Detail Title",
       "content": "Detail Contents."
   }], "map-pane-left");
+
   var nummer = 0;
   var spritePane = map.makeItemizedPane("sprite", [{
-      "title": "Plant",
-      "action": function (e) { perpetuality.Plant.placePlant(++nummer * 50 + "px", nummer * 50 + "px") },
-      "image": "/Content/Images/nuclear-power-plant.png",
-      "itemExtraClass": "map-pane-item-vertical"
+      title: "Solar Plant",
+      button: "solarbutton",
+      itemExtraClass: "map-pane-item-vertical",
+      action: function (e) { perpetuality.Plant.placePlant(++nummer * 50, nummer * 50) }
   }], "map-pane-right");
-
+    alert("not here");
     /**
      * Layout.
      */
@@ -199,4 +217,3 @@ $(document).ready(function () {
   });
 
 });
-
