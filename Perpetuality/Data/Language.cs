@@ -25,6 +25,7 @@ namespace Perpetuality.Data
                         ,   new Language { Abbreviation = "es", LocalName = "Español" }
                         ,   new Language { Abbreviation = "fr", LocalName = "Français" }
                         ,   new Language { Abbreviation = "pt", LocalName = "Português" }
+                        ,   new Language { Abbreviation = "jp", LocalName = "日本語 (Japanese)" }
                     };
                 }
                 return languages;

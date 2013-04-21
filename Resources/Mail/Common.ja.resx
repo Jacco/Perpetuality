@@ -117,37 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="DontHaveAnAccountText" xml:space="preserve">
-    <value>アカウントをお持ちではないですか？</value>
-  </data>
-  <data name="EmailAddressLabelText" xml:space="preserve">
-    <value>メール：</value>
-  </data>
-  <data name="ForgetPasswordText" xml:space="preserve">
-    <value>パスワードをお忘れですか？</value>
-  </data>
-  <data name="LoginButtonText" xml:space="preserve">
-    <value>ログイン</value>
-  </data>
-  <data name="LoginError_60020" xml:space="preserve">
-    <value>ユーザー名は有効のメールアドレスではありません。</value>
-  </data>
-  <data name="LoginError_60022" xml:space="preserve">
-    <value>ユーザー名とパスワードが合っていません。</value>
-  </data>
-  <data name="PageTitle" xml:space="preserve">
-    <value>Perpetuality - ログリン</value>
-  </data>
-  <data name="PasswordLabelText" xml:space="preserve">
-    <value>パスワード：</value>
-  </data>
-  <data name="RememberMeLabelText" xml:space="preserve">
-    <value>ログイン状態を保持する</value>
-  </data>
-  <data name="ValidationEmailAdressRequired" xml:space="preserve">
-    <value>メールを入力してください</value>
-  </data>
-  <data name="ValidationPasswordRequired" xml:space="preserve">
-    <value>パスワードを入力してください</value>
+  <data name="Greeting" xml:space="preserve">
+    <value>{0}様へよこそう</value>
   </data>
 </root>
