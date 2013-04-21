@@ -1008,6 +1008,10 @@ header h1 a:hover {
 }
 header #nav {
   margin: 0;
+  background-color: white;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
   padding: 0;
   list-style: none;
   float: right;
@@ -1049,16 +1053,25 @@ header #nav ul li {
   float: right;
   color: black;
   border-top: 1px solid white;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
 }
 header #nav ul a {
   display: block;
   height: 15px;
   padding-bottom: 2px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
   color: #666666;
 }
 header #nav li {
   float: left;
   display: block;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
   background: white;
   font-size: 17px;
   transform-origin: top center;
@@ -1083,6 +1096,9 @@ header #nav a {
   -o-transition: border-color .15s linear;
   transition: border-color .15s linear;
   border: 3px solid rgba(155, 140, 140, 0);
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
   font-weight: 700;
   height: 65px;
   padding: 20px;
