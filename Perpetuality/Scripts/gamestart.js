@@ -12,11 +12,12 @@ perpetuality.start.animatedBegin = function () {
             lever.animate({"font-size": "+=20"}, animation.in, "linear", function () {
                 lever.removeClass(animation.from);
                 lever.addClass(animation.to);
-                recursiveAnimate(lever, animationArray);
+                recursiveAnimate(lever, animationArray, callback);
             });
         }
     };
 
+    var startGameCallback = function() { $("#starter").submit(); };
     recursiveAnimate($(".startgame"), [
         { from: "leverup",          to: "levercrackle1","in": 80 },
         { from: "levercrackle1",    to: "levercrackle2","in": 80 },
@@ -25,9 +26,7 @@ perpetuality.start.animatedBegin = function () {
         { from: "levercrackle2",    to: "leverup",      "in": 220 },
         { from: "leverup",          to: "leverdown",    "in": 300 },
         { from: "leverdown",        to: "leverdown",    "in": 300 }
-], function () {
-        location.href = "/en/Game";
-    });
+    ], startGameCallback);
 }
 
 perpetuality.start.init = function () {
