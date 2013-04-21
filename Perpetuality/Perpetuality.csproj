@@ -173,9 +173,7 @@
     <Compile Include="MailController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
-    <Compile Include="MapController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
+    <Compile Include="MapController.generated.cs" />
     <Compile Include="NewsController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -210,21 +208,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Content Include="Content\Images\button-geothermal-overlay.png" />
-    <Content Include="Content\Images\button-solar-overlay.png" />
-    <Content Include="Content\Images\button-water-overlay.png" />
-    <Content Include="Content\Images\button-wind-overlay.png" />
     <Content Include="Content\Images\cloudy.jpg" />
-    <Content Include="Content\Images\Credits.png" />
     <Content Include="Content\Images\default-image.jpeg" />
     <Content Include="Content\Images\down_arrow_select.jpg" />
     <Content Include="Content\Images\Email\footer.jpg" />
     <Content Include="Content\Images\Email\header.jpg" />
-    <Content Include="Content\Images\Faq-button.png" />
     <Content Include="Content\Images\green.png" />
-    <Content Include="Content\Images\home-button.png" />
     <Content Include="Content\Images\main-background.jpg" />
-    <Content Include="Content\Images\news-button.png" />
     <Content Include="Content\Images\nuclear-power-plant.png" />
     <Content Include="Content\Images\orange.png" />
     <Content Include="Content\Images\original\Background_home.jpg" />
@@ -423,7 +413,6 @@
     <Content Include="Views\Mail\_MailLayout.cshtml" />
     <Content Include="Views\Map\images\sources" />
     <Content Include="Views\Map\Index.cshtml" />
-    <Content Include="Views\FAQ\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

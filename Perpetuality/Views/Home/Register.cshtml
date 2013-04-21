@@ -22,6 +22,7 @@
     };
     
 }
+<div class="main-container">
 <div id="validationMessages" style="display: none" data="@Newtonsoft.Json.JsonConvert.SerializeObject(validationMessages)"></div>
 <form id="register-Form" method="post">
     <div class="form-top">
@@ -61,7 +62,7 @@
         <input type="submit" value="@Resources.Home.Register.RegisterButtonText" />
     </div>
 </form>
-
+    </div>
 @section scripts
 {
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.10.0/jquery.validate.js"></script>
