@@ -354,10 +354,10 @@ $(document).ready(function () {
         action: function (e) { }
     },
     {
-        title: "Deselect",
+        title: "Persist Plant",
         button: "deselectbutton",
         itemExtraClass: "map-pane-item-vertical",
-        action: function (e) { perpetuality.plant.deselectPlant(); }
+        action: function (e) {}
     }
   ], "map-pane-right");
 
