@@ -26,6 +26,10 @@ header{
 		font-family: 'Mr Dafoe', cursive;
 		font-size: 40px;
 		a{
+			img{
+				max-width: 100%;
+				
+			}
 			text-decoration: none;
 			color:black;
 			&:hover{
@@ -187,16 +191,27 @@ footer{
 			float:left;
 			margin-right:4.5%;
 			a{
-				color:black;
+				color:white;
 				text-decoration:none;
 				padding: 20px;
 				font-size: 21px;
 				.btn_image{
+					position:relative;
 					background-color:black;
 					.border-radius(10px);
 					height: 174px;
 					width: 194px;
 					.transition( ~"border-color .15s linear") ;
+					img{ max-width:100%; width: 100%;}
+
+					p{
+						position: absolute;
+						left: 15%;
+						top: 45%;
+						font-size: 2em;
+						text-align: center;
+						width: 140px;
+					}
 				}
 				&:hover{
 					.btn_image{
@@ -294,7 +309,8 @@ box-shadow: 0 0 2px #ccc;
 	
 }
 
-@media (max-width: 610px) {
+
+@media (max-width: 960px) {
 	header{
 		h1{
 			font-size: 30px;
@@ -316,10 +332,63 @@ box-shadow: 0 0 2px #ccc;
 			}
 		}
 	}
-
+	.btn_image {
+		height: 110px !important;
+		width: 133px !important;
+			p {
+			width:99px !important;
+			font-size: 1em !important;
+		}
+	}
 	#container{
-		margin-left: 35px;
-		min-height:600px;
+		width:621px;
+		min-height: 558px;
+		margin-left: 46px;
+		margin-top: 40px;
+	}
+	footer{
+		height: 138px;
+		
+	}
+
+	.startgame{
+		width: 134px;
+		height: 245px;
+		top: 256px;
+		right: 32px;
+		position: absolute;
+		background-size: contain;
+		right: 0;
+	}
+}
+@media (max-width: 610px) and (max-width: 799px) {
+	
+
+	.btn_image {
+		height: 94px !important;
+		width: 105px !important;
+			p {
+			width:80px !important;
+			font-size: 1em !important;
+		}
+	}
+	#container{
+		width:530px;
+		min-height: 500px;
+		margin-left: 20px;
+		margin-top: 38px;
+	}
+	footer{
+		height: 120px;
+		
+	}
+
+	.startgame{
+		width: 82px;
+		height: 150px;
+		top: 200px;
+		right: 0;
+		background-size:contain;
 	}
 
 	form{
@@ -340,6 +409,36 @@ box-shadow: 0 0 2px #ccc;
 	}
 }
 
+@media (max-width: 400px)and (max-width: 609px) { 
+	footer{
+		height: 90px !important;
+		
+	}
+
+	.btn_image {
+		height: 60px !important;
+		width: 75px !important;
+			p {
+			width:65px !important;
+			font-size: 0.8em !important;
+		}
+	}
+	#container{
+		width:350px;
+		min-height: 350px;
+		margin-left:5x;
+		margin-top: 38px;
+	}
+	
+
+	.startgame{
+		width: 50px;
+		height: 90px;
+		right: 0;
+		top: 200px;
+		background-size:contain;
+	}
+}
 .animated{-webkit-animation-fill-mode:both;-moz-animation-fill-mode:both;-ms-animation-fill-mode:both;-o-animation-fill-mode:both;animation-fill-mode:both;-webkit-animation-duration:1s;-moz-animation-duration:1s;-ms-animation-duration:1s;-o-animation-duration:1s;animation-duration:1s;}.animated.hinge{-webkit-animation-duration:2s;-moz-animation-duration:2s;-ms-animation-duration:2s;-o-animation-duration:2s;animation-duration:2s;}@-webkit-keyframes flash {
 	0%, 50%, 100% {opacity: 1;}	25%, 75% {opacity: 0;}
 }

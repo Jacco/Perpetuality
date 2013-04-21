@@ -10,7 +10,8 @@ body {
   height: 100%;
 }
 .map-section-title {
-  font: verdana bold 1.4em;
+  font-size: 1.4em;
+  font-family: verdana,bold;
   text-align: center;
   color: #eeeeee;
 }

@@ -999,6 +999,9 @@ header h1 a {
   text-decoration: none;
   color: black;
 }
+header h1 a img {
+  max-width: 100%;
+}
 header h1 a:hover {
   color: black;
 }
@@ -1147,12 +1150,13 @@ footer ul li {
   margin-right: 4.5%;
 }
 footer ul li a {
-  color: black;
+  color: white;
   text-decoration: none;
   padding: 20px;
   font-size: 21px;
 }
 footer ul li a .btn_image {
+  position: relative;
   background-color: black;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
@@ -1163,6 +1167,18 @@ footer ul li a .btn_image {
   -moz-transition: border-color .15s linear;
   -o-transition: border-color .15s linear;
   transition: border-color .15s linear;
+}
+footer ul li a .btn_image img {
+  max-width: 100%;
+  width: 100%;
+}
+footer ul li a .btn_image p {
+  position: absolute;
+  left: 15%;
+  top: 45%;
+  font-size: 2em;
+  text-align: center;
+  width: 140px;
 }
 footer ul li a:hover .btn_image {
   border: 3px solid green;
@@ -1245,7 +1261,7 @@ footer ul li a:hover .btn_image {
   text-decoration: none;
   font-weight: bold;
 }
-@media (max-width: 610px) {
+@media (max-width: 960px) {
   header h1 {
     font-size: 30px;
     width: 100%;
@@ -1265,9 +1281,57 @@ footer ul li a:hover .btn_image {
     padding-left: 0;
     padding-right: 0;
   }
+  .btn_image {
+    height: 110px !important;
+    width: 133px !important;
+  }
+  .btn_image p {
+    width: 99px !important;
+    font-size: 1em !important;
+  }
   #container {
-    margin-left: 35px;
-    min-height: 600px;
+    width: 621px;
+    min-height: 558px;
+    margin-left: 46px;
+    margin-top: 40px;
+  }
+  footer {
+    height: 138px;
+  }
+  .startgame {
+    width: 134px;
+    height: 245px;
+    top: 256px;
+    right: 32px;
+    position: absolute;
+    background-size: contain;
+    right: 0;
+  }
+}
+@media (max-width: 610px) and (max-width: 799px) {
+  .btn_image {
+    height: 94px !important;
+    width: 105px !important;
+  }
+  .btn_image p {
+    width: 80px !important;
+    font-size: 1em !important;
+  }
+  #container {
+    width: 530px;
+    min-height: 500px;
+    margin-left: 20px;
+    margin-top: 38px;
+  }
+  footer {
+    height: 120px;
+  }
+  .startgame {
+    width: 82px;
+    height: 150px;
+    top: 200px;
+    right: 0;
+    background-size: contain;
   }
   form input[type="text"] {
     max-width: 280px;
@@ -1282,6 +1346,32 @@ footer ul li a:hover .btn_image {
     float: left;
     clear: both;
     width: 100%;
+  }
+}
+@media (max-width: 400px) and (max-width: 609px) {
+  footer {
+    height: 90px !important;
+  }
+  .btn_image {
+    height: 60px !important;
+    width: 75px !important;
+  }
+  .btn_image p {
+    width: 65px !important;
+    font-size: 0.8em !important;
+  }
+  #container {
+    width: 350px;
+    min-height: 350px;
+    margin-left: 5x;
+    margin-top: 38px;
+  }
+  .startgame {
+    width: 50px;
+    height: 90px;
+    right: 0;
+    top: 200px;
+    background-size: contain;
   }
 }
 .animated {

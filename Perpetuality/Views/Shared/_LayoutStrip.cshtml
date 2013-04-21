@@ -6,7 +6,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"" />
     <title>@ViewBag.Title</title>
     <link type="text/css" rel="stylesheet" href="@Links.Content.CSS.site_css" />
     @Scripts.Render("~/bundles/modernizr")
@@ -56,22 +56,22 @@
         <ul class="footer-nav">
             <li>
                 <a href="/@language/home" class="menu-btn @ViewBag.MenuHome">
-                      <div class="btn_image"> @Resources.Shared._Layout.MenuHomeText</div> 
+                      <div class="btn_image"><img src="~/Content/Images/home-button.png" /> </div> 
                     </a>
             </li>
             <li>
                     <a href="/@language/news" class="menu-btn @ViewBag.MenuNews">
-                   <div class="btn_image"> @Resources.Shared._Layout.MenuNewsText</div> 
+                   <div class="btn_image"> <img src="~/Content/Images/news-button.png" /> </div> 
                 </a>
             </li>
             <li>
                 <a href="/@language/faqs" class="menu-btn @ViewBag.MenuFAQs">
-                    <div class="btn_image"> FAQs</div> 
+                    <div class="btn_image"> <img src="~/Content/Images/Faq-button.png" /> </div> 
                 </a>
             </li>
             <li>
                 <a href="/@language/credits" class="menu-btn @ViewBag.MenuCredits">
-                    <div class="btn_image"> Credits</div> 
+                    <div class="btn_image"> <img src="~/Content/Images/Credits.png" /></div> 
                 </a>
             </li>
         </ul>
