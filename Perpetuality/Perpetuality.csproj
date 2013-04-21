@@ -173,6 +173,7 @@
     <Compile Include="MailController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
+    <Compile Include="MapController.generated.cs" />
     <Compile Include="NewsController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -244,6 +245,15 @@
     <Content Include="Views\Credits\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\ResetPassword.cshtml" />
+    <Content Include="Views\Map\images\cloudy.jpg" />
+    <Content Include="Views\Map\images\default-image.jpeg" />
+    <Content Include="Views\Map\images\green.png" />
+    <Content Include="Views\Map\images\nuclear-power-plant.png" />
+    <Content Include="Views\Map\images\orange.png" />
+    <Content Include="Views\Map\images\red.png" />
+    <Content Include="Views\Map\images\solar_panel.jpg" />
+    <Content Include="Views\Map\perpetuality_map.css" />
+    <Content Include="Views\Map\perpetuality_map.js" />
     <Content Include="Views\Shared\_LayoutStrip.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\ChangePassword.cshtml" />
@@ -401,6 +411,8 @@
     <Content Include="Views\Mail\GameUpdate.cshtml" />
     <Content Include="Views\Mail\PasswordRequest.cshtml" />
     <Content Include="Views\Mail\_MailLayout.cshtml" />
+    <Content Include="Views\Map\images\sources" />
+    <Content Include="Views\Map\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
