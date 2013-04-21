@@ -171,7 +171,7 @@ $(document).ready(function () {
         itemExtraClass: "map-pane-item-horizontal"
     },
   ], "map-pane-top");
-  alert("here");
+
   var detailPane = map.makeTextPane("detail", [{
       "title": "Detail Title",
       "content": "Detail Contents."
@@ -184,7 +184,7 @@ $(document).ready(function () {
       itemExtraClass: "map-pane-item-vertical",
       action: function (e) { perpetuality.Plant.placePlant(++nummer * 50, nummer * 50) }
   }], "map-pane-right");
-    alert("not here");
+
     /**
      * Layout.
      */
