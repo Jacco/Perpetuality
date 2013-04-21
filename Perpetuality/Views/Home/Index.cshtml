@@ -11,6 +11,9 @@
         return true;
     }
 </script>
+<script src="@Links.Scripts.jquery_1_7_1_min_js" type="text/javascript"></script>
+<script src="@Links.Scripts.jquery_ui_1_8_20_min_js" type="text/javascript"></script>
+<script src="@Links.Scripts.gamestart_js" type="text/javascript"></script>
 @* <p>@(((HttpContext.Current.User as Perpetuality.GamePrincipal).Identity as Perpetuality.GameIdentity).Name)</p> *@
 <form id="loginform_facebook" method="post" action="Home/ExternalLogin" onsubmit="authProvider='facebook'; return formValidate();">
     <input type="hidden" name="provider" value="facebook" />

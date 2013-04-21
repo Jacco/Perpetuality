@@ -221,14 +221,18 @@
     <Content Include="Content\Images\original\Buttons_inactive.png" />
     <Content Include="Content\Images\original\icoon_dakpaneel.png" />
     <Content Include="Content\Images\original\icoon_paneelpark.png" />
+    <Content Include="Content\Images\original\icoon_windmolenpark.png" />
     <Content Include="Content\Images\original\icoon_zoutcollector.png" />
     <Content Include="Content\Images\original\logo.png" />
     <Content Include="Content\Images\original\logo2.png" />
     <Content Include="Content\Images\original\start_game_down.png" />
+    <Content Include="Content\Images\original\start_game_sparks1.png" />
+    <Content Include="Content\Images\original\start_game_sparks2.png" />
     <Content Include="Content\Images\original\start_game_up.png" />
     <Content Include="Content\Images\original\Text-background.png" />
     <Content Include="Content\Images\red.png" />
     <Content Include="Content\Images\solar_panel.jpg" />
+    <Content Include="Scripts\gamestart.js" />
     <Content Include="Scripts\perpetuality_map.js" />
     <Content Include="Scripts\plants.js" />
     <Content Include="T4MVC.tt.hooks.t4" />
@@ -356,12 +360,12 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>T4CSS1.log</LastGenOutput>
     </Content>
+    <Content Include="Content\Images\sources" />
     <None Include="Content\CSS\T4CSS1.log">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>T4CSS.tt</DependentUpon>
     </None>
-    <Content Include="Content\Images\sources" />
     <None Include="Properties\PublishProfiles\ToWeb.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />

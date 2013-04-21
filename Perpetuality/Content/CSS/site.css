@@ -931,6 +931,25 @@ input[type="reset"].btn-block,
 input[type="button"].btn-block {
   width: 100%;
 }
+.startgame {
+  width: 233px;
+  height: 427px;
+  top: 145px;
+  right: 52px;
+  position: absolute;
+}
+.startgame.leverup {
+  background-image: url("../Images/original/start_game_up.png");
+}
+.startgame.levercrackle1 {
+  background-image: url("../Images/original/start_game_sparks1.png");
+}
+.startgame.levercrackle2 {
+  background-image: url("../Images/original/start_game_sparks2.png");
+}
+.startgame.leverdown {
+  background-image: url("../Images/original/start_game_down.png");
+}
 .alert-message {
   border-bottom: 1px solid #b6b6b6;
   padding: 15px;

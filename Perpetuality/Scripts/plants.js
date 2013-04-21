@@ -1,11 +1,11 @@
 ﻿var perpetuality = perpetuality || {};
 
-perpetuality.Plant = perpetuality.Plant || function () { };
+perpetuality.plant = perpetuality.plant || function () { };
 
-perpetuality.Plant.number = 0;
+perpetuality.plant.number = 0;
 
-perpetuality.Plant.placePlant = function (x, y) {
-    var plantId = "plant" + perpetuality.Plant.number++;
+perpetuality.plant.placePlant = function (x, y) {
+    var plantId = "plant" + perpetuality.plant.number++;
     var newPlant = $("<div />", {
         id: plantId,
         "class": "plant",
