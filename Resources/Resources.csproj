@@ -81,7 +81,7 @@
     <EmbeddedResource Include="Home\Login.es.resx" />
     <EmbeddedResource Include="Home\Login.fr.resx" />
     <EmbeddedResource Include="Home\Login.it.resx" />
-    <EmbeddedResource Include="Home\Login.jp.resx" />
+    <EmbeddedResource Include="Home\Login.ja.resx" />
     <EmbeddedResource Include="Home\Login.nl.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -94,7 +94,7 @@
     <EmbeddedResource Include="Home\Register.es.resx" />
     <EmbeddedResource Include="Home\Register.fr.resx" />
     <EmbeddedResource Include="Home\Register.it.resx" />
-    <EmbeddedResource Include="Home\Register.jp.resx" />
+    <EmbeddedResource Include="Home\Register.ja.resx" />
     <EmbeddedResource Include="Home\Register.nl.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Register.nl.Designer.cs</LastGenOutput>
@@ -111,7 +111,7 @@
     <EmbeddedResource Include="Mail\Common.es.resx" />
     <EmbeddedResource Include="Mail\Common.fr.resx" />
     <EmbeddedResource Include="Mail\Common.it.resx" />
-    <EmbeddedResource Include="Mail\Common.jp.resx" />
+    <EmbeddedResource Include="Mail\Common.ja.resx" />
     <EmbeddedResource Include="Mail\Common.nl.resx" />
     <EmbeddedResource Include="Mail\Common.pt-pt.resx" />
     <EmbeddedResource Include="Mail\Common.resx">
@@ -126,7 +126,7 @@
     <EmbeddedResource Include="Mail\EmailConfirmation.it.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mail\EmailConfirmation.jp.resx" />
+    <EmbeddedResource Include="Mail\EmailConfirmation.ja.resx" />
     <EmbeddedResource Include="Mail\EmailConfirmation.nl.resx" />
     <EmbeddedResource Include="Mail\EmailConfirmation.pt-pt.resx">
       <SubType>Designer</SubType>

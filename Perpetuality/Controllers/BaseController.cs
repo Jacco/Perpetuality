@@ -93,6 +93,8 @@ namespace Perpetuality.Controllers
                     return CultureInfo.CreateSpecificCulture("fr-FR");
                 case "it":
                     return CultureInfo.CreateSpecificCulture("it-IT");
+                case "jp":
+                    return CultureInfo.CreateSpecificCulture("ja-JP");
                 default:
                     return CultureInfo.CreateSpecificCulture("en-US");
             }
