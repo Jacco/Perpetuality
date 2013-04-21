@@ -67,7 +67,8 @@ perpetuality.map.prototype.init = function() {
           me.buildHeatMapLayer(data);
         },
         error: function(jqXHR, textStatus, errorThrown) {
-          alert("failed to update heat map data!");
+            // Ignore for now.
+            //          alert("failed to update heat map data!");
         }
       });
     }
