@@ -9,8 +9,8 @@ perpetuality.plant = perpetuality.plant || function (type, basecost, standardsiz
 
 perpetuality.plant.number = 0;
 
-perpetuality.plant.placePlant = function(plant) {
+perpetuality.plant.placePlant = function (plant) {
     $("#" + plant.type + "button").addClass("selected");
-    $("#plantcost").empty().html(plant.basecost);
-    $("#plantsize").empty().html(plant.standardsize);
+    $("#plantcost").empty().html("" + plant.basecost + " €");
+    $("#plantsize").empty().html("" + plant.standardsize + " m²");
 };

@@ -182,7 +182,7 @@ perpetuality.map.prototype.makeItemizedPane = function (name, contentList, extra
         }
         else if (content.content) { // SIGH, I know...
             var div = $("<div>" + content.content + "</div>");
-            div.id = content.contentId;
+            div[0].id = content.contentId;
             contentDiv.appendChild(div[0]);
         }
         contentDiv.appendChild(title);
@@ -303,12 +303,12 @@ $(document).ready(function () {
   var spritePane = map.makeItemizedPane("sprite", [
     {
         title: "Plant cost",
-        content: "0",
+        content: "0 €",
         contentId: "plantcost"
     },
     {
         title: "Plant size",
-        content: "0 m^2",
+        content: "0 m²",
         contentId: "plantsize"
     },
     {
@@ -321,7 +321,7 @@ $(document).ready(function () {
         title: "Solar Field",
         button: "solarfieldbutton",
         itemExtraClass: "map-pane-item-vertical",
-        action: function (e) { perpetuality.plant.placePlant(new perpetuality.plant("solarfieldbutton", 200000, 100, 160)) }
+        action: function (e) { perpetuality.plant.placePlant(new perpetuality.plant("solarfield", 200000, 100, 160)) }
     },
     {
         title: "Solar Plant",
