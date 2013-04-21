@@ -123,7 +123,13 @@
   <data name="MenuLoginText" xml:space="preserve">
     <value>Login</value>
   </data>
+  <data name="MenuLogoutText" xml:space="preserve">
+    <value>Salir</value>
+  </data>
   <data name="MenuNewsText" xml:space="preserve">
     <value>Noticias</value>
+  </data>
+  <data name="MenuRegisterText" xml:space="preserve">
+    <value>Registro</value>
   </data>
 </root>

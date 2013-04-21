@@ -23,14 +23,14 @@
                 <a href="/@language/home/profile">@Request.RequestContext.HttpContext.User.Identity.Name</a>
             </li>
             <li>
-                <a href="/@language/home/logout">Logout</a>
-            </li>
+                <a href="/@language/home/logout">@Resources.Shared._Layout.MenuLogoutText</a>
+            </li>            
         } else {
             <li>
                 <a href="/@language/home/login">@Resources.Shared._Layout.MenuLoginText</a>
             </li>
-            <li>
-                <a href="/@language/home/register">Register</a>
+           <li>
+                <a href="/@language/home/register">@Resources.Shared._Layout.MenuRegisterText</a>
             </li>
         }
         <li>

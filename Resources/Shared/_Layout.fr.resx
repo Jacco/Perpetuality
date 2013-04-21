@@ -121,9 +121,15 @@
     <value>Maison</value>
   </data>
   <data name="MenuLoginText" xml:space="preserve">
-    <value>Login</value>
+    <value>Connexion</value>
+  </data>
+  <data name="MenuLogoutText" xml:space="preserve">
+    <value>Déconnexion</value>
   </data>
   <data name="MenuNewsText" xml:space="preserve">
     <value>Nouvelles</value>
+  </data>
+  <data name="MenuRegisterText" xml:space="preserve">
+    <value>Inscrivez-vous</value>
   </data>
 </root>
