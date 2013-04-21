@@ -33,9 +33,12 @@ perpetuality.map.prototype.init = function() {
   var mapOptions = {
     center: new google.maps.LatLng(37.0625, -95.677068), // Boston
     zoom: 14,
-    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    mapTypeId: google.maps.MapTypeId.SATELLITE,
     zoomControlOptions: {
       style: google.maps.ZoomControlStyle.SMALL
+    },
+    mapTypeControlOptions: {
+        mapTypeIds: [google.maps.MapTypeId.SATELLITE,]
     },
     streetViewControl: false
   };
