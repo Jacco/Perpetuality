@@ -139,7 +139,7 @@
     <EmbeddedResource Include="Shared\_Layout.es.resx" />
     <EmbeddedResource Include="Shared\_Layout.fr.resx" />
     <EmbeddedResource Include="Shared\_Layout.it.resx" />
-    <EmbeddedResource Include="Shared\_Layout.jp.resx" />
+    <EmbeddedResource Include="Shared\_Layout.ja.resx" />
     <EmbeddedResource Include="Shared\_Layout.nl.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>_Layout.nl.Designer.cs</LastGenOutput>
