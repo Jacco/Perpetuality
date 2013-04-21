@@ -178,12 +178,26 @@ $(document).ready(function () {
   }], "map-pane-left");
 
   var nummer = 0;
-  var spritePane = map.makeItemizedPane("sprite", [{
-      title: "Solar Plant",
-      button: "solarbutton",
-      itemExtraClass: "map-pane-item-vertical",
-      action: function (e) { perpetuality.Plant.placePlant(++nummer * 50, nummer * 50) }
-  }], "map-pane-right");
+  var spritePane = map.makeItemizedPane("sprite", [
+    {
+        title: "Solar Panels",
+        button: "solarroofbutton",
+        itemExtraClass: "map-pane-item-vertical",
+        action: function (e) { perpetuality.Plant.placePlant(++nummer * 50, nummer * 50) }
+    },
+    {
+        title: "Solar Field",
+        button: "solarfieldbutton",
+        itemExtraClass: "map-pane-item-vertical",
+        action: function (e) { perpetuality.Plant.placePlant(++nummer * 50, nummer * 50) }
+    },
+    {
+        title: "Solar Plant",
+        button: "solartowerbutton",
+        itemExtraClass: "map-pane-item-vertical",
+        action: function (e) { perpetuality.Plant.placePlant(++nummer * 50, nummer * 50) }
+    }
+  ], "map-pane-right");
 
     /**
      * Layout.

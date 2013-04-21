@@ -211,7 +211,9 @@
     <Content Include="Content\Images\original\Background_home.jpg" />
     <Content Include="Content\Images\original\Buttons_active.png" />
     <Content Include="Content\Images\original\Buttons_inactive.png" />
+    <Content Include="Content\Images\original\icoon_dakpaneel.png" />
     <Content Include="Content\Images\original\icoon_paneelpark.png" />
+    <Content Include="Content\Images\original\icoon_zoutcollector.png" />
     <Content Include="Content\Images\original\logo.png" />
     <Content Include="Content\Images\original\logo2.png" />
     <Content Include="Content\Images\original\start_game_down.png" />

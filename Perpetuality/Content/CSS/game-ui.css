@@ -1,15 +1,22 @@
 .plantbutton {
   height: 80px;
   width: 80px;
-  border-width: 4px;
-  border-color: black;
+  border: solid 4px black;
   border-radius: 10px;
-  background-size: 100%;
+  background-size: 130%;
   background-position: center center;
 }
-#solarbutton {
+#solarfieldbutton {
   background-image: url("../Images/original/icoon_paneelpark.png");
   background-color: #c0bb86;
+}
+#solartowerbutton {
+  background-image: url("../Images/original/icoon_zoutcollector.png");
+  background-color: #a87a61;
+}
+#solarroofbutton {
+  background-image: url("../Images/original/icoon_dakpaneel.png");
+  background-color: #00a600;
 }
 .selected {
   border-color: green;
