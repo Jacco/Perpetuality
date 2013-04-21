@@ -1,0 +1,23 @@
+.plantbutton {
+  height: 80px;
+  width: 80px;
+  border-width: 4px;
+  border-color: black;
+  border-radius: 10px;
+  background-size: 100%;
+  background-position: center center;
+}
+#solarbutton {
+  background-image: url("../Images/original/icoon_paneelpark.png");
+  background-color: #c0bb86;
+}
+.selected {
+  border-color: green;
+}
+.plant {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: green;
+  position: absolute;
+}

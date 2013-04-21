@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net.Mail;
 using System.Security.Cryptography;
@@ -49,7 +51,7 @@ namespace Perpetuality.Data
             {
                 FindUser(userName, "empty", ref id, ref confirmed);
             }
-            catch
+            catch(Exception e)
             {
                 throw new ApplicationException("61998 Get user ID by email failed.");
             }
@@ -177,6 +179,11 @@ namespace Perpetuality.Data
                 cmd.AddInputParameter("@Name", name);
                 return (string)cmd.ExecuteScalar();
             }
+        }
+
+        public DbConnection GetConnection()
+        {
+            return new SqlConnection(Connection.ConnectionString);
         }
 
         public GetUserProfileResult GetUserProfile(string token, string ipAddress)

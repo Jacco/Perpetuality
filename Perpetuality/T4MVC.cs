@@ -29,6 +29,7 @@ public static class MVC
     public static Perpetuality.Controllers.FAQController FAQ = new Perpetuality.Controllers.T4MVC_FAQController();
     public static Perpetuality.Controllers.GameController Game = new Perpetuality.Controllers.T4MVC_GameController();
     public static Perpetuality.Controllers.HomeController Home = new Perpetuality.Controllers.T4MVC_HomeController();
+    public static Perpetuality.Controllers.MailController Mail = new Perpetuality.Controllers.T4MVC_MailController();
     public static Perpetuality.Controllers.NewsController News = new Perpetuality.Controllers.T4MVC_NewsController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
@@ -99,6 +100,10 @@ namespace Links
                       
         public static readonly string modernizr_2_5_3_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/modernizr-2.5.3.min.js") ? Url("modernizr-2.5.3.min.js") : Url("modernizr-2.5.3.js");
                       
+        public static readonly string perpetuality_map_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/perpetuality_map.min.js") ? Url("perpetuality_map.min.js") : Url("perpetuality_map.js");
+                      
+        public static readonly string plants_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/plants.min.js") ? Url("plants.min.js") : Url("plants.js");
+                      
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -111,6 +116,7 @@ namespace Links
             private const string URLPATH = "~/Content/CSS";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+            public static readonly string game_ui_less = Url("game-ui.less");
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
             public static class less {
                 private const string URLPATH = "~/Content/CSS/less";
@@ -131,11 +137,16 @@ namespace Links
                 public static readonly string variables_less = Url("variables.less");
             }
         
+            public static readonly string perpetuality_map_less = Url("perpetuality_map.less");
             public static readonly string site_less = Url("site.less");
             public static readonly string T4CSS_tt = Url("T4CSS.tt");
+            public static readonly string game_ui_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/game-ui.min.css") ? Url("game-ui.min.css") : Url("game-ui.css");
+                 
+            public static readonly string perpetuality_map_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/perpetuality_map.min.css") ? Url("perpetuality_map.min.css") : Url("perpetuality_map.css");
+                 
             public static readonly string site_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/site.min.css") ? Url("site.min.css") : Url("site.css");
                  
-            public static readonly string T4CSS_log = Url("T4CSS.log");
+            public static readonly string T4CSS1_log = Url("T4CSS1.log");
         }
     
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -143,8 +154,23 @@ namespace Links
             private const string URLPATH = "~/Content/Images";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
-            public static readonly string down_arrow_select_jpg = Url("down_arrow_select.jpg");
             public static readonly string main_background_jpg = Url("main-background.jpg");
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class original {
+                private const string URLPATH = "~/Content/Images/original";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                public static readonly string Background_home_jpg = Url("Background_home.jpg");
+                public static readonly string Buttons_active_png = Url("Buttons_active.png");
+                public static readonly string Buttons_inactive_png = Url("Buttons_inactive.png");
+                public static readonly string icoon_paneelpark_png = Url("icoon_paneelpark.png");
+                public static readonly string logo_png = Url("logo.png");
+                public static readonly string logo2_png = Url("logo2.png");
+                public static readonly string start_game_down_png = Url("start_game_down.png");
+                public static readonly string start_game_up_png = Url("start_game_up.png");
+                public static readonly string Text_background_png = Url("Text-background.png");
+            }
+        
         }
     
         public static readonly string Site_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Site.min.css") ? Url("Site.min.css") : Url("Site.css");

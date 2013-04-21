@@ -15,6 +15,15 @@ TestResults
 timeStamp.dat
 sprite0.png
 
+## Edit by Randall Wessel:
+_UpgradeReport_Files/*.*
+.gitignore
+*gitignore
+Database_*.sqlproj
+UpgradeLog.htm
+UpgradeLog.XML
+Backup/Perpetuality.sln
+
 # Build results
 Config/
 [Dd]ebug/
