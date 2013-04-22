@@ -22,21 +22,24 @@ perpetuality.plant.prototype.build = function (map, event) {
 };
 
 perpetuality.plant.placePlant = function (map, plant) {
+    function deselectAll() {
+        $(".plantbutton").removeClass("selected");
+        $("#plantcost").empty().html("None");
+        $("#plantsize").empty().html("None");
+    }
+
     var button = $("#" + plant.type + "button");
     var buttonSelected = button.hasClass("selected");
-    $(".plantbutton").removeClass("selected");
-    if (buttonSelected) {
-        $("#plantcost").empty().html("None Selected");
-        $("#plantsize").empty().html("None Selected");
-    }
-    else {
+    deselectAll();
+    if (!buttonSelected) {
         button.addClass("selected");
-        $("#plantcost").empty().html("" + plant.basecost + " €");
-        $("#plantsize").empty().html("" + plant.standardsize + " m²");
+        $("#plantcost").empty().html(plant.basecost + " €");
+        $("#plantsize").empty().html(plant.standardsize + " m²");
     }
     google.maps.event.addListener(map.root, 'click', function (event) {
         if (button.hasClass("selected")) {
             plant.build(map, event);
+            deselectAll();
         }
     });
 };
@@ -46,7 +49,7 @@ perpetuality.plant.CustomMarker = function (gmap, url, house) {
     this.house_ = house;
     this.position_ = new google.maps.LatLng(house.latitude, house.longitude),
 
-    this.div_ = $('<div style="position: absolute; z-index: 1;"><img style="cursor: pointer; position: relative; left: -50%; top: -7px; font-size: 10px;" src="' + url + '"/></div>');
+    this.div_ = $('<div style="position: absolute; z-index: 1;"><img style="cursor: pointer; position: relative; left: -50%; top: -7px;" src="' + url + '"/></div>');
     var that = this;
     google.maps.event.addDomListener($('img', this.div_).get(0), 'click', function () {
         google.maps.event.trigger(that, 'click');
