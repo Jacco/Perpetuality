@@ -263,46 +263,46 @@ $(document).ready(function () {
      * Panes.
      */
   var overlayControlPane = map.makeItemizedPane("overlay", [{
-      "title": "Geotherm",
+      title: "Geothermal",
       action: function() {
         map.heatMap.setMap(map.heatMap.getMap() ? null : map.root);
       },
-      "image": "/Content/Images/button-geothermal-overlay.png",
-      "itemExtraClass": "map-pane-item-horizontal"
+      image: "/Content/Images/button-geothermal-overlay.png",
+      itemExtraClass: "map-pane-item-horizontal"
   }, {
-      "title": "Solar",
+      title: "Solar",
       action: function () {
           map.heatMap.setMap(map.heatMap.getMap() ? null : map.root);
       },
-      "image": "/Content/Images/button-solar-overlay.png",
-      "itemExtraClass": "map-pane-item-horizontal"
+      image: "/Content/Images/button-solar-overlay.png",
+      itemExtraClass: "map-pane-item-horizontal"
   }, {
-      "title": "Water",
+      title: "Water",
       action: function () {
           map.heatMap.setMap(map.heatMap.getMap() ? null : map.root);
       },
-      "image": "/Content/Images/button-water-overlay.png",
-      "itemExtraClass": "map-pane-item-horizontal"
+      image: "/Content/Images/button-water-overlay.png",
+      itemExtraClass: "map-pane-item-horizontal"
   }, {
-      "title": "Wind",
+      title: "Wind",
       action: function () {
           map.heatMap.setMap(map.heatMap.getMap() ? null : map.root);
       },
-      "image": "/Content/Images/button-wind-overlay.png",
-      "itemExtraClass": "map-pane-item-horizontal"
+      image: "/Content/Images/button-wind-overlay.png",
+      itemExtraClass: "map-pane-item-horizontal"
   }], "map-pane-bottom");
 
   var statusPane = map.makeItemizedPane("status", [
     {
-        "title": getToday(),
-        "image": "/Content/Images/original/logo2.png",
-        "itemExtraClass": "map-pane-item-horizontal"
+        title: getToday(),
+        image: "/Content/Images/original/logo2.png",
+        itemExtraClass: "map-pane-item-horizontal"
     },
     {
-        "title": "KwH",
-        "image": "/Content/Images/orange.png",
-        "imageSize": { "width": 16 },
-        "itemExtraClass": "map-pane-item-horizontal"
+        title: "KwH",
+        image: "/Content/Images/orange.png",
+        imageSize: { "width": 16 },
+        itemExtraClass: "map-pane-item-horizontal"
     },
     {
         title: "Credits",
@@ -313,20 +313,20 @@ $(document).ready(function () {
   ], "map-pane-top");
 
   var detailPane = map.makeTextPane("detail", [{
-      "title": "Detail Title",
-      "content": "Detail Contents."
+      title: "Detail Title",
+      content: "Detail Contents."
   }], "map-pane-left");
 
   var nummer = 0;
   var spritePane = map.makeItemizedPane("sprite", [
     {
         title: "Plant cost",
-        content: "None Selected",
+        content: "None",
         contentId: "plantcost"
     },
     {
         title: "Plant size",
-        content: "None Selected",
+        content: "None",
         contentId: "plantsize"
     },
     {
@@ -359,31 +359,31 @@ $(document).ready(function () {
      * Layout.
      */
   var config = {
-      "panes": [
+      panes: [
         {
-            "name": "overlay",
-            "position": google.maps.ControlPosition.BOTTOM_CENTER,
-            "pane": overlayControlPane
+            name: "overlay",
+            position: google.maps.ControlPosition.BOTTOM_CENTER,
+            pane: overlayControlPane
         },
         {
-            "name": "status",
-            "position": google.maps.ControlPosition.TOP_LEFT,
-            "pane": statusPane
+            name: "status",
+            position: google.maps.ControlPosition.TOP_LEFT,
+            pane: statusPane
         },
         {
-            "name": "detail",
-            "position": google.maps.ControlPosition.LEFT_CENTER,
-            "pane": detailPane
+            name: "detail",
+            position: google.maps.ControlPosition.LEFT_CENTER,
+            pane: detailPane
         },
         {
-            "name": "sprite",
-            "position": google.maps.ControlPosition.RIGHT_CENTER,
-            "pane": spritePane
+            name: "sprite",
+            position: google.maps.ControlPosition.RIGHT_CENTER,
+            pane: spritePane
         }
       ]
   };
-  $.each(config["panes"], function (key, value) {
-      map.registerPane(value["name"], value["position"], value["pane"]);
+  $.each(config.panes, function (key, pane) {
+      map.registerPane(pane.name, pane.position, pane.pane);
   });
 
 });

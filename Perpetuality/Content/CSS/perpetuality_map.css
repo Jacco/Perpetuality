@@ -11,7 +11,6 @@ body {
 }
 .map-section-title {
   font-size: 1.4em;
-  font-family: verdana,bold;
   text-align: center;
   color: #eeeeee;
 }
@@ -38,6 +37,7 @@ body {
   padding: 20px;
   background: rgba(0, 0, 0, 0.4);
   border: solid 1px;
+  font-family: verdana;
 }
 .map-pane-top {
   height: 95px;
