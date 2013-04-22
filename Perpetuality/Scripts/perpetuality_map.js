@@ -30,17 +30,19 @@ perpetuality.map.prototype.buildMap = function(options) {
 };
 
 perpetuality.map.prototype.init = function() {
-  var mapOptions = {
-    center: new google.maps.LatLng(37.0625, -95.677068), // Boston
-    zoom: 14,
-    mapTypeId: google.maps.MapTypeId.SATELLITE,
-    zoomControlOptions: {
-      style: google.maps.ZoomControlStyle.SMALL
-    },
-    mapTypeControlOptions: {
-        mapTypeIds: [google.maps.MapTypeId.SATELLITE,]
-    },
-    streetViewControl: false
+    var mapOptions = {
+        center: new google.maps.LatLng(37.0625, -95.677068), // Boston
+        zoom: 14,
+        mapTypeId: google.maps.MapTypeId.SATELLITE,
+        zoomControlOptions: {
+            style: google.maps.ZoomControlStyle.SMALL
+        },
+        mapTypeControl: false,
+        streetViewControl: false,
+        overviewMapControl: true,
+        overviewMapControlOptions: {
+            opened: true
+        }
   };
   var map = this.buildMap(mapOptions);
 
@@ -337,13 +339,13 @@ $(document).ready(function () {
         title: "Solar Field",
         button: "solarfieldbutton",
         itemExtraClass: "map-pane-item-vertical",
-        action: function (e) { perpetuality.plant.placePlant(map, new perpetuality.plant("solarfield", 200000, 100, 160)) }
+        action: function (e) { perpetuality.plant.placePlant(map, new perpetuality.plant("solarfield", 200000, 2500, 160)) }
     },
     {
         title: "Solar Plant",
         button: "solartowerbutton",
         itemExtraClass: "map-pane-item-vertical",
-        action: function (e) { perpetuality.plant.placePlant(map, new perpetuality.plant("solartower", 45000000, 4, 20000)) }
+        action: function (e) { perpetuality.plant.placePlant(map, new perpetuality.plant("solartower", 45000000, 785398, 2000)) }
     },
     {
         title: "Persist Plant",
