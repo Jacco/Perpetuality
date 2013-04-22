@@ -184,8 +184,8 @@ perpetuality.map.prototype.makeItemizedPane = function (name, contentList, extra
             contentDiv.appendChild(button);
         }
         else if (content.content) { // SIGH, I know...
-            var div = $("<div>" + content.content + "</div>");
-            div[0].id = content.contentId;
+            var div = $("<div />", { id: content.contentId });
+            div.html(content.content);
             contentDiv.appendChild(div[0]);
         }
         contentDiv.appendChild(title);
@@ -248,7 +248,7 @@ $(document).ready(function () {
 
   var map = new perpetuality.map;
   map.init();
-  map.dataServer = "http://94.100.114.61/"
+  map.dataServer = "http://api.perpetuality.org/"
   /**
    * Use current location if available.
    */
@@ -327,19 +327,19 @@ $(document).ready(function () {
   var spritePane = map.makeItemizedPane("sprite", [
     {
         title: "Plant cost",
-        content: "0 €",
+        content: "None Selected",
         contentId: "plantcost"
     },
     {
         title: "Plant size",
-        content: "0 m²",
+        content: "None Selected",
         contentId: "plantsize"
     },
     {
         title: "Solar Panels",
         button: "solarroofbutton",
         itemExtraClass: "map-pane-item-vertical",
-        action: function (e) { }
+        action: function (e) { perpetuality.plant.placePlant(map, new perpetuality.plant("solarroof", 3000, 4, 2)) }
     },
     {
         title: "Solar Field",
@@ -351,7 +351,7 @@ $(document).ready(function () {
         title: "Solar Plant",
         button: "solartowerbutton",
         itemExtraClass: "map-pane-item-vertical",
-        action: function (e) { }
+        action: function (e) { perpetuality.plant.placePlant(map, new perpetuality.plant("solartower", 45000000, 4, 20000)) }
     },
     {
         title: "Persist Plant",

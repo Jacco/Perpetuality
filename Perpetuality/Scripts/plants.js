@@ -7,13 +7,19 @@ perpetuality.plant = perpetuality.plant || function (type, basecost, standardsiz
     this.energypermeter = energypermeter;
 };
 
-perpetuality.plant.prototype.build = function (map, event) {
-    this.marker = new perpetuality.plant.CustomMarker(map.root,
-        "/Content/Images/original/icoon_paneelpark.png",
-        { latitude: event.latLng.lat(), longitude: event.latLng.lng() });
+perpetuality.plant.number = 0;
+
+perpetuality.plant.images = {
+    solarroof: "/Content/Images/original/icoon_dakpaneel.png",
+    solarfield: "/Content/Images/original/icoon_paneelpark.png",
+    solartower: "/Content/Images/original/icoon_zoutcollector.png"
 };
 
-perpetuality.plant.number = 0;
+perpetuality.plant.prototype.build = function (map, event) {
+    this.marker = new perpetuality.plant.CustomMarker(map.root,
+        perpetuality.plant.images[this.type],
+        { latitude: event.latLng.lat(), longitude: event.latLng.lng() });
+};
 
 perpetuality.plant.placePlant = function (map, plant) {
     var buttonId = "#" + plant.type + "button";
@@ -23,8 +29,8 @@ perpetuality.plant.placePlant = function (map, plant) {
         $("#plantsize").empty().html("" + plant.standardsize + " m²");
     }
     else {
-        $("#plantcost").empty();
-        $("#plantsize").empty();
+        $("#plantcost").empty().html("None Selected");
+        $("#plantsize").empty().html("None Selected");
     }
     google.maps.event.addListener(map.root, 'click', function (event) {
         if ($(buttonId).hasClass("selected")) {
