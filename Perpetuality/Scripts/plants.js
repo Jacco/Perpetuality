@@ -22,18 +22,20 @@ perpetuality.plant.prototype.build = function (map, event) {
 };
 
 perpetuality.plant.placePlant = function (map, plant) {
-    var buttonId = "#" + plant.type + "button";
-    $(buttonId).toggleClass("selected");
-    if ($(buttonId).hasClass("selected")) {
-        $("#plantcost").empty().html("" + plant.basecost + " €");
-        $("#plantsize").empty().html("" + plant.standardsize + " m²");
-    }
-    else {
+    var button = $("#" + plant.type + "button");
+    var buttonSelected = button.hasClass("selected");
+    $(".plantbutton").removeClass("selected");
+    if (buttonSelected) {
         $("#plantcost").empty().html("None Selected");
         $("#plantsize").empty().html("None Selected");
     }
+    else {
+        button.addClass("selected");
+        $("#plantcost").empty().html("" + plant.basecost + " €");
+        $("#plantsize").empty().html("" + plant.standardsize + " m²");
+    }
     google.maps.event.addListener(map.root, 'click', function (event) {
-        if ($(buttonId).hasClass("selected")) {
+        if (button.hasClass("selected")) {
             plant.build(map, event);
         }
     });

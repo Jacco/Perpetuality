@@ -138,60 +138,52 @@ perpetuality.map.prototype.deRegisterPane = function(name) {
 
 perpetuality.map.prototype.makeItemizedPane = function (name, contentList, extraClass) {
     function createImage(content) {
-        var image = document.createElement("img");
-        image.src = content.image;
-        var imageClass = content.imageClass;
+        var image = $("<img />", { src: content.image });
         var imageSize = content.imageSize;
         if (imageSize) {
-            if (imageSize.width) { image.width = imageSize.width }
-            if (imageSize.height) { image.height = imageSize.height }
+            if (imageSize.width) { image.width(imageSize.width) }
+            if (imageSize.height) { image.height(imageSize.height) }
         }
-        $(image).click(content.action);
+        image.click(content.action);
 
         return image;
     };
 
-    var pane = document.createElement("div");
-    pane.id = name + "-pane";
-    $(pane).addClass("map-pane");
-    if (extraClass != undefined) {
+    var pane = $("<div />", { id: name + "-pane", "class": "map-pane" });
+    if (extraClass) {
         $(pane).addClass(extraClass);
     }
     for (var i = 0; i < contentList.length; i++) {
         var content = contentList[i];
-        var contentDiv = document.createElement("div");
-        $(contentDiv).addClass("map-pane-item");
-        var itemExtraClass = content.itemExtraClass;
-        if (itemExtraClass) {
-            $(contentDiv).addClass(itemExtraClass);
+        var contentDiv = $("<div />", { "class": "map-pane-item" });
+        if ("itemExtraClass" in content) {
+            $(contentDiv).addClass(content.itemExtraClass);
         }
+
         var contentPane = new perpetuality.map.ItemizedPaneItem();
         contentPane.title = content.title;
         contentPane.action = content.action;
-        var title = document.createElement("div");
-        title.innerHTML = content.title;
+
         if (content.image) {
             var image = createImage(content);
             contentPane.image = image;
-            contentDiv.appendChild(image);
+            contentDiv.append(image);
         }
         else if (content.button) {
-            var button = document.createElement("div");
-            button.id = content.button;
-            var jButton = $(button);
-            jButton.click(content.action);
-            jButton.addClass("plantbutton");
-            contentDiv.appendChild(button);
+            var button = $("<div />", { id: content.button, "class": "plantbutton" });
+            button.click(content.action);
+            contentDiv.append(button);
         }
-        else if (content.content) { // SIGH, I know...
+        else if (content.content) {
             var div = $("<div />", { id: content.contentId });
-            div.html(content.content);
-            contentDiv.appendChild(div[0]);
+            div.append(content.content);
+            contentDiv.append(div);
         }
-        contentDiv.appendChild(title);
-        pane.appendChild(contentDiv);
+
+        contentDiv.append("<div>" + content.title + "</div>");
+        pane.append(contentDiv);
     }
-  return pane;
+  return pane[0];
 };
 
 perpetuality.map.prototype.makeTextPane = function(name, contentList, extraClass) {
