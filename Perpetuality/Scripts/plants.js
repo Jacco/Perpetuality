@@ -32,7 +32,11 @@ perpetuality.plant.types = {
  * Returns a function that sets a plant type in a perpetuality.state.StateModel object.
  */
 perpetuality.plant.clickable = function (type) {
-    return function(data) { data.selectedPlantType(data.plantTypes[type]); }
+    return function (data) {
+        var plantType = data.plantTypes[type];
+        if (data.selectedPlantType() == plantType) data.selectedPlantType(data.plantTypes.none)
+        else data.selectedPlantType(plantType);
+    }
 }
 
 
