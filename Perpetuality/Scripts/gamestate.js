@@ -5,12 +5,27 @@ perpetuality.state = perpetuality.state || {};
 function PlantModel() {
 }
 
+// Advances the time in the game in state
+perpetuality.state.advanceTime = function (state) {
+    var tm = state.time().getTime();
+    tm = tm + 365000;
+    var dt = new Date();
+    dt.setTime(tm);
+    state.time(dt);
+
+    state.credits(state.credits() + 365 * state.creditProduction());
+}
+
 /*
  * Game state data model
+ * 
+ * the map variable is a perpetuality.map
  */
-perpetuality.state.StateModel = function () {
+perpetuality.state.StateModel = function (map) {
     var self = this;
+
     this.plants = {};
+    this.map = map;
 
     this.initialPlayerState = JSON.parse($('#playerState').attr('data'));
 
@@ -52,3 +67,43 @@ perpetuality.state.StateModel.prototype.addPlant = function (event) {
         // maybe give some info
     }
 };
+
+
+/**
+ * Timer
+ */
+perpetuality.state.Timer = function (settings) {
+    this.settings = settings;
+    this.timer = null;
+
+    this.fps = settings.fps || 30;
+    this.interval = Math.floor(1000 / this.fps);
+    this.timeInit = null;
+}
+
+perpetuality.state.Timer.prototype =
+{
+    run: function () {
+        var self = this;
+
+        this.settings.run();
+        this.timeInit += this.interval;
+
+        this.timer = setTimeout(
+            function () { self.run() },
+            this.timeInit - (new Date).getTime()
+        );
+    },
+
+    start: function () {
+        if (this.timer == null) {
+            this.timeInit = (new Date).getTime();
+            this.run();
+        }
+    },
+
+    stop: function () {
+        clearTimeout(this.timer);
+        this.timer = null;
+    }
+}

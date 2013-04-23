@@ -124,48 +124,6 @@ perpetuality.map.prototype.buildHeatMapLayer = function (data) {
     me.heatMap = heatmap;
 };
 
-/**
- * Timer
- */
-
-function Timer(settings) {
-    this.settings = settings;
-    this.timer = null;
-
-    this.fps = settings.fps || 30;
-    this.interval = Math.floor(1000 / this.fps);
-    this.timeInit = null;
-
-    return this;
-}
-
-Timer.prototype =
-{
-    run: function () {
-        var $this = this;
-
-        this.settings.run();
-        this.timeInit += this.interval;
-
-        this.timer = setTimeout(
-            function () { $this.run() },
-            this.timeInit - (new Date).getTime()
-        );
-    },
-
-    start: function () {
-        if (this.timer == null) {
-            this.timeInit = (new Date).getTime();
-            this.run();
-        }
-    },
-
-    stop: function () {
-        clearTimeout(this.timer);
-        this.timer = null;
-    }
-}
-
 
 /**
  * Application's map.
@@ -196,29 +154,17 @@ $(document).ready(function () {
     // TODO Need to generate the layers?
   }
 
-  var timer = new Timer({
+  var state = new perpetuality.state.StateModel(map);
+  var timer = new perpetuality.state.Timer({
       fps: 1,
-      run: function () {
-          var tm = perpetuality.state.time().getTime();
-          tm = tm + 365000;
-          var dt = new Date();
-          dt.setTime(tm);
-          perpetuality.state.time(dt);
-
-          perpetuality.state.credits(perpetuality.state.credits() + 365 * perpetuality.state.creditProduction());
-      }
+      run: function () { perpetuality.state.advanceTime(state) }
   });
 
-  var nummer = 0;
-
-  perpetuality.state = new perpetuality.state.StateModel();
-  perpetuality.state.map = map;
-  ko.applyBindings(perpetuality.state);
+  ko.applyBindings(state);
 
   timer.start();
 
   google.maps.event.addListener(map.root, 'click', function (event) {
-      perpetuality.state.addPlant(event);
+      state.addPlant(event);
   });
-
 });
