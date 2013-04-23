@@ -79,15 +79,15 @@
               <div>Plant size</div>
           </div>
           <div class="map-pane-item map-pane-item-vertical">
-              <div id="solarroofbutton" class="plantbutton" data-bind="click: function(data) { data.selectedPlantType(data.plantTypes.solarroof); }, css: { selected: selectedPlantType() == plantTypes.solarroof }"></div>
+              <div id="solarroofbutton" class="plantbutton" data-bind="click: perpetuality.plant.clickable('solarroof'), css: { selected: selectedPlantType() == plantTypes.solarroof }"></div>
               <div>Solar Panels</div>
           </div>
           <div class="map-pane-item map-pane-item-vertical">
-              <div id="solarfieldbutton" class="plantbutton" data-bind="click: function(data) { data.selectedPlantType(data.plantTypes.solarfield); }, css: { selected: selectedPlantType() == plantTypes.solarfield }"></div>
+              <div id="solarfieldbutton" class="plantbutton" data-bind="click: perpetuality.plant.clickable('solarfield'), css: { selected: selectedPlantType() == plantTypes.solarfield }"></div>
               <div>Solar Field</div>
           </div>
           <div class="map-pane-item map-pane-item-vertical">
-              <div id="solartowerbutton" class="plantbutton" data-bind="click: function(data) { data.selectedPlantType(data.plantTypes.solartower); }, css: { selected: selectedPlantType() == plantTypes.solartower }"></div>
+              <div id="solartowerbutton" class="plantbutton" data-bind="click: perpetuality.plant.clickable('solartower'), css: { selected: selectedPlantType() == plantTypes.solartower }"></div>
               <div>Solar Plant</div>
           </div>
           <div class="map-pane-item map-pane-item-vertical">

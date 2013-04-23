@@ -5,6 +5,9 @@ perpetuality.state = perpetuality.state || {};
 function PlantModel() {
 }
 
+/*
+ * Game state data model
+ */
 perpetuality.state.StateModel = function () {
     var self = this;
     this.plants = {};

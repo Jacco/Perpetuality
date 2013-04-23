@@ -28,6 +28,19 @@ perpetuality.plant.types = {
     }
 };
 
+/**
+ * Returns a function that sets a plant type in a perpetuality.state.StateModel object.
+ */
+perpetuality.plant.clickable = function (type) {
+    return function(data) { data.selectedPlantType(data.plantTypes[type]); }
+}
+
+
+/**
+ * perpetuality.plant.CustomMarker
+ *
+ * google.maps.OverlayView that also places a div over itself that can be easily used in other code.
+ */
 perpetuality.plant.CustomMarker = function (gmap, url, house) {
     this.gmap_ = gmap;
     this.house_ = house;
