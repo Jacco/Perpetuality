@@ -211,7 +211,7 @@ $(document).ready(function () {
 
   var nummer = 0;
 
-  perpetuality.state = new StateModel();
+  perpetuality.state = new perpetuality.state.StateModel();
   perpetuality.state.map = map;
   ko.applyBindings(perpetuality.state);
 
