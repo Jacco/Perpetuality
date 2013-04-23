@@ -89,6 +89,7 @@ namespace Perpetuality.Controllers
             public readonly string Logout = "Logout";
             public readonly string ResetPassword = "ResetPassword";
             public readonly string Register = "Register";
+            public readonly string Profile = "Profile";
             public readonly string ExternalLogin = "ExternalLogin";
             public readonly string ExternalLoginCallback = "ExternalLoginCallback";
         }
@@ -101,6 +102,7 @@ namespace Perpetuality.Controllers
             public const string Logout = "Logout";
             public const string ResetPassword = "ResetPassword";
             public const string Register = "Register";
+            public const string Profile = "Profile";
             public const string ExternalLogin = "ExternalLogin";
             public const string ExternalLoginCallback = "ExternalLoginCallback";
         }
@@ -141,6 +143,14 @@ namespace Perpetuality.Controllers
         {
             public readonly string emailAddress = "emailAddress";
         }
+        static readonly ActionParamsClass_Profile s_params_Profile = new ActionParamsClass_Profile();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Profile ProfileParams { get { return s_params_Profile; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Profile
+        {
+            public readonly string model = "model";
+        }
         static readonly ActionParamsClass_ExternalLogin s_params_ExternalLogin = new ActionParamsClass_ExternalLogin();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ActionParamsClass_ExternalLogin ExternalLoginParams { get { return s_params_ExternalLogin; } }
@@ -172,6 +182,7 @@ namespace Perpetuality.Controllers
                 public readonly string ChangePassword = "ChangePassword";
                 public readonly string Index = "Index";
                 public readonly string Login = "Login";
+                public readonly string Profile = "Profile";
                 public readonly string Register = "Register";
                 public readonly string ResetPassword = "ResetPassword";
             }
@@ -179,6 +190,7 @@ namespace Perpetuality.Controllers
             public readonly string ChangePassword = "~/Views/Home/ChangePassword.cshtml";
             public readonly string Index = "~/Views/Home/Index.cshtml";
             public readonly string Login = "~/Views/Home/Login.cshtml";
+            public readonly string Profile = "~/Views/Home/Profile.cshtml";
             public readonly string Register = "~/Views/Home/Register.cshtml";
             public readonly string ResetPassword = "~/Views/Home/ResetPassword.cshtml";
             static readonly _SharedClass s_Shared = new _SharedClass();
@@ -279,6 +291,25 @@ namespace Perpetuality.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Register);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "emailAddress", emailAddress);
             RegisterOverride(callInfo, emailAddress);
+            return callInfo;
+        }
+
+        partial void ProfileOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        public override System.Web.Mvc.ActionResult Profile()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Profile);
+            ProfileOverride(callInfo);
+            return callInfo;
+        }
+
+        partial void ProfileOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, Perpetuality.Models.Profile model);
+
+        public override System.Web.Mvc.ActionResult Profile(Perpetuality.Models.Profile model)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Profile);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+            ProfileOverride(callInfo, model);
             return callInfo;
         }
 

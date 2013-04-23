@@ -6,6 +6,7 @@
     [binPassword]             BINARY (16)      NULL,
     [datPasswordChanged]      DATETIME         NULL,
     [guidUserReference]       UNIQUEIDENTIFIER CONSTRAINT [DF_tblPlayer_guidUserReference] DEFAULT (newid()) NOT NULL,
+    [strLanguage] CHAR(2) NOT NULL DEFAULT 'en', 
     CONSTRAINT [PK_tblPlayer] PRIMARY KEY CLUSTERED ([autID] ASC)
 );
 

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Perpetuality" Class="DatabaseDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=172.16.199.51;Initial Catalog=Perpetuality;Persist Security Info=True;User ID=Casper" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="PerpetualityConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=172.16.199.58\SQL2008R2STD;Initial Catalog=Perpetuality;Persist Security Info=True;User ID=Casper" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="PerpetualityConnectionString" Provider="System.Data.SqlClient" />
   <Function Name="dbo.FindUser" Method="FindUser" AccessModifier="Private">
     <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(256)" />
     <Parameter Name="Password" Parameter="password" Type="System.String" DbType="NVarChar(256)" />
@@ -26,16 +26,6 @@
     <Parameter Name="Hash" Parameter="hash" Type="System.String" DbType="VarChar(32)" />
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.GetUserProfile" Method="_GetUserProfile">
-    <Parameter Name="Session" Parameter="session" Type="System.Guid" DbType="UniqueIdentifier" />
-    <Parameter Name="IPAddress" Parameter="iPAddress" Type="System.String" DbType="VarChar(22)" />
-    <ElementType Name="GetUserProfileResult">
-      <Column Name="autID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
-      <Column Name="datCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="strEmailAddress" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
-      <Column Name="strName" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.EndSession" Method="EndSession">
     <Parameter Name="Session" Parameter="session" Type="System.Guid" DbType="UniqueIdentifier" />
     <Parameter Name="IPAddress" Parameter="iPAddress" Type="System.String" DbType="VarChar(22)" />
@@ -51,5 +41,23 @@
     <Parameter Name="UserID" Parameter="userID" Type="System.Int64" DbType="BigInt" />
     <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(256)" Direction="InOut" />
     <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.UpdateUserProfile" Method="_UpdateUserProfile">
+    <Parameter Name="Session" Parameter="session" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="IPAddress" Parameter="iPAddress" Type="System.String" DbType="VarChar(22)" />
+    <Parameter Name="Name" Parameter="name" Type="System.String" DbType="NVarChar(256)" />
+    <Parameter Name="Language" Parameter="language" Type="System.String" DbType="Char(2)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetUserProfile" Method="_GetUserProfile">
+    <Parameter Name="Session" Parameter="session" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="IPAddress" Parameter="iPAddress" Type="System.String" DbType="VarChar(22)" />
+    <ElementType Name="GetUserProfileResult">
+      <Column Name="autID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="datCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="strLanguage" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="strEmailAddress" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="strName" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+    </ElementType>
   </Function>
 </Database>

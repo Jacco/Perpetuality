@@ -1,0 +1,64 @@
+﻿@using Perpetuality.Data;
+@model Perpetuality.Models.Profile
+@{
+    Layout = MVC.Shared.Views._LayoutStrip;
+    
+    ViewBag.Title = Resources.Home.Profile.PageTitle;
+
+    string language = (string)ViewContext.RouteData.Values["language"];
+    
+    var validationMessages = new { 
+        //emailAddress = new { 
+        //    required = Resources.Home.Login.ValidationEmailAdressRequired
+        //}, 
+        //password = new { 
+        //    required = Resources.Home.Login.ValidationPasswordRequired
+        //} 
+    };
+}
+<div class="main-container">
+<div id="validationMessages" style="display: none" data="@Newtonsoft.Json.JsonConvert.SerializeObject(validationMessages)"></div>
+<form id="profile-Form" method="post">
+    <div class="form-middle">
+        <div class="field-row">
+            <div class="field-label">@Resources.Home.Profile.NameLabelText</div>
+            <div class="field-wrapper">
+                <input type="text" name="name" id="name" value="@Model.Name" />
+            </div>
+        </div>
+        <div class="field-row">
+            <div class="field-label">@Resources.Home.Profile.LanguageLabelText</div>
+            <div class="field-wrapper">
+                <select name="language" id="languageDropdown">
+                    @foreach (var lang in Language.Languages)
+                    {
+                        <option value="@lang.Abbreviation" @if(Model.Language == lang.Abbreviation){ <text>selected="selected"</text>}>@lang.LocalName</option>
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="form-bottom">
+        <input type="submit" value="@Resources.Home.Profile.SaveButtonText" />
+    </div>
+</form>
+    </div>
+@section scripts
+{
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.10.0/jquery.validate.js"></script>
+    <script type="text/javascript">
+        $('#login-Form').validate({
+            onkeyup: false,
+            onfocusout: false,
+            rules: {
+                emailAddress: {
+                    required: true,
+                },
+                password: {
+                    required: true,
+                },
+            },
+            messages: JSON.parse($('#validationMessages').attr('data'))
+        });
+    </script>
+}

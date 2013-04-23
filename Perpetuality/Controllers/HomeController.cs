@@ -1,6 +1,7 @@
 ﻿using DotNetOpenAuth.AspNet;
 using Microsoft.Web.WebPages.OAuth;
 using Perpetuality.Data;
+using Perpetuality.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -39,7 +40,14 @@ namespace Perpetuality.Controllers
             var message = "";
             try
             {
-                ctx.LoginUser(emailAddress, password, HostIPAddress);
+                token = ctx.LoginUser(emailAddress, password, HostIPAddress);
+
+                if (!string.IsNullOrWhiteSpace(token))
+                {
+                    var tokenCookie = new HttpCookie("GameToken", token);
+                    tokenCookie.Expires = DateTime.Now.AddYears(1);
+                    Response.Cookies.Add(tokenCookie);
+                }
             }
             catch (Exception e)
             {
@@ -53,7 +61,7 @@ namespace Perpetuality.Controllers
                         break;
                 }
             }
-            return View();
+            return RedirectToAction(Index());
         }
 
         public virtual ActionResult Logout()
@@ -145,7 +153,25 @@ namespace Perpetuality.Controllers
         [HttpPost]
         public virtual ActionResult Register(string emailAddress)
         {
+
+
+
             return View();
+        }
+
+        public virtual ActionResult Profile()
+        {
+            var ctx = new DatabaseDataContext();
+            var profile = ctx.GetUserProfile(JAAPToken , HostIPAddress);
+            return View(new Profile(profile));
+        }
+
+        [HttpPost]
+        public virtual ActionResult Profile(Profile model)
+        {
+            var ctx = new DatabaseDataContext();
+            ctx.UpdateUserProfile(JAAPToken, HostIPAddress, model.Name, model.Language);
+            return View(model);
         }
 
         [HttpPost]

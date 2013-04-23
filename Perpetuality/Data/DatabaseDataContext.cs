@@ -203,5 +203,23 @@ namespace Perpetuality.Data
                 throw new ApplicationException("60102 Get user profile failed.");
             return x.FirstOrDefault();
         }
+
+        public int UpdateUserProfile(string token, string ipAddress, string name, string language)
+        {
+            Guid id = Guid.Empty;
+            try
+            {
+                id = new Guid(token);
+            }
+            catch
+            {
+                throw new ApplicationException("60100 Supplied token could not be converted to a guid.");
+            }
+            var ctx = new DatabaseDataContext();
+            var x = ctx._UpdateUserProfile(id, ipAddress, name, language);
+            if (x == 0)
+                throw new ApplicationException("60102 Get user profile failed.");
+            return x;
+        }
     }
 }

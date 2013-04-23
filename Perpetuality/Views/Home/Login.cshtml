@@ -1,21 +1,42 @@
 ﻿@{
     Layout = MVC.Shared.Views._LayoutStrip;
-    
+
     ViewBag.Title = Resources.Home.Login.PageTitle;
 
     string language = (string)ViewContext.RouteData.Values["language"];
-    
-    var validationMessages = new { 
-        emailAddress = new { 
+
+    var validationMessages = new
+    {
+        emailAddress = new
+        {
             required = Resources.Home.Login.ValidationEmailAdressRequired
-        }, 
-        password = new { 
+        },
+        password = new
+        {
             required = Resources.Home.Login.ValidationPasswordRequired
-        } 
+        }
     };
 }
+<script>
+    var authProvider = "";
+    function formValidate() {
+        window.open("", "myNewWin", "width=900,height=556,menubar=no,location=yes,resizable=yes,scrollbars=yes,status=no,titlebar=no,toolbar=no");
+        document.getElementById("loginform_" + authProvider).target = "myNewWin";
+        return true;
+    }
+</script>
 <div class="main-container">
 <div id="validationMessages" style="display: none" data="@Newtonsoft.Json.JsonConvert.SerializeObject(validationMessages)"></div>
+<div class="form-middle">
+    <div class="field-row">
+        <form id="loginform_facebook" method="post" action="/@language/Home/ExternalLogin" onsubmit="authProvider='facebook'; return formValidate();">
+            <input type="hidden" name="provider" value="facebook" />
+            <div>
+                <input type="submit" name="submit" class="sociallogin_facebook" value="@Resources.Home.Index.FacebookButtonCaption" style="border: 0px; cursor: pointer" />
+            </div>
+        </form>
+    </div>
+</div>
 <form id="login-Form" method="post">
     <div class="form-middle">
         <div class="field-row">

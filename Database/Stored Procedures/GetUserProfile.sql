@@ -15,6 +15,7 @@ BEGIN
 		select
 				u.autID
 			,	u.datCreated
+			,	u.strLanguage
 			,	ea.strEmailAddress
 			,	u.strName
 		from

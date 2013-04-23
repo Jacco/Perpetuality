@@ -94,13 +94,6 @@ namespace Perpetuality.Data
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetUserProfile")]
-		public ISingleResult<GetUserProfileResult> _GetUserProfile([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Session", DbType="UniqueIdentifier")] System.Nullable<System.Guid> session, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="IPAddress", DbType="VarChar(22)")] string iPAddress)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), session, iPAddress);
-			return ((ISingleResult<GetUserProfileResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.EndSession")]
 		public int EndSession([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Session", DbType="UniqueIdentifier")] System.Nullable<System.Guid> session, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="IPAddress", DbType="VarChar(22)")] string iPAddress)
 		{
@@ -122,6 +115,46 @@ namespace Perpetuality.Data
 			email = ((string)(result.GetParameterValue(1)));
 			return ((int)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateUserProfile")]
+		public int _UpdateUserProfile([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Session", DbType="UniqueIdentifier")] System.Nullable<System.Guid> session, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="IPAddress", DbType="VarChar(22)")] string iPAddress, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Name", DbType="NVarChar(256)")] string name, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Language", DbType="Char(2)")] string language)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), session, iPAddress, name, language);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetUserProfile")]
+		public ISingleResult<GetUserProfileResult> _GetUserProfile([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Session", DbType="UniqueIdentifier")] System.Nullable<System.Guid> session, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="IPAddress", DbType="VarChar(22)")] string iPAddress)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), session, iPAddress);
+			return ((ISingleResult<GetUserProfileResult>)(result.ReturnValue));
+		}
+	}
+	
+	public partial class GetConfirmationHashResult
+	{
+		
+		private string _strConfirmHash;
+		
+		public GetConfirmationHashResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strConfirmHash", DbType="VarChar(32) NOT NULL", CanBeNull=false)]
+		public string strConfirmHash
+		{
+			get
+			{
+				return this._strConfirmHash;
+			}
+			set
+			{
+				if ((this._strConfirmHash != value))
+				{
+					this._strConfirmHash = value;
+				}
+			}
+		}
 	}
 	
 	public partial class GetUserProfileResult
@@ -130,6 +163,8 @@ namespace Perpetuality.Data
 		private long _autID;
 		
 		private System.DateTime _datCreated;
+		
+		private string _strLanguage;
 		
 		private string _strEmailAddress;
 		
@@ -171,6 +206,22 @@ namespace Perpetuality.Data
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strLanguage", DbType="Char(2) NOT NULL", CanBeNull=false)]
+		public string strLanguage
+		{
+			get
+			{
+				return this._strLanguage;
+			}
+			set
+			{
+				if ((this._strLanguage != value))
+				{
+					this._strLanguage = value;
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strEmailAddress", DbType="NVarChar(256) NOT NULL", CanBeNull=false)]
 		public string strEmailAddress
 		{
@@ -199,32 +250,6 @@ namespace Perpetuality.Data
 				if ((this._strName != value))
 				{
 					this._strName = value;
-				}
-			}
-		}
-	}
-	
-	public partial class GetConfirmationHashResult
-	{
-		
-		private string _strConfirmHash;
-		
-		public GetConfirmationHashResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strConfirmHash", DbType="VarChar(32) NOT NULL", CanBeNull=false)]
-		public string strConfirmHash
-		{
-			get
-			{
-				return this._strConfirmHash;
-			}
-			set
-			{
-				if ((this._strConfirmHash != value))
-				{
-					this._strConfirmHash = value;
 				}
 			}
 		}
