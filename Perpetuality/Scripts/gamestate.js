@@ -24,4 +24,6 @@ function StateModel() {
     }, this);
 
     this.creditProduction = ko.observable(0.04); // credits per world-second
+
+    this.selectedOverlay = ko.observable('none');
 };

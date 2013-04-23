@@ -36,5 +36,37 @@
             <div>Credits</div>
         </div>
     </div>
+    <div id="overlay-pane" class="map-pane map-pane-bottom" style="z-index: 0; position: absolute; bottom: 0px; left: 389px">
+        <div class="map-pane-item map-pane-item-horizontal">
+            <div class="overlaybutton" data-bind="click: function(data) { data.selectedOverlay('geo'); }, css: { selected: selectedOverlay() == 'geo' }">
+                <img src="/Content/Images/button-geothermal-overlay.png">
+                <div>Geothermal</div>
+            </div>
+        </div>
+        <div class="map-pane-item map-pane-item-horizontal">
+            <div class="overlaybutton" data-bind="click: function(data) { data.selectedOverlay('solar'); }, css: { selected: selectedOverlay() == 'solar' }">
+                <img src="/Content/Images/button-solar-overlay.png"/>
+                <div>Solar</div>
+            </div>
+        </div>
+        <div class="map-pane-item map-pane-item-horizontal">
+            <div class="overlaybutton" data-bind="click: function(data) { data.selectedOverlay('water'); }, css: { selected: selectedOverlay() == 'water' }">
+                <img src="/Content/Images/button-water-overlay.png"/>
+                <div>Water</div>
+            </div>
+        </div>
+        <div class="map-pane-item map-pane-item-horizontal">
+            <div class="overlaybutton" data-bind="click: function(data) { data.selectedOverlay('wind'); }, css: { selected: selectedOverlay() == 'wind' }">
+                <img src="/Content/Images/button-wind-overlay.png"/>
+                <div>Wind</div>
+            </div>
+        </div>
+        <div class="map-pane-item map-pane-item-horizontal">
+            <div class="overlaybutton" data-bind="click: function(data) { data.selectedOverlay('none'); }, css: { selected: selectedOverlay() == 'none' }">
+                <img src="/Content/Images/button-wind-overlay.png"/>
+                <div>None</div>
+            </div>
+        </div>
+    </div>
   </body>
 </html>

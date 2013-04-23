@@ -317,35 +317,35 @@ $(document).ready(function () {
     /**
      * Panes.
      */
-  var overlayControlPane = map.makeItemizedPane("overlay", [{
-      title: "Geothermal",
-      action: function() {
-        map.heatMap.setMap(map.heatMap.getMap() ? null : map.root);
-      },
-      image: "/Content/Images/button-geothermal-overlay.png",
-      itemExtraClass: "map-pane-item-horizontal"
-  }, {
-      title: "Solar",
-      action: function () {
-          map.heatMap.setMap(map.heatMap.getMap() ? null : map.root);
-      },
-      image: "/Content/Images/button-solar-overlay.png",
-      itemExtraClass: "map-pane-item-horizontal"
-  }, {
-      title: "Water",
-      action: function () {
-          map.heatMap.setMap(map.heatMap.getMap() ? null : map.root);
-      },
-      image: "/Content/Images/button-water-overlay.png",
-      itemExtraClass: "map-pane-item-horizontal"
-  }, {
-      title: "Wind",
-      action: function () {
-          map.heatMap.setMap(map.heatMap.getMap() ? null : map.root);
-      },
-      image: "/Content/Images/button-wind-overlay.png",
-      itemExtraClass: "map-pane-item-horizontal"
-  }], "map-pane-bottom");
+  //var overlayControlPane = map.makeItemizedPane("overlay", [{
+  //    title: "Geothermal",
+  //    action: function() {
+  //      map.heatMap.setMap(map.heatMap.getMap() ? null : map.root);
+  //    },
+  //    image: "/Content/Images/button-geothermal-overlay.png",
+  //    itemExtraClass: "map-pane-item-horizontal"
+  //}, {
+  //    title: "Solar",
+  //    action: function () {
+  //        map.heatMap.setMap(map.heatMap.getMap() ? null : map.root);
+  //    },
+  //    image: "/Content/Images/button-solar-overlay.png",
+  //    itemExtraClass: "map-pane-item-horizontal"
+  //}, {
+  //    title: "Water",
+  //    action: function () {
+  //        map.heatMap.setMap(map.heatMap.getMap() ? null : map.root);
+  //    },
+  //    image: "/Content/Images/button-water-overlay.png",
+  //    itemExtraClass: "map-pane-item-horizontal"
+  //}, {
+  //    title: "Wind",
+  //    action: function () {
+  //        map.heatMap.setMap(map.heatMap.getMap() ? null : map.root);
+  //    },
+  //    image: "/Content/Images/button-wind-overlay.png",
+  //    itemExtraClass: "map-pane-item-horizontal"
+  //}], "map-pane-bottom");
 
   //var statusPane = map.makeItemizedPane("status", [
   //  {
@@ -415,11 +415,11 @@ $(document).ready(function () {
      */
   var config = {
       panes: [
-        {
-            name: "overlay",
-            position: google.maps.ControlPosition.BOTTOM_CENTER,
-            pane: overlayControlPane
-        },
+        //{
+        //    name: "overlay",
+        //    position: google.maps.ControlPosition.BOTTOM_CENTER,
+        //    pane: overlayControlPane
+        //},
         //{
         //    name: "status",
         //    position: google.maps.ControlPosition.TOP_LEFT,
