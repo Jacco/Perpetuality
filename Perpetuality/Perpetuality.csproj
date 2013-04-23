@@ -236,6 +236,7 @@
     <Content Include="Content\Images\red.png" />
     <Content Include="Content\Images\solar_panel.jpg" />
     <Content Include="Scripts\gamestart.js" />
+    <Content Include="Scripts\gamestate.js" />
     <Content Include="Scripts\perpetuality_map.js" />
     <Content Include="Scripts\plants.js" />
     <Content Include="T4MVC.tt.hooks.t4" />

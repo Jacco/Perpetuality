@@ -177,7 +177,7 @@ perpetuality.map.prototype.makeItemizedPane = function (name, contentList, extra
             contentDiv.append(button);
         }
         else if (content.content) {
-            var div = $("<div />", { id: content.contentId });
+            var div = $("<div />", { id: content.contentId, "data-bind": content.db });
             div.append(content.content);
             contentDiv.append(div);
         }
@@ -241,6 +241,7 @@ $(document).ready(function () {
     };
 
   var map = new perpetuality.map;
+  var state = new perpetuality.state();
   map.init();
   map.dataServer = "http://api.perpetuality.org/"
   /**
@@ -300,14 +301,14 @@ $(document).ready(function () {
     },
     {
         title: "KwH",
-        image: "/Content/Images/orange.png",
-        imageSize: { "width": 16 },
+        content: "0",
+        db: "powertext",
         itemExtraClass: "map-pane-item-horizontal"
     },
     {
         title: "Credits",
-        image: "/Content/Images/red.png",
-        imageSize: { width: 16 },
+        content: "0",
+        db: "creditstext",
         itemExtraClass: "map-pane-item-horizontal"
     },
   ], "map-pane-top");
@@ -386,4 +387,5 @@ $(document).ready(function () {
       map.registerPane(pane.name, pane.position, pane.pane);
   });
 
+  ko.applyBindings(state);
 });

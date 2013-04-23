@@ -78,6 +78,8 @@ namespace Links
                       
         public static readonly string gamestart_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/gamestart.min.js") ? Url("gamestart.min.js") : Url("gamestart.js");
                       
+        public static readonly string gamestate_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/gamestate.min.js") ? Url("gamestate.min.js") : Url("gamestate.js");
+                      
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class lib {
             private const string URLPATH = "~/Scripts/lib";
