@@ -5,7 +5,7 @@
   border-radius: 10px;
   background-size: 130%;
   background-position: center center;
-  .selected {
+  &.selected {
 	border-color: #5CD103;
   }
 }
@@ -15,11 +15,19 @@
   border-radius: 10px;
   background-size: 130%;
   background-position: center center;
+  position: relative;
   &.selected {
 	border-color: #5CD103;
   }
 }
 
+.overlaybuttontext {
+	top: 108px;
+	position: absolute;
+	color: black;
+	text-align: center;
+	width: 100%;
+}
 
 #solarfieldbutton {
 	background-image: url("../Images/original/icoon_paneelpark.png");
