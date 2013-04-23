@@ -41,7 +41,7 @@ perpetuality.state.StateModel = function (map) {
     this.creditsText = ko.computed(function () { return self.padZeroes(self.credits(), 11); });
 
     this.time = ko.observable(new Date());
-    this.timeText = ko.computed(function () { self.computeTime(self.time()); });
+    this.timeText = ko.computed(function () { return self.computeTime(self.time()); });
 
     this.creditProduction = ko.computed(function () { self.computeProduction(initialPlayerState.rate) }); // in credits per world-second
 
