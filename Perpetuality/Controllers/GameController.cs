@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Perpetuality.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,7 +14,29 @@ namespace Perpetuality.Controllers
 
         public virtual ActionResult Index()
         {
-            return View();
+            //
+            var ctx = new DatabaseDataContext();
+            GamePrincipal user = null;
+            try
+            {
+                user = HttpContext.User as GamePrincipal;
+            }
+            catch
+            {
+            }
+            var state = ctx.GetPlayerState((user.Identity as GameIdentity).UserID, 1).Single();
+            if (user != null)
+            {
+                // retrieve state
+                ViewBag.PlayerState = new { balance = state.numBalance, rate = state.numCreditProductionRate };
+
+                return View();
+            }
+            else
+            {
+                // retrieve state
+                return View();
+            }
         }
 
     }

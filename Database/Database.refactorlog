@@ -7,4 +7,11 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="autID" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="72e1109f-8ac2-49b4-bc5b-048ce4690387" ChangeDateTime="04/23/2013 14:37:57">
+    <Property Name="ElementName" Value="[dbo].[tblWorldPlayer].[numCreditRate]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tblWorldPlayer]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="numCreditProductionRate" />
+  </Operation>
 </Operations>

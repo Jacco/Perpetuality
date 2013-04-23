@@ -7,6 +7,8 @@ function StateModel() {
 
     this.plants = {};
 
+    this.initialPlayerState = JSON.parse($('#playerState').attr('data'));
+
     this.plantTypes = {
         none: {
             cost: 0,
@@ -39,7 +41,7 @@ function StateModel() {
         return this.power();
     }, this);
 
-    this.credits = ko.observable(3000000);
+    this.credits = ko.observable(this.initialPlayerState.balance);
     this.creditsText = ko.computed(function () {
         return this.credits();
     }, this);
@@ -53,7 +55,7 @@ function StateModel() {
         return this.time().getDate() + "-" + this.time().getMonth() + 1 + "-" + this.time().getFullYear() + '   ' + hrs + ':' + min;
     }, this);
 
-    this.creditProduction = ko.observable(0.04); // credits per world-second
+    this.creditProduction = ko.observable(this.initialPlayerState.rate); // in credits per world-second
 
     this.selectedOverlay = ko.observable('none');
     this.selectedPlantType = ko.observable(this.plantTypes.none);

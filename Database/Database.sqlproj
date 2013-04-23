@@ -86,6 +86,7 @@
     <Build Include="Stored Procedures\GetConfirmationHash.sql" />
     <Build Include="Stored Procedures\GetUserEmail.sql" />
     <Build Include="Stored Procedures\UpdateUserProfile.sql" />
+    <Build Include="Stored Procedures\GetPlayerState.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Database.publish.xml" />

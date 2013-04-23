@@ -60,4 +60,12 @@
       <Column Name="strName" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
     </ElementType>
   </Function>
+  <Function Name="dbo.GetPlayerState" Method="GetPlayerState">
+    <Parameter Name="PlayerID" Parameter="playerID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="WorldID" Parameter="worldID" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="GetPlayerStateResult">
+      <Column Name="numBalance" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="numCreditProductionRate" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
 </Database>

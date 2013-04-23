@@ -22,6 +22,7 @@
     <script type="text/javascript" src="@Links.Scripts.perpetuality_map_js"></script>
   </head>
   <body>
+    <div id="playerState" data="@Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.PlayerState)"></div>
     <div id="map"></div>
     <div id="status-pane" class="map-pane map-pane-top" style="z-index: 0; position: absolute; left: 88px; top: 0px;">
         <div class="map-pane-item map-pane-item-horizontal">

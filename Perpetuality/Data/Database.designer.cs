@@ -129,6 +129,13 @@ namespace Perpetuality.Data
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), session, iPAddress);
 			return ((ISingleResult<GetUserProfileResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetPlayerState")]
+		public ISingleResult<GetPlayerStateResult> GetPlayerState([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PlayerID", DbType="BigInt")] System.Nullable<long> playerID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="WorldID", DbType="BigInt")] System.Nullable<long> worldID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), playerID, worldID);
+			return ((ISingleResult<GetPlayerStateResult>)(result.ReturnValue));
+		}
 	}
 	
 	public partial class GetConfirmationHashResult
@@ -250,6 +257,50 @@ namespace Perpetuality.Data
 				if ((this._strName != value))
 				{
 					this._strName = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GetPlayerStateResult
+	{
+		
+		private decimal _numBalance;
+		
+		private decimal _numCreditProductionRate;
+		
+		public GetPlayerStateResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_numBalance", DbType="Decimal(18,2) NOT NULL")]
+		public decimal numBalance
+		{
+			get
+			{
+				return this._numBalance;
+			}
+			set
+			{
+				if ((this._numBalance != value))
+				{
+					this._numBalance = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_numCreditProductionRate", DbType="Decimal(18,5) NOT NULL")]
+		public decimal numCreditProductionRate
+		{
+			get
+			{
+				return this._numCreditProductionRate;
+			}
+			set
+			{
+				if ((this._numCreditProductionRate != value))
+				{
+					this._numCreditProductionRate = value;
 				}
 			}
 		}
