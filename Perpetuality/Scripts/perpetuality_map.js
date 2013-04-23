@@ -231,6 +231,49 @@ perpetuality.map.TextPaneItem = function() {
 };
 
 /**
+ * Timer
+ */
+
+function Timer(settings) {
+    this.settings = settings;
+    this.timer = null;
+
+    this.fps = settings.fps || 30;
+    this.interval = Math.floor(1000 / this.fps);
+    this.timeInit = null;
+
+    return this;
+}
+
+Timer.prototype =
+{
+    run: function () {
+        var $this = this;
+
+        this.settings.run();
+        this.timeInit += this.interval;
+
+        this.timer = setTimeout(
+            function () { $this.run() },
+            this.timeInit - (new Date).getTime()
+        );
+    },
+
+    start: function () {
+        if (this.timer == null) {
+            this.timeInit = (new Date).getTime();
+            this.run();
+        }
+    },
+
+    stop: function () {
+        clearTimeout(this.timer);
+        this.timer = null;
+    }
+}
+
+
+/**
  * Application's map.
  */
 $(document).ready(function () {
@@ -241,7 +284,6 @@ $(document).ready(function () {
     };
 
   var map = new perpetuality.map;
-  var state = new perpetuality.state();
   map.init();
   map.dataServer = "http://api.perpetuality.org/"
   /**
@@ -259,6 +301,18 @@ $(document).ready(function () {
     // TODO Need to generate the layers?
   }
 
+  var timer = new Timer({
+      fps: 1,
+      run: function () {
+          var tm = perpetuality.state.time().getTime();
+          tm = tm + 365000;
+          var dt = new Date();
+          dt.setTime(tm);
+          perpetuality.state.time(dt);
+
+          perpetuality.state.credits(perpetuality.state.credits() + 365 * perpetuality.state.creditProduction());
+      }
+  });
 
     /**
      * Panes.
@@ -293,25 +347,25 @@ $(document).ready(function () {
       itemExtraClass: "map-pane-item-horizontal"
   }], "map-pane-bottom");
 
-  var statusPane = map.makeItemizedPane("status", [
-    {
-        title: getToday(),
-        image: "/Content/Images/original/logo2.png",
-        itemExtraClass: "map-pane-item-horizontal"
-    },
-    {
-        title: "KwH",
-        content: "0",
-        db: "powertext",
-        itemExtraClass: "map-pane-item-horizontal"
-    },
-    {
-        title: "Credits",
-        content: "0",
-        db: "creditstext",
-        itemExtraClass: "map-pane-item-horizontal"
-    },
-  ], "map-pane-top");
+  //var statusPane = map.makeItemizedPane("status", [
+  //  {
+  //      title: getToday(),
+  //      image: "/Content/Images/original/logo2.png",
+  //      itemExtraClass: "map-pane-item-horizontal"
+  //  },
+  //  {
+  //      title: "KwH",
+  //      content: "0",
+  //      db: "powertext",
+  //      itemExtraClass: "map-pane-item-horizontal"
+  //  },
+  //  {
+  //      title: "Credits",
+  //      content: "0",
+  //      db: "creditstext",
+  //      itemExtraClass: "map-pane-item-horizontal"
+  //  },
+  //], "map-pane-top");
 
   var detailPane = map.makeTextPane("detail", [{
       title: "Detail Title",
@@ -366,11 +420,11 @@ $(document).ready(function () {
             position: google.maps.ControlPosition.BOTTOM_CENTER,
             pane: overlayControlPane
         },
-        {
-            name: "status",
-            position: google.maps.ControlPosition.TOP_LEFT,
-            pane: statusPane
-        },
+        //{
+        //    name: "status",
+        //    position: google.maps.ControlPosition.TOP_LEFT,
+        //    pane: statusPane
+        //},
         {
             name: "detail",
             position: google.maps.ControlPosition.LEFT_CENTER,
@@ -387,5 +441,9 @@ $(document).ready(function () {
       map.registerPane(pane.name, pane.position, pane.pane);
   });
 
-  ko.applyBindings(state);
+  perpetuality.state = new StateModel();
+
+  ko.applyBindings(perpetuality.state);
+
+  timer.start();
 });
