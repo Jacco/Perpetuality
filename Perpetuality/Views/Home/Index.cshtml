@@ -4,7 +4,7 @@
 
     string language = (string)ViewContext.RouteData.Values["language"];
     }
-<a href="/nl/home" class="logo"></a>
+<a href="/@language/home" class="logo"></a>
 <script>
     var authProvider = "";
     function formValidate() {
@@ -17,9 +17,8 @@
 <script src="@Links.Scripts.lib.jquery_ui_1_8_20_js" type="text/javascript"></script>
 <script src="@Links.Scripts.gamestart_js" type="text/javascript"></script>
 @* <p>@(((HttpContext.Current.User as Perpetuality.GamePrincipal).Identity as Perpetuality.GameIdentity).Name)</p> *@
-<form id="loginform_facebook" method="post" action="Home/ExternalLogin" onsubmit="authProvider='facebook'; return formValidate();">
+<form id="loginform_facebook" method="post" action="/@language/Home/ExternalLogin" onsubmit="authProvider='facebook'; return formValidate();">
     <input type="hidden" name="provider" value="facebook" />
-    <input type="hidden" name="returnUrl" value="http://localhost:51127" />
     <div>
         <input type="submit" name="submit" class="sociallogin_facebook" value="" style="border: 0px; cursor: pointer" />
     </div>
