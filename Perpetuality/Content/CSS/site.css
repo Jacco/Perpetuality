@@ -1173,7 +1173,7 @@ footer ul {
 footer ul li {
   list-style: none;
   float: left;
-  margin-right: 4.5%;
+  margin-right: 40px;
 }
 footer ul li a {
   color: white;
@@ -1189,6 +1189,7 @@ footer ul li a .btn_image {
   border-radius: 10px;
   height: 174px;
   width: 194px;
+  border: 3px solid white;
   -webkit-transition: border-color .15s linear;
   -moz-transition: border-color .15s linear;
   -o-transition: border-color .15s linear;
