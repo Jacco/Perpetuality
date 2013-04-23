@@ -5,6 +5,7 @@ perpetuality.state = perpetuality.state || {};
 function PlantModel() {
 }
 
+// For now I'm assuming 1 credit per second per 1 power per 1 meter squared.
 // Advances the time in the game in state
 perpetuality.state.advanceTime = function (state) {
     var tm = state.time().getTime();
@@ -15,6 +16,9 @@ perpetuality.state.advanceTime = function (state) {
 
     state.credits(state.credits() + 365 * state.creditProduction());
 }
+
+// Number of plants built by player
+perpetuality.state.numberOfPlants = 0;
 
 /*
  * Game state data model
@@ -27,19 +31,19 @@ perpetuality.state.StateModel = function (map) {
     this.plants = {};
     this.map = map;
 
-    this.initialPlayerState = JSON.parse($('#playerState').attr('data'));
+    var initialPlayerState = JSON.parse($('#playerState').attr('data'));
 
     this.plantTypes = perpetuality.plant.types;
     
     this.power = ko.observable(0);
-    this.powerText = ko.computed(function () { return self.power(); });
-    this.credits = ko.observable(this.initialPlayerState.balance);
-    this.creditsText = ko.computed(function () { return self.credits(); });
+    this.powerText = ko.computed(function () { return self.padZeroes(self.power(), 7); });
+    this.credits = ko.observable(initialPlayerState.balance);
+    this.creditsText = ko.computed(function () { return self.padZeroes(self.credits(), 11); });
 
     this.time = ko.observable(new Date());
-    this.timeText = ko.computed(function () { self.computeTime() });
+    this.timeText = ko.computed(function () { self.computeTime(self.time()); });
 
-    this.creditProduction = ko.observable(this.initialPlayerState.rate); // in credits per world-second
+    this.creditProduction = ko.computed(function () { self.computeProduction(initialPlayerState.rate) }); // in credits per world-second
 
     this.selectedOverlay = ko.observable('none');
     this.selectedPlantType = ko.observable(this.plantTypes.none);
@@ -47,21 +51,41 @@ perpetuality.state.StateModel = function (map) {
 
 perpetuality.state.StateModel.prototype =
 {
-    computeTime: function () {
-        var hrs = '0' + this.time().getHours();
-        hrs = hrs.substr(hrs.length - 2);
-        var min = '0' + this.time().getMinutes();
-        min = min.substr(min.length - 2);
-        return this.time().getDate() + "-" + this.time().getMonth() + 1 + "-" + this.time().getFullYear() + '   ' + hrs + ':' + min;
+    padZeroes: function (strng, size) {
+        var raw = new Array(size + 1).join("0") + strng;
+        return raw.substr(raw.length - size);
+    },
+
+    computeTime: function (time) {
+        return time.getDate() + "-"
+            + (time.getMonth() + 1) + "-"
+            + time.getFullYear() + '   '
+            + this.padZeroes(time.getHours(), 2) + ':'
+            + this.padZeroes(time.getMinutes(), 2);
+    },
+
+    computeProduction: function (initialValue) {
+        var result = initialValue ? initialValue : 0;
+        for (plant in this.plants) {
+            result += plant.power * plant.size;
+        }
+        return result;
     },
 
     addPlant: function (event) {
-        if (this.selectedPlantType() != this.plantTypes.none) {
+        var newPlant = this.selectedPlantType()
+        if (newPlant != this.plantTypes.none) {
+            var newPlantId = newPlant.type + perpetuality.state.numberOfPlants++;
+            newPlant.id = newPlantId;
             // place the plant
             var marker = new perpetuality.plant.CustomMarker(
                 this.map.root,
-                this.selectedPlantType().mapImage,
+                newPlant.mapImage,
+                newPlantId,
                 { latitude: event.latLng.lat(), longitude: event.latLng.lng() });
+
+            // add plant to state
+            this.plants[newPlantId] = newPlant;
 
             // deselect the button
             this.selectedPlantType(this.plantTypes.none);

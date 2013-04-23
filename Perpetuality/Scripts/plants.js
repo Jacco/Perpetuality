@@ -4,27 +4,30 @@ perpetuality.plant = perpetuality.plant || {};
 
 perpetuality.plant.types = {
     none: {
-            cost: 0,
-            size: 0,
-            energyPerMeter: 0,
-            },
+        cost: 0,
+        size: 0,
+        energyPerMeter: 0,
+    },
     solarroof: {
-            cost: 3000,
-            size: 4,
-            energyPerMeter: 2,
-            mapImage: "/Content/Images/original/icoon_dakpaneel.png"
+        type: "solarroof",
+        cost: 3000,
+        size: 4,
+        energyPerMeter: 2,
+        mapImage: "/Content/Images/original/icoon_dakpaneel.png"
     },
     solarfield: {
-            cost: 200000,
-            size: 2500,
-            energyPerMeter: 160,
-            mapImage: "/Content/Images/original/icoon_paneelpark.png"
+        type: "solarfield",
+        cost: 200000,
+        size: 2500,
+        energyPerMeter: 160,
+        mapImage: "/Content/Images/original/icoon_paneelpark.png"
     },
     solartower: {
-            cost: 45000000,
-            size: 785398,
-            energyPerMeter: 2000,
-            mapImage: "/Content/Images/original/icoon_zoutcollector.png"
+        type: "solartower",
+        cost: 45000000,
+        size: 785398,
+        energyPerMeter: 2000,
+        mapImage: "/Content/Images/original/icoon_zoutcollector.png"
     }
 };
 
