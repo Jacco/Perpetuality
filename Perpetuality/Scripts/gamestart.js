@@ -9,7 +9,7 @@ perpetuality.start.animatedBegin = function () {
         }
         else {
             var animation = animationArray.shift();
-            lever.animate({"font-size": "+=20"}, animation.in, "linear", function () {
+            lever.animate({ "font-size": "+=20" }, animation.milis, "linear", function () {
                 lever.removeClass(from);
                 lever.addClass(animation.to);
                 recursiveAnimate(lever, animation.to, animationArray, callback);
