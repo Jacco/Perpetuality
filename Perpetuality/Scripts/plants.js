@@ -48,12 +48,13 @@ perpetuality.plant.clickable = function (type) {
  *
  * google.maps.OverlayView that also places a div over itself that can be easily used in other code.
  */
-perpetuality.plant.CustomMarker = function (gmap, url, house) {
+perpetuality.plant.CustomMarker = function (gmap, url, plantId, location) {
     this.gmap_ = gmap;
-    this.house_ = house;
-    this.position_ = new google.maps.LatLng(house.latitude, house.longitude),
+    this.location_ = location;
+    this.plantId_ = plantId;
+    this.position_ = new google.maps.LatLng(location.latitude, location.longitude),
 
-    this.div_ = $('<div style="position: absolute; z-index: 1;"><img style="cursor: pointer; position: relative; left: -50%; top: -7px;" src="' + url + '"/></div>');
+    this.div_ = $('<div id="' + plantId + '" style="position: absolute; z-index: 1;"><img style="cursor: pointer; position: relative; left: -50%; top: -7px;" src="' + url + '"/></div>');
     var that = this;
     google.maps.event.addDomListener($('img', this.div_).get(0), 'click', function () {
         google.maps.event.trigger(that, 'click');
