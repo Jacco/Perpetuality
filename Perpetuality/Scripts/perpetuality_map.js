@@ -239,7 +239,7 @@ function Timer(settings) {
     this.timer = null;
 
     this.fps = settings.fps || 30;
-    this.interval = Math.floor(1000 / 30);
+    this.interval = Math.floor(1000 / this.fps);
     this.timeInit = null;
 
     return this;
@@ -304,9 +304,13 @@ $(document).ready(function () {
   var timer = new Timer({
       fps: 1,
       run: function () {
-          var dt = perpetuality.state.time();
-          dt.setSeconds(dt.getSeconds() + 365);
+          var tm = perpetuality.state.time().getTime();
+          tm = tm + 365000;
+          var dt = new Date();
+          dt.setTime(tm);
           perpetuality.state.time(dt);
+
+          perpetuality.state.credits(perpetuality.state.credits() + 365 * perpetuality.state.creditProduction());
       }
   });
 
