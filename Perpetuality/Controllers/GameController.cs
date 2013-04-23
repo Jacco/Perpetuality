@@ -24,9 +24,9 @@ namespace Perpetuality.Controllers
             catch
             {
             }
-            var state = ctx.GetPlayerState((user.Identity as GameIdentity).UserID, 1).Single();
             if (user != null)
             {
+                var state = ctx.GetPlayerState((user.Identity as GameIdentity).UserID, 1).Single();
                 // retrieve state
                 ViewBag.PlayerState = new { balance = state.numBalance, rate = state.numCreditProductionRate };
 
@@ -34,6 +34,7 @@ namespace Perpetuality.Controllers
             }
             else
             {
+                ViewBag.PlayerState = new { balance = 3000000, rate = 0 };
                 // retrieve state
                 return View();
             }
