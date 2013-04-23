@@ -45,29 +45,31 @@ perpetuality.state.StateModel = function (map) {
     this.selectedPlantType = ko.observable(this.plantTypes.none);
 };
 
-perpetuality.state.StateModel.prototype.computeTime = function () {
-    var hrs = '0' + this.time().getHours();
-    hrs = hrs.substr(hrs.length - 2);
-    var min = '0' + this.time().getMinutes();
-    min = min.substr(min.length - 2);
-    return this.time().getDate() + "-" + this.time().getMonth() + 1 + "-" + this.time().getFullYear() + '   ' + hrs + ':' + min;
-}
+perpetuality.state.StateModel.prototype =
+{
+    computeTime: function () {
+        var hrs = '0' + this.time().getHours();
+        hrs = hrs.substr(hrs.length - 2);
+        var min = '0' + this.time().getMinutes();
+        min = min.substr(min.length - 2);
+        return this.time().getDate() + "-" + this.time().getMonth() + 1 + "-" + this.time().getFullYear() + '   ' + hrs + ':' + min;
+    },
 
-perpetuality.state.StateModel.prototype.addPlant = function (event) {
-    if (this.selectedPlantType() != this.plantTypes.none) {
-        // place the plant
-        var marker = new perpetuality.plant.CustomMarker(
-            this.map.root,
-            this.selectedPlantType().mapImage,
-            { latitude: event.latLng.lat(), longitude: event.latLng.lng() });
+    addPlant: function (event) {
+        if (this.selectedPlantType() != this.plantTypes.none) {
+            // place the plant
+            var marker = new perpetuality.plant.CustomMarker(
+                this.map.root,
+                this.selectedPlantType().mapImage,
+                { latitude: event.latLng.lat(), longitude: event.latLng.lng() });
 
-        // deselect the button
-        this.selectedPlantType(this.plantTypes.none);
-    } else {
-        // maybe give some info
+            // deselect the button
+            this.selectedPlantType(this.plantTypes.none);
+        } else {
+            // maybe give some info
+        }
     }
 };
-
 
 /**
  * Timer
