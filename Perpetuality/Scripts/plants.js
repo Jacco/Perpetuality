@@ -28,7 +28,7 @@ perpetuality.plant.types = {
         size: 785398,
         energyPerMeter: 2000,
         mapImage: "/Content/Images/original/icoon_zoutcollector.png"
-    }
+   } 
 };
 
 /**

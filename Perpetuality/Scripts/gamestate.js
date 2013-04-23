@@ -5,16 +5,19 @@ perpetuality.state = perpetuality.state || {};
 function PlantModel() {
 }
 
-// For now I'm assuming 1 credit per second per 1 power per 1 meter squared.
 // Advances the time in the game in state
 perpetuality.state.advanceTime = function (state) {
+    function round(num) {
+        return Math.round(num * Math.pow(10, 2)) / Math.pow(10, 2)
+    };
+
     var tm = state.time().getTime();
     tm = tm + 365000;
     var dt = new Date();
     dt.setTime(tm);
     state.time(dt);
 
-    state.credits(state.credits() + 365 * state.creditProduction());
+    state.credits(round(state.credits() + 365 * state.creditProduction()));
 }
 
 // Number of plants built by player
@@ -28,7 +31,7 @@ perpetuality.state.numberOfPlants = 0;
 perpetuality.state.StateModel = function (map) {
     var self = this;
 
-    this.plants = {};
+    this.plants = ko.observableArray();
     this.map = map;
 
     var initialPlayerState = JSON.parse($('#playerState').attr('data'));
@@ -38,12 +41,12 @@ perpetuality.state.StateModel = function (map) {
     this.power = ko.observable(0);
     this.powerText = ko.computed(function () { return self.padZeroes(self.power(), 7); });
     this.credits = ko.observable(initialPlayerState.balance);
-    this.creditsText = ko.computed(function () { return self.padZeroes(self.credits(), 11); });
+    this.creditsText = ko.computed(function () { return self.padZeroes(self.credits(), 14); });
 
     this.time = ko.observable(new Date());
     this.timeText = ko.computed(function () { return self.computeTime(self.time()); });
 
-    this.creditProduction = ko.computed(function () { self.computeProduction(initialPlayerState.rate) }); // in credits per world-second
+    this.creditProduction = ko.computed(function () { return self.computeProduction(initialPlayerState.rate) }); // in credits per world-second
 
     this.selectedOverlay = ko.observable('none');
     this.selectedPlantType = ko.observable(this.plantTypes.none);
@@ -64,11 +67,12 @@ perpetuality.state.StateModel.prototype =
             + this.padZeroes(time.getMinutes(), 2);
     },
 
+    // For now I'm assuming 1 credit per hour per 1 power per 1000 square meters.
     computeProduction: function (initialValue) {
         var result = initialValue ? initialValue : 0;
-        for (plant in this.plants) {
-            result += plant.power * plant.size;
-        }
+        ko.utils.arrayForEach(this.plants(), function (plant) {
+            result += plant.energyPerMeter * plant.size / 3600000;
+        });
         return result;
     },
 
@@ -85,7 +89,7 @@ perpetuality.state.StateModel.prototype =
                 { latitude: event.latLng.lat(), longitude: event.latLng.lng() });
 
             // add plant to state
-            this.plants[newPlantId] = newPlant;
+            this.plants.push(newPlant);
 
             // deselect the button
             this.selectedPlantType(this.plantTypes.none);
