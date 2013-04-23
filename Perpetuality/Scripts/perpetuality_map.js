@@ -125,112 +125,6 @@ perpetuality.map.prototype.buildHeatMapLayer = function (data) {
 };
 
 /**
- * Pane management.
- */
-perpetuality.map.prototype.registerPane = function(name, position, pane) {
-  if (this.panes[name] == undefined) {
-    this.panes[name] = pane;
-    this.root.controls[position].push(pane);
-  }
-};
-
-perpetuality.map.prototype.deRegisterPane = function(name) {
-  delete this.panes[name];
-};
-
-perpetuality.map.prototype.makeItemizedPane = function (name, contentList, extraClass) {
-    function createImage(content) {
-        var image = $("<img />", { src: content.image });
-        var imageSize = content.imageSize;
-        if (imageSize) {
-            if (imageSize.width) { image.width(imageSize.width) }
-            if (imageSize.height) { image.height(imageSize.height) }
-        }
-        image.click(content.action);
-
-        return image;
-    };
-
-    var pane = $("<div />", { id: name + "-pane", "class": "map-pane" });
-    if (extraClass) {
-        $(pane).addClass(extraClass);
-    }
-    for (var i = 0; i < contentList.length; i++) {
-        var content = contentList[i];
-        var contentDiv = $("<div />", { "class": "map-pane-item" });
-        if ("itemExtraClass" in content) {
-            $(contentDiv).addClass(content.itemExtraClass);
-        }
-
-        var contentPane = new perpetuality.map.ItemizedPaneItem();
-        contentPane.title = content.title;
-        contentPane.action = content.action;
-
-        if (content.image) {
-            var image = createImage(content);
-            contentPane.image = image;
-            contentDiv.append(image);
-        }
-        else if (content.button) {
-            var button = $("<div />", { id: content.button, "class": "plantbutton" });
-            button.click(content.action);
-            contentDiv.append(button);
-        }
-        else if (content.content) {
-            var div = $("<div />", { id: content.contentId, "data-bind": content.db });
-            div.append(content.content);
-            contentDiv.append(div);
-        }
-
-        contentDiv.append("<div>" + content.title + "</div>");
-        pane.append(contentDiv);
-    }
-  return pane[0];
-};
-
-perpetuality.map.prototype.makeTextPane = function(name, contentList, extraClass) {
-  var pane = document.createElement("div");
-  pane.id = name + "-pane";
-  $(pane).addClass("map-pane");
-  if (extraClass != undefined) {
-    $(pane).addClass(extraClass);
-  }
-  for (var i = 0; i < contentList.length; i++) {
-    var contentDiv = document.createElement("div");
-    var section = new perpetuality.map.TextPaneItem();
-    var title = contentList[i].title;
-    if (title != undefined) {
-      section.title = title;
-      var titleDiv = document.createElement("div");
-      titleDiv.innerHTML = section.title;
-      $(titleDiv).addClass("map-section-title");
-      contentDiv.appendChild(titleDiv);
-    }
-    section.content = contentList[i].content;
-    var textDiv = document.createElement("div");
-    textDiv.innerHTML = section.content;
-    $(textDiv).addClass("map-section-text");
-    contentDiv.appendChild(textDiv);
-    pane.appendChild(contentDiv);
-  }
-  return pane;
-};
-
-/**
- * Pane Contents.
- */
-perpetuality.map.ItemizedPaneItem = function() {
-  this.image = undefined;
-  this.title = "Title";
-  this.action = function() {};
-};
-
-perpetuality.map.TextPaneItem = function() {
-  this.title = "Title";
-  this.content = "Content";
-};
-
-/**
  * Timer
  */
 
@@ -286,6 +180,7 @@ $(document).ready(function () {
   var map = new perpetuality.map;
   map.init();
   map.dataServer = "http://api.perpetuality.org/"
+
   /**
    * Use current location if available.
    */
@@ -314,136 +209,16 @@ $(document).ready(function () {
       }
   });
 
-    /**
-     * Panes.
-     */
-  var overlayControlPane = map.makeItemizedPane("overlay", [{
-      title: "Geothermal",
-      action: function() {
-        map.heatMap.setMap(map.heatMap.getMap() ? null : map.root);
-      },
-      image: "/Content/Images/button-geothermal-overlay.png",
-      itemExtraClass: "map-pane-item-horizontal"
-  }, {
-      title: "Solar",
-      action: function () {
-          map.heatMap.setMap(map.heatMap.getMap() ? null : map.root);
-      },
-      image: "/Content/Images/button-solar-overlay.png",
-      itemExtraClass: "map-pane-item-horizontal"
-  }, {
-      title: "Water",
-      action: function () {
-          map.heatMap.setMap(map.heatMap.getMap() ? null : map.root);
-      },
-      image: "/Content/Images/button-water-overlay.png",
-      itemExtraClass: "map-pane-item-horizontal"
-  }, {
-      title: "Wind",
-      action: function () {
-          map.heatMap.setMap(map.heatMap.getMap() ? null : map.root);
-      },
-      image: "/Content/Images/button-wind-overlay.png",
-      itemExtraClass: "map-pane-item-horizontal"
-  }], "map-pane-bottom");
-
-  //var statusPane = map.makeItemizedPane("status", [
-  //  {
-  //      title: getToday(),
-  //      image: "/Content/Images/original/logo2.png",
-  //      itemExtraClass: "map-pane-item-horizontal"
-  //  },
-  //  {
-  //      title: "KwH",
-  //      content: "0",
-  //      db: "powertext",
-  //      itemExtraClass: "map-pane-item-horizontal"
-  //  },
-  //  {
-  //      title: "Credits",
-  //      content: "0",
-  //      db: "creditstext",
-  //      itemExtraClass: "map-pane-item-horizontal"
-  //  },
-  //], "map-pane-top");
-
-  var detailPane = map.makeTextPane("detail", [{
-      title: "Detail Title",
-      content: "Detail Contents."
-  }], "map-pane-left");
-
   var nummer = 0;
-  var spritePane = map.makeItemizedPane("sprite", [
-    {
-        title: "Plant cost",
-        content: "None",
-        contentId: "plantcost"
-    },
-    {
-        title: "Plant size",
-        content: "None",
-        contentId: "plantsize"
-    },
-    {
-        title: "Solar Panels",
-        button: "solarroofbutton",
-        itemExtraClass: "map-pane-item-vertical",
-        action: function (e) { perpetuality.plant.placePlant(map, new perpetuality.plant("solarroof", 3000, 4, 2)) }
-    },
-    {
-        title: "Solar Field",
-        button: "solarfieldbutton",
-        itemExtraClass: "map-pane-item-vertical",
-        action: function (e) { perpetuality.plant.placePlant(map, new perpetuality.plant("solarfield", 200000, 2500, 160)) }
-    },
-    {
-        title: "Solar Plant",
-        button: "solartowerbutton",
-        itemExtraClass: "map-pane-item-vertical",
-        action: function (e) { perpetuality.plant.placePlant(map, new perpetuality.plant("solartower", 45000000, 785398, 2000)) }
-    },
-    {
-        title: "Persist Plant",
-        button: "deselectbutton",
-        itemExtraClass: "map-pane-item-vertical",
-        action: function (e) {}
-    }
-  ], "map-pane-right");
-
-    /**
-     * Layout.
-     */
-  var config = {
-      panes: [
-        {
-            name: "overlay",
-            position: google.maps.ControlPosition.BOTTOM_CENTER,
-            pane: overlayControlPane
-        },
-        //{
-        //    name: "status",
-        //    position: google.maps.ControlPosition.TOP_LEFT,
-        //    pane: statusPane
-        //},
-        {
-            name: "detail",
-            position: google.maps.ControlPosition.LEFT_CENTER,
-            pane: detailPane
-        },
-        {
-            name: "sprite",
-            position: google.maps.ControlPosition.RIGHT_CENTER,
-            pane: spritePane
-        }
-      ]
-  };
-  $.each(config.panes, function (key, pane) {
-      map.registerPane(pane.name, pane.position, pane.pane);
-  });
 
   perpetuality.state = new StateModel();
-
+  perpetuality.state.map = map;
   ko.applyBindings(perpetuality.state);
 
   timer.start();
+
+  google.maps.event.addListener(map.root, 'click', function (event) {
+      perpetuality.state.addPlant(event);
+  });
+
 });

@@ -5,6 +5,28 @@
   border-radius: 10px;
   background-size: 130%;
   background-position: center center;
+  &.selected {
+	border-color: #5CD103;
+  }
+}
+
+.overlaybutton {
+  border: solid 4px black;
+  border-radius: 10px;
+  background-size: 130%;
+  background-position: center center;
+  position: relative;
+  &.selected {
+	border-color: #5CD103;
+  }
+}
+
+.overlaybuttontext {
+	top: 108px;
+	position: absolute;
+	color: black;
+	text-align: center;
+	width: 100%;
 }
 
 #solarfieldbutton {
@@ -20,10 +42,6 @@
 #solarroofbutton {
 	background-image: url("../Images/original/icoon_dakpaneel.png");
 	background-color: #00A600;
-}
-
-.selected {
-	border-color: #5CD103;
 }
 
 .plant {

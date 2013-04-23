@@ -166,7 +166,12 @@ namespace Links
             private const string URLPATH = "~/Content/Images";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+            public static readonly string button_geothermal_overlay_png = Url("button-geothermal-overlay.png");
+            public static readonly string button_solar_overlay_png = Url("button-solar-overlay.png");
+            public static readonly string button_water_overlay_png = Url("button-water-overlay.png");
+            public static readonly string button_wind_overlay_png = Url("button-wind-overlay.png");
             public static readonly string cloudy_jpg = Url("cloudy.jpg");
+            public static readonly string Credits_png = Url("Credits.png");
             public static readonly string default_image_jpeg = Url("default-image.jpeg");
             public static readonly string down_arrow_select_jpg = Url("down_arrow_select.jpg");
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -178,8 +183,11 @@ namespace Links
                 public static readonly string header_jpg = Url("header.jpg");
             }
         
+            public static readonly string Faq_button_png = Url("Faq-button.png");
             public static readonly string green_png = Url("green.png");
+            public static readonly string home_button_png = Url("home-button.png");
             public static readonly string main_background_jpg = Url("main-background.jpg");
+            public static readonly string news_button_png = Url("news-button.png");
             public static readonly string nuclear_power_plant_png = Url("nuclear-power-plant.png");
             public static readonly string orange_png = Url("orange.png");
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -188,6 +196,10 @@ namespace Links
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string Background_home_jpg = Url("Background_home.jpg");
+                public static readonly string button_geothermal_overlay_png = Url("button-geothermal-overlay.png");
+                public static readonly string button_solar_overlay_png = Url("button-solar-overlay.png");
+                public static readonly string button_water_overlay_png = Url("button-water-overlay.png");
+                public static readonly string button_wind_overlay_png = Url("button-wind-overlay.png");
                 public static readonly string Buttons_active_png = Url("Buttons_active.png");
                 public static readonly string Buttons_inactive_png = Url("Buttons_inactive.png");
                 public static readonly string icoon_dakpaneel_png = Url("icoon_dakpaneel.png");
