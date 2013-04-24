@@ -4,7 +4,7 @@ import json
 from django.http import HttpResponse, HttpResponseBadRequest
 from django.shortcuts import render_to_response
 
-from models import Solar
+from models import Solar, WindSpeed
 
 def index(request):
     return render_to_response("index.html")
@@ -14,9 +14,12 @@ def point_information(request, long, lat):
     if long is None:
         return HttpResponseBadRequest("long, lat out of range")
     solar = Solar.get_point(long, lat)
-    data = {'long':long,
-            'lat': lat,
-            'solar_power': solar.value
+    windspeed = WindSpeed(long, lat)
+    data = {
+        'long':long,
+        'lat': lat,
+        'solar_power': solar.value,
+        'wind_speed': windspeed.total,
     }
     return HttpResponse(json.dumps(data), content_type="application/json")
 

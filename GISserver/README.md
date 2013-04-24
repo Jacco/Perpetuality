@@ -3,9 +3,17 @@ Perpetuality
 
 Perpetuality - SpaceAppsChallenge - Renewable Energy Game
 
+Django webapplication to access the PostGIS server with GEO data.
 
+Install on Linux
+================
 
+Requirements:
+# Python 2.7 (already installed on modern distributtions
+# Django 1.5
 
+Running test server:
+# manage.py runserver
 
 
 GNU Global Public Licence
@@ -17,7 +25,7 @@ View official GNU site <http://www.gnu.org/licenses/gpl.html>.
 
 ### Related : 
  - [Wikipedia - GNU General Public License](http://en.wikipedia.org/wiki/GNU_General_Public_License) - 
-   [(fr)](http://fr.wikipedia.org/wiki/Licence_publique_générale_GNU)
+   [(fr)](http://fr.wikipedia.org/wiki/Licence_publique_gï¿½nï¿½rale_GNU)
    [(de)](http://de.wikipedia.org/wiki/GNU_General_Public_License)
    [(es)](http://es.wikipedia.org/wiki/GNU_General_Public_License)
    [(it)](http://it.wikipedia.org/wiki/GNU_General_Public_License) - 
