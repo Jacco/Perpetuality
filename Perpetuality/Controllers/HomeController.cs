@@ -4,6 +4,7 @@ using Perpetuality.Data;
 using Perpetuality.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -179,7 +180,7 @@ namespace Perpetuality.Controllers
         // [ValidateAntiForgeryToken]
         public virtual ActionResult ExternalLogin(string provider, string returnUrl)
         {
-            return new ExternalLoginResult(provider, "http://localhost:51127" + Url.Action("ExternalLoginCallback", new { ReturnUrl = returnUrl }));
+            return new ExternalLoginResult(provider, ConfigurationManager.AppSettings["BaseURL"] + Url.Action("ExternalLoginCallback", new { ReturnUrl = returnUrl }));
         }
 
         internal class ExternalLoginResult : ActionResult

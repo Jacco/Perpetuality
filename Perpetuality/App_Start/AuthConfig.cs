@@ -17,8 +17,8 @@ namespace Perpetuality.App_Start
         public static void RegisterAuth()
         {
             OAuthWebSecurity.RegisterClient(new FacebookClient(
-                appId: ConfigurationSettings.AppSettings["facebook_appid"],
-                appSecret: ConfigurationSettings.AppSettings["facebook_appsecret"])
+                appId: ConfigurationManager.AppSettings["facebook_appid"],
+                appSecret: ConfigurationManager.AppSettings["facebook_appsecret"])
             );
         }
     }
