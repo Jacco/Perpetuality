@@ -38,15 +38,16 @@ perpetuality.state.StateModel = function (map) {
 
     this.plantTypes = perpetuality.plant.types;
     
-    this.power = ko.observable(0);
-    this.powerText = ko.computed(function () { return self.padZeroes(self.power(), 7); });
+    this.power = ko.computed(function () { return self.computePower(self.plants()) });
+    this.powerText = ko.computed(function () { return self.padZeroes(self.power() / 1000, 14); });
     this.credits = ko.observable(initialPlayerState.balance);
     this.creditsText = ko.computed(function () { return self.padZeroes(self.credits(), 14); });
 
     this.time = ko.observable(new Date());
     this.timeText = ko.computed(function () { return self.computeTime(self.time()); });
 
-    this.creditProduction = ko.computed(function () { return self.computeProduction(initialPlayerState.rate) }); // in credits per world-second
+    // For now I'm assuming 1 credit per hour per 1 power per 1000 square meters.
+    this.creditProduction = ko.computed(function () { return initialPlayerState.rate + self.power() / 3600000 }); // in credits per world-second
 
     this.selectedOverlay = ko.observable('none');
     this.selectedPlantType = ko.observable(this.plantTypes.none);
@@ -67,11 +68,10 @@ perpetuality.state.StateModel.prototype =
             + this.padZeroes(time.getMinutes(), 2);
     },
 
-    // For now I'm assuming 1 credit per hour per 1 power per 1000 square meters.
-    computeProduction: function (initialValue) {
-        var result = initialValue ? initialValue : 0;
-        ko.utils.arrayForEach(this.plants(), function (plant) {
-            result += plant.energyPerMeter * plant.size / 3600000;
+    computePower: function (plants) {
+        var result = 0;
+        ko.utils.arrayForEach(plants, function (plant) {
+            result += plant.energyPerMeter * plant.size;
         });
         return result;
     },
@@ -79,6 +79,10 @@ perpetuality.state.StateModel.prototype =
     addPlant: function (event) {
         var newPlant = this.selectedPlantType()
         if (newPlant != this.plantTypes.none) {
+            if (this.credits() < newPlant.cost) {
+                // Not enough money, warning?
+                return;
+            }
             var newPlantId = newPlant.type + perpetuality.state.numberOfPlants++;
             newPlant.id = newPlantId;
             // place the plant
@@ -89,6 +93,7 @@ perpetuality.state.StateModel.prototype =
                 { latitude: event.latLng.lat(), longitude: event.latLng.lng() });
 
             // add plant to state
+            this.credits(this.credits() - newPlant.cost);
             this.plants.push(newPlant);
 
             // deselect the button
