@@ -411,7 +411,9 @@
     <Content Include="Scripts\lib\modernizr-2.5.3.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="T4MVC.tt.settings.xml" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -433,6 +435,7 @@
     <Content Include="Views\Home\Profile.cshtml" />
     <Content Include="Views\FAQ\Index.cshtml" />
     <Content Include="Views\Home\Confirm.cshtml" />
+    <Content Include="Views\Home\RegisterThanks.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

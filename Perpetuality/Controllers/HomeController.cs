@@ -113,7 +113,7 @@ namespace Perpetuality.Controllers
 
                     lMsg.From = new MailAddress("noreply@perpetuality.org", "Perpetuality.org");
                     lMsg.ReplyTo = new MailAddress("noreply@perpetuality.org", "Perpetuality.org");
-                    lMsg.Sender = new MailAddress("noreply+" + recipient.Replace("@", "=") + "perpetuality");
+                    lMsg.Sender = new MailAddress("noreply+" + recipient.Replace("@", "=") + "@perpetuality.org");
                     lMsg.To.Add(new MailAddress(recipient, name));
                     lMsg.Subject = subject;
                     lMsg.Body = "";
@@ -185,28 +185,16 @@ namespace Perpetuality.Controllers
                 var confirmationpwd = GenerateConfirmationHash(userName);
                 using (var ctx = new DatabaseDataContext())
                 {
-                    ctx.Connection.Open();
-                    var tran = ctx.Connection.BeginTransaction(System.Data.IsolationLevel.ReadCommitted);
-                    ctx.Transaction = tran;
+                    if (ctx.RegisterNewUser(userName, password, confirmationpwd, false, ref userID) == 0)
+                        throw new ApplicationException("60003 Registering new user failed.");
+                    // send a confirmation mail
                     try
                     {
-                        if (ctx.RegisterNewUser(userName, password, confirmationpwd, false, ref userID) == 0)
-                            throw new ApplicationException("60003 Registering new user failed.");
-                        // send a confirmation mail
-                        try
-                        {
-                            SendConfirmationMail(new MailAddress(userName), userID, language);
-                        }
-                        catch (Exception e)
-                        {
-                            throw new ApplicationException("60005 Sending confirmation mail failed.", e);
-                        }
-                        tran.Commit();
+                        SendConfirmationMail(new MailAddress(userName), userID, language);
                     }
                     catch (Exception e)
                     {
-                        tran.Rollback();
-                        throw e;
+                        throw new ApplicationException("60005 Sending confirmation mail failed.", e);
                     }
                 }
                 if (!userID.HasValue)
@@ -218,7 +206,7 @@ namespace Perpetuality.Controllers
                 EventLogger.WriteEvent(e.Message, EventLogger.EventType.Error, "Perpetuality");
             }
 
-            return View();
+            return View(Views.RegisterThanks);
         }
 
         private void SendConfirmationMail(MailAddress mailAddress, long? userID, string language)
