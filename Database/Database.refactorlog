@@ -14,4 +14,25 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="numCreditProductionRate" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="2c06f5eb-0aab-4a51-988e-6b6dcc645b6d" ChangeDateTime="04/24/2013 14:19:42">
+    <Property Name="ElementName" Value="[dbo].[tblWorldPlayerPlant].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tblWorldPlayerPlant]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="autID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="2f19bb10-e805-44fb-82e2-3846aac6fe59" ChangeDateTime="04/24/2013 14:21:32">
+    <Property Name="ElementName" Value="[dbo].[tblWorldPlayerPlant].[intInstallationSzie]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tblWorldPlayerPlant]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="intInstallationSize" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="02fc304b-697d-4352-b16b-eec5d19d4e70" ChangeDateTime="04/24/2013 14:22:22">
+    <Property Name="ElementName" Value="[dbo].[tblWorldPlayerPlant].[intInstallationSize]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tblWorldPlayerPlant]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="intInstalationSize" />
+  </Operation>
 </Operations>

@@ -87,6 +87,12 @@
     <Build Include="Stored Procedures\GetUserEmail.sql" />
     <Build Include="Stored Procedures\UpdateUserProfile.sql" />
     <Build Include="Stored Procedures\GetPlayerState.sql" />
+    <Build Include="Tables\tblCountryBoundaries.sql" />
+    <Build Include="Stored Procedures\CountryByLonLat.sql" />
+    <Build Include="Stored Procedures\CalculateSolarPanel.sql" />
+    <Build Include="Stored Procedures\InstallPlant.sql" />
+    <Build Include="Stored Procedures\UpdatePlayerBalance.sql" />
+    <Build Include="Tables\tblWorldPlayerPlant.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Database.publish.xml" />
