@@ -58,6 +58,12 @@ namespace Perpetuality.Controllers
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult Confirm()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Confirm);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public virtual System.Web.Mvc.ActionResult ExternalLogin()
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ExternalLogin);
@@ -88,10 +94,12 @@ namespace Perpetuality.Controllers
             public readonly string Login = "Login";
             public readonly string Logout = "Logout";
             public readonly string ResetPassword = "ResetPassword";
+            public readonly string Confirm = "Confirm";
             public readonly string Register = "Register";
             public readonly string Profile = "Profile";
             public readonly string ExternalLogin = "ExternalLogin";
             public readonly string ExternalLoginCallback = "ExternalLoginCallback";
+            public readonly string ExternalLoginFailure = "ExternalLoginFailure";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -101,10 +109,12 @@ namespace Perpetuality.Controllers
             public const string Login = "Login";
             public const string Logout = "Logout";
             public const string ResetPassword = "ResetPassword";
+            public const string Confirm = "Confirm";
             public const string Register = "Register";
             public const string Profile = "Profile";
             public const string ExternalLogin = "ExternalLogin";
             public const string ExternalLoginCallback = "ExternalLoginCallback";
+            public const string ExternalLoginFailure = "ExternalLoginFailure";
         }
 
 
@@ -127,6 +137,14 @@ namespace Perpetuality.Controllers
             public readonly string password = "password";
             public readonly string rememberMe = "rememberMe";
         }
+        static readonly ActionParamsClass_Confirm s_params_Confirm = new ActionParamsClass_Confirm();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Confirm ConfirmParams { get { return s_params_Confirm; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Confirm
+        {
+            public readonly string reference = "reference";
+        }
         static readonly ActionParamsClass_ResetPassword s_params_ResetPassword = new ActionParamsClass_ResetPassword();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ActionParamsClass_ResetPassword ResetPasswordParams { get { return s_params_ResetPassword; } }
@@ -142,6 +160,8 @@ namespace Perpetuality.Controllers
         public class ActionParamsClass_Register
         {
             public readonly string emailAddress = "emailAddress";
+            public readonly string password = "password";
+            public readonly string language = "language";
         }
         static readonly ActionParamsClass_Profile s_params_Profile = new ActionParamsClass_Profile();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -180,6 +200,7 @@ namespace Perpetuality.Controllers
             {
                 public readonly string ChangeEmail = "ChangeEmail";
                 public readonly string ChangePassword = "ChangePassword";
+                public readonly string Confirm = "Confirm";
                 public readonly string Index = "Index";
                 public readonly string Login = "Login";
                 public readonly string Profile = "Profile";
@@ -188,6 +209,7 @@ namespace Perpetuality.Controllers
             }
             public readonly string ChangeEmail = "~/Views/Home/ChangeEmail.cshtml";
             public readonly string ChangePassword = "~/Views/Home/ChangePassword.cshtml";
+            public readonly string Confirm = "~/Views/Home/Confirm.cshtml";
             public readonly string Index = "~/Views/Home/Index.cshtml";
             public readonly string Login = "~/Views/Home/Login.cshtml";
             public readonly string Profile = "~/Views/Home/Profile.cshtml";
@@ -265,6 +287,16 @@ namespace Perpetuality.Controllers
             return callInfo;
         }
 
+        partial void ConfirmOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string reference);
+
+        public override System.Web.Mvc.ActionResult Confirm(string reference)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Confirm);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "reference", reference);
+            ConfirmOverride(callInfo, reference);
+            return callInfo;
+        }
+
         partial void ResetPasswordOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string emailAddress);
 
         public override System.Web.Mvc.ActionResult ResetPassword(string emailAddress)
@@ -284,13 +316,15 @@ namespace Perpetuality.Controllers
             return callInfo;
         }
 
-        partial void RegisterOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string emailAddress);
+        partial void RegisterOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string emailAddress, string password, string language);
 
-        public override System.Web.Mvc.ActionResult Register(string emailAddress)
+        public override System.Web.Mvc.ActionResult Register(string emailAddress, string password, string language)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Register);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "emailAddress", emailAddress);
-            RegisterOverride(callInfo, emailAddress);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "password", password);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "language", language);
+            RegisterOverride(callInfo, emailAddress, password, language);
             return callInfo;
         }
 
@@ -331,6 +365,15 @@ namespace Perpetuality.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ExternalLoginCallback);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "returnUrl", returnUrl);
             ExternalLoginCallbackOverride(callInfo, returnUrl);
+            return callInfo;
+        }
+
+        partial void ExternalLoginFailureOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        public override System.Web.Mvc.ActionResult ExternalLoginFailure()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ExternalLoginFailure);
+            ExternalLoginFailureOverride(callInfo);
             return callInfo;
         }
 

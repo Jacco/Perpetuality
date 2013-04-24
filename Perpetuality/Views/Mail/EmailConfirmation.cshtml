@@ -4,6 +4,7 @@
     bool cont = true;
     Perpetuality.App_Code.Model_EmailConfirmation MyModel = null;
     Exception ex = null;
+    var BaseURL = System.Configuration.ConfigurationManager.AppSettings["BaseURL"];
     try
     {
    
@@ -25,7 +26,7 @@
     <p>@Resources.Mail.EmailConfirmation.Message</p>
     <br />
     <br />
-    <a href="http://www.perpetuality.org/en/mail/confirm/?reference=@(MyModel.ConfirmHash)">http://www.perpetuality.org/en/mail/confirm/?reference=@(MyModel.ConfirmHash)</a>
+    <a href="@BaseURL/en/mail/confirm/?reference=@(MyModel.ConfirmHash)">@BaseURL/en/home/confirm/?reference=@(MyModel.ConfirmHash)</a>
 }
 else
 {

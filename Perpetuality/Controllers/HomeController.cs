@@ -1,4 +1,5 @@
 ﻿using DotNetOpenAuth.AspNet;
+using JaapNL.Utilities;
 using Microsoft.Web.WebPages.OAuth;
 using Perpetuality.Data;
 using Perpetuality.Models;
@@ -95,6 +96,13 @@ namespace Perpetuality.Controllers
             return View();
         }
 
+        public virtual ActionResult Confirm(string reference)
+        {
+            var ctx = new DatabaseDataContext();
+            ctx.ConfirmEmailAddress(reference);
+            return View();
+        }
+
         private static void SendMail(string recipient, string name, string subject, string body)
         {
             using (var mailClient = new SmtpClient())
@@ -103,9 +111,9 @@ namespace Perpetuality.Controllers
                 using (var lMsg = new System.Net.Mail.MailMessage())
                 {
 
-                    lMsg.From = new MailAddress("woning@jaap.nl", "JAAP.NL");
-                    lMsg.ReplyTo = new MailAddress("woning@jaap.nl", "JAAP.NL");
-                    lMsg.Sender = new MailAddress("woning+" + recipient.Replace("@", "=") + "@jaap.nl");
+                    lMsg.From = new MailAddress("noreply@perpetuality.org", "Perpetuality.org");
+                    lMsg.ReplyTo = new MailAddress("noreply@perpetuality.org", "Perpetuality.org");
+                    lMsg.Sender = new MailAddress("noreply+" + recipient.Replace("@", "=") + "perpetuality");
                     lMsg.To.Add(new MailAddress(recipient, name));
                     lMsg.Subject = subject;
                     lMsg.Body = "";
@@ -152,12 +160,86 @@ namespace Perpetuality.Controllers
         }
 
         [HttpPost]
-        public virtual ActionResult Register(string emailAddress)
+        public virtual ActionResult Register(string emailAddress, string password, string language)
         {
-
-
+            try
+            {
+                long? userID = null;
+                var userName = emailAddress.Trim();
+                password = password.Trim();
+                // validate the email address
+                try
+                {
+                    userName = NormalizeEmailAddress(userName);
+                }
+                catch
+                {
+                    throw new ApplicationException("60001 The supplied username is not a valid email address.");
+                }
+                // validate the password
+                if (string.IsNullOrEmpty(password) | password.Length < 6)
+                {
+                    throw new ApplicationException("60002 The supplied password is empty or too short.");
+                }
+                // store in DB
+                var confirmationpwd = GenerateConfirmationHash(userName);
+                using (var ctx = new DatabaseDataContext())
+                {
+                    ctx.Connection.Open();
+                    var tran = ctx.Connection.BeginTransaction(System.Data.IsolationLevel.ReadCommitted);
+                    ctx.Transaction = tran;
+                    try
+                    {
+                        if (ctx.RegisterNewUser(userName, password, confirmationpwd, false, ref userID) == 0)
+                            throw new ApplicationException("60003 Registering new user failed.");
+                        // send a confirmation mail
+                        try
+                        {
+                            SendConfirmationMail(new MailAddress(userName), userID, language);
+                        }
+                        catch (Exception e)
+                        {
+                            throw new ApplicationException("60005 Sending confirmation mail failed.", e);
+                        }
+                        tran.Commit();
+                    }
+                    catch (Exception e)
+                    {
+                        tran.Rollback();
+                        throw e;
+                    }
+                }
+                if (!userID.HasValue)
+                    throw new ApplicationException("60005 Sending confirmation mail failed.");
+                //return userID.Value;
+            }
+            catch (Exception e)
+            {
+                EventLogger.WriteEvent(e.Message, EventLogger.EventType.Error, "Perpetuality");
+            }
 
             return View();
+        }
+
+        private void SendConfirmationMail(MailAddress mailAddress, long? userID, string language)
+        {
+            var client = new WebClient();
+            var body = client.DownloadString(ConfigurationManager.AppSettings["BaseURL"] + "/" + language + "/mail/?view=EmailConfirmation&id=" + userID);
+            SendMail(mailAddress.Address, mailAddress.DisplayName, Resources.Mail.EmailConfirmation.Subject, body);
+        }
+
+        private static string GenerateConfirmationHash(string email)
+        {
+            if (!string.IsNullOrEmpty(email))
+                return Convert.ToBase64String(new SHA1CryptoServiceProvider().ComputeHash(Encoding.UTF8.GetBytes(email + ConfigurationManager.AppSettings["ConfirmationSecret"])));
+            else
+                throw new ApplicationException("Error generating confirmation hash.");
+        }
+
+        private static string NormalizeEmailAddress(string email)
+        {
+            var test = new MailAddress(email);
+            return test.User + "@" + test.Host.ToLower();
         }
 
         public virtual ActionResult Profile()
@@ -291,6 +373,13 @@ namespace Perpetuality.Controllers
             }
 
             return RedirectToAction("ExternalLoginFailure");
+        }
+
+        public virtual ActionResult ExternalLoginFailure()
+        {
+            ViewBag.ExceptionTitle = "Inloggen via extern account niet gelukt";
+            ViewBag.ExceptionDescription = "Het is niet gelukt om in te loggen via deze externe account. U kunt proberen direct in te loggen via een Mijn JAAP-account.";
+            return View(MVC.Shared.Views.Error);
         }
 
     }

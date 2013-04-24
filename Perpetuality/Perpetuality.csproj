@@ -137,6 +137,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Utilities\EventLogger.cs" />
     <Content Include="App_Code\Model_EmailConfirmation.cs" />
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -431,6 +432,7 @@
     <Content Include="Views\Map\Index.cshtml" />
     <Content Include="Views\Home\Profile.cshtml" />
     <Content Include="Views\FAQ\Index.cshtml" />
+    <Content Include="Views\Home\Confirm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
