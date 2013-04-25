@@ -63,9 +63,28 @@
   <Function Name="dbo.GetPlayerState" Method="GetPlayerState">
     <Parameter Name="PlayerID" Parameter="playerID" Type="System.Int64" DbType="BigInt" />
     <Parameter Name="WorldID" Parameter="worldID" Type="System.Int64" DbType="BigInt" />
-    <ElementType Name="GetPlayerStateResult">
-      <Column Name="numBalance" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
-      <Column Name="numCreditProductionRate" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
-    </ElementType>
+    <Parameter Name="Balance" Parameter="balance" Type="System.Decimal" DbType="Decimal(18,2)" Direction="InOut" />
+    <Parameter Name="CreditProductionRate" Parameter="creditProductionRate" Type="System.Decimal" DbType="Decimal(18,6)" Direction="InOut" />
+    <Parameter Name="GameDate" Parameter="gameDate" Type="System.DateTime" DbType="DateTime" Direction="InOut" />
+    <Parameter Name="InstalledPower" Parameter="installedPower" Type="System.Decimal" DbType="Decimal(18,2)" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.InstallPlant" Method="InstallPlant">
+    <Parameter Name="PlayerID" Parameter="playerID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="WorldID" Parameter="worldID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="PowerPlantTypeID" Parameter="powerPlantTypeID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="Longitude" Parameter="longitude" Type="System.Decimal" DbType="Decimal(18,6)" />
+    <Parameter Name="Latitude" Parameter="latitude" Type="System.Decimal" DbType="Decimal(18,6)" />
+    <Parameter Name="InstallationSize" Parameter="installationSize" Type="System.Int32" DbType="Int" />
+    <Parameter Name="SolarPower" Parameter="solarPower" Type="System.Decimal" DbType="Decimal(18,2)" />
+    <Parameter Name="CalculateOnly" Parameter="calculateOnly" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="Balance" Parameter="balance" Type="System.Decimal" DbType="Decimal(18,2)" Direction="InOut" />
+    <Parameter Name="CreditProductionRate" Parameter="creditProductionRate" Type="System.Decimal" DbType="Decimal(18,6)" Direction="InOut" />
+    <Parameter Name="GameDate" Parameter="gameDate" Type="System.DateTime" DbType="DateTime" Direction="InOut" />
+    <Parameter Name="InstalledPower" Parameter="installedPower" Type="System.Decimal" DbType="Decimal(18,2)" Direction="InOut" />
+    <Parameter Name="BuildingCost" Parameter="buildingCost" Type="System.Decimal" DbType="Decimal(18,2)" Direction="InOut" />
+    <Parameter Name="BuildingPower" Parameter="buildingPower" Type="System.Decimal" DbType="Decimal(18,2)" Direction="InOut" />
+    <Parameter Name="CreditRevenuePerYear" Parameter="creditRevenuePerYear" Type="System.Decimal" DbType="Decimal(18,2)" Direction="InOut" />
+    <Return Type="System.Int32" />
   </Function>
 </Database>

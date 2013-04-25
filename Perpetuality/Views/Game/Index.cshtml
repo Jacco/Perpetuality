@@ -71,29 +71,37 @@
         </div>
     </div>
       <div id="sprite-pane" class="map-pane map-pane-right" style="z-index: 0; position: absolute; right: 0px; top: 98px;">
-          <div class="map-pane-item">
-              <div id="plantcost" data-bind="text: selectedPlantType() != plantTypes.none ? selectedPlantType().cost : 'None'"></div>
-              <div>Plant cost</div>
+          <div data-bind="visible: calculatedPlant() == null">
+              <div class="map-pane-item">
+                  <div id="plantcost" data-bind="text: selectedPlantType() != plantTypes.none ? selectedPlantType().cost : 'None'"></div>
+                  <div>Plant cost</div>
+              </div>
+              <div class="map-pane-item">
+                  <div id="plantsize" data-bind="text: selectedPlantType() != plantTypes.none ? selectedPlantType().size : 'None'"></div>
+                  <div>Plant size</div>
+              </div>
+              <div class="map-pane-item map-pane-item-vertical">
+                  <div id="solarroofbutton" class="plantbutton" data-bind="click: perpetuality.plant.clickable('solarroof'), css: { selected: selectedPlantType() == plantTypes.solarroof }"></div>
+                  <div>Solar Panels</div>
+              </div>
+              <div class="map-pane-item map-pane-item-vertical">
+                  <div id="solarfieldbutton" class="plantbutton" data-bind="click: perpetuality.plant.clickable('solarfield'), css: { selected: selectedPlantType() == plantTypes.solarfield }"></div>
+                  <div>Solar Field</div>
+              </div>
+              <div class="map-pane-item map-pane-item-vertical">
+                  <div id="solartowerbutton" class="plantbutton" data-bind="click: perpetuality.plant.clickable('solartower'), css: { selected: selectedPlantType() == plantTypes.solartower }"></div>
+                  <div>Solar Plant</div>
+              </div>
           </div>
-          <div class="map-pane-item">
-              <div id="plantsize" data-bind="text: selectedPlantType() != plantTypes.none ? selectedPlantType().size : 'None'"></div>
-              <div>Plant size</div>
-          </div>
-          <div class="map-pane-item map-pane-item-vertical">
-              <div id="solarroofbutton" class="plantbutton" data-bind="click: perpetuality.plant.clickable('solarroof'), css: { selected: selectedPlantType() == plantTypes.solarroof }"></div>
-              <div>Solar Panels</div>
-          </div>
-          <div class="map-pane-item map-pane-item-vertical">
-              <div id="solarfieldbutton" class="plantbutton" data-bind="click: perpetuality.plant.clickable('solarfield'), css: { selected: selectedPlantType() == plantTypes.solarfield }"></div>
-              <div>Solar Field</div>
-          </div>
-          <div class="map-pane-item map-pane-item-vertical">
-              <div id="solartowerbutton" class="plantbutton" data-bind="click: perpetuality.plant.clickable('solartower'), css: { selected: selectedPlantType() == plantTypes.solartower }"></div>
-              <div>Solar Plant</div>
-          </div>
-          <div class="map-pane-item map-pane-item-vertical">
-              <div id="deselectbutton" class="plantbutton"></div>
-              <div>Persist Plant</div>
+          <div data-bind="visible: calculatedPlant() != null">
+              <div class="map-pane-item map-pane-item-vertical">
+                  <div class="plantbutton" data-bind="click: installPlant"></div>
+                  <div>Save Plant</div>
+              </div>
+              <div class="map-pane-item map-pane-item-vertical">
+                  <div class="plantbutton" data-bind="click: cancelPlant"></div>
+                  <div>Cancel</div>
+              </div>
           </div>
       </div>
       <div id="detail-pane" class="map-pane map-pane-left" style="z-index: 0; position: absolute; left: 0px; top: 248px;">

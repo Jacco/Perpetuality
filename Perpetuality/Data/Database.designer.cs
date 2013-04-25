@@ -131,10 +131,28 @@ namespace Perpetuality.Data
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetPlayerState")]
-		public ISingleResult<GetPlayerStateResult> GetPlayerState([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PlayerID", DbType="BigInt")] System.Nullable<long> playerID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="WorldID", DbType="BigInt")] System.Nullable<long> worldID)
+		public int GetPlayerState([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PlayerID", DbType="BigInt")] System.Nullable<long> playerID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="WorldID", DbType="BigInt")] System.Nullable<long> worldID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Balance", DbType="Decimal(18,2)")] ref System.Nullable<decimal> balance, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CreditProductionRate", DbType="Decimal(18,6)")] ref System.Nullable<decimal> creditProductionRate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="GameDate", DbType="DateTime")] ref System.Nullable<System.DateTime> gameDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="InstalledPower", DbType="Decimal(18,2)")] ref System.Nullable<decimal> installedPower)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), playerID, worldID);
-			return ((ISingleResult<GetPlayerStateResult>)(result.ReturnValue));
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), playerID, worldID, balance, creditProductionRate, gameDate, installedPower);
+			balance = ((System.Nullable<decimal>)(result.GetParameterValue(2)));
+			creditProductionRate = ((System.Nullable<decimal>)(result.GetParameterValue(3)));
+			gameDate = ((System.Nullable<System.DateTime>)(result.GetParameterValue(4)));
+			installedPower = ((System.Nullable<decimal>)(result.GetParameterValue(5)));
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InstallPlant")]
+		public int InstallPlant([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PlayerID", DbType="BigInt")] System.Nullable<long> playerID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="WorldID", DbType="BigInt")] System.Nullable<long> worldID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PowerPlantTypeID", DbType="BigInt")] System.Nullable<long> powerPlantTypeID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Longitude", DbType="Decimal(18,6)")] System.Nullable<decimal> longitude, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Latitude", DbType="Decimal(18,6)")] System.Nullable<decimal> latitude, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="InstallationSize", DbType="Int")] System.Nullable<int> installationSize, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SolarPower", DbType="Decimal(18,2)")] System.Nullable<decimal> solarPower, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CalculateOnly", DbType="Bit")] System.Nullable<bool> calculateOnly, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Balance", DbType="Decimal(18,2)")] ref System.Nullable<decimal> balance, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CreditProductionRate", DbType="Decimal(18,6)")] ref System.Nullable<decimal> creditProductionRate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="GameDate", DbType="DateTime")] ref System.Nullable<System.DateTime> gameDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="InstalledPower", DbType="Decimal(18,2)")] ref System.Nullable<decimal> installedPower, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BuildingCost", DbType="Decimal(18,2)")] ref System.Nullable<decimal> buildingCost, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BuildingPower", DbType="Decimal(18,2)")] ref System.Nullable<decimal> buildingPower, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CreditRevenuePerYear", DbType="Decimal(18,2)")] ref System.Nullable<decimal> creditRevenuePerYear)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), playerID, worldID, powerPlantTypeID, longitude, latitude, installationSize, solarPower, calculateOnly, balance, creditProductionRate, gameDate, installedPower, buildingCost, buildingPower, creditRevenuePerYear);
+			balance = ((System.Nullable<decimal>)(result.GetParameterValue(8)));
+			creditProductionRate = ((System.Nullable<decimal>)(result.GetParameterValue(9)));
+			gameDate = ((System.Nullable<System.DateTime>)(result.GetParameterValue(10)));
+			installedPower = ((System.Nullable<decimal>)(result.GetParameterValue(11)));
+			buildingCost = ((System.Nullable<decimal>)(result.GetParameterValue(12)));
+			buildingPower = ((System.Nullable<decimal>)(result.GetParameterValue(13)));
+			creditRevenuePerYear = ((System.Nullable<decimal>)(result.GetParameterValue(14)));
+			return ((int)(result.ReturnValue));
 		}
 	}
 	
@@ -257,50 +275,6 @@ namespace Perpetuality.Data
 				if ((this._strName != value))
 				{
 					this._strName = value;
-				}
-			}
-		}
-	}
-	
-	public partial class GetPlayerStateResult
-	{
-		
-		private decimal _numBalance;
-		
-		private decimal _numCreditProductionRate;
-		
-		public GetPlayerStateResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_numBalance", DbType="Decimal(18,2) NOT NULL")]
-		public decimal numBalance
-		{
-			get
-			{
-				return this._numBalance;
-			}
-			set
-			{
-				if ((this._numBalance != value))
-				{
-					this._numBalance = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_numCreditProductionRate", DbType="Decimal(18,5) NOT NULL")]
-		public decimal numCreditProductionRate
-		{
-			get
-			{
-				return this._numCreditProductionRate;
-			}
-			set
-			{
-				if ((this._numCreditProductionRate != value))
-				{
-					this._numCreditProductionRate = value;
 				}
 			}
 		}

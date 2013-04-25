@@ -6,31 +6,34 @@
 	,	@Latitude numeric(18, 6)
 	,	@InstallationSize int
 	,	@SolarPower numeric(18,2)
+	,	@CalculateOnly bit
 
+	-- player state returned
 	,	@Balance numeric(18, 2) output
 	,	@CreditProductionRate numeric(18,6) output
 	,	@GameDate datetime output
+	,	@InstalledPower numeric(18,2) output
+	-- building stats returned
+	,	@BuildingCost numeric(18, 2) output
+	,	@BuildingPower numeric(18,2) output
+	,	@CreditRevenuePerYear numeric(18,2) output
 AS
 BEGIN
+	set nocount on
+
 	-- update the player balance
-	exec GetPlayerState @PlayerID, @WorldID, @Balance output, @CreditProductionRate output, @GameDate output
+	exec GetPlayerState @PlayerID, @WorldID, @Balance output, @CreditProductionRate output, @GameDate output, @InstalledPower output
 
-	-- calculate the panel
-	declare @pwr numeric(18,6)
-	declare @cst numeric(18,2)
-	declare @rev numeric(18,6)
+	exec CalculateSolarPanel @InstallationSize, @Longitude, @Latitude, @GameDate, @SolarPower, @BuildingPower output, @BuildingCost output, @CreditRevenuePerYear output
 
-	exec CalculateSolarPanel @InstallationSize, @Longitude, @Latitude, @GameDate, @SolarPower, @pwr output, @cst output, @rev output
-
-	select @pwr, @cst, @rev
-
-	if (@Balance > @cst)
+	if (@Balance > @BuildingCost and @CalculateOnly = 0)
 	begin
 		-- pay for the panel
 		update tblWorldPlayer
 		set 
-				numBalance = numBalance - @cst
-			,	numCreditProductionRate = numCreditProductionRate + @rev
+				numBalance = numBalance - @BuildingCost
+			,	numCreditProductionRate = numCreditProductionRate + @CreditRevenuePerYear / @BuildingCost
+			,	numInstalledPower = numInstalledPower + @BuildingPower
 		where
 				intPlayerID = @PlayerID
 			and	intWorldID = @WorldID
@@ -39,9 +42,9 @@ BEGIN
 		insert into tblWorldPlayerPlant(intWorldID, intPlayerID, intPowerPlantTypeID, numLongitude, numLatitude, intInstalationSize)
 		select @WorldID, @PlayerID, @PowerPlantTypeID, @Longitude, @Latitude, @InstallationSize
 
-		exec GetPlayerState @PlayerID, @WorldID, @Balance output, @CreditProductionRate output, @GameDate output
+		exec GetPlayerState @PlayerID, @WorldID, @Balance output, @CreditProductionRate output, @GameDate output, @InstalledPower output
 		return 0
 	end
-	exec GetPlayerState @PlayerID, @WorldID, @Balance output, @CreditProductionRate output, @GameDate output
+	exec GetPlayerState @PlayerID, @WorldID, @Balance output, @CreditProductionRate output, @GameDate output, @InstalledPower output
 	return 1
 END

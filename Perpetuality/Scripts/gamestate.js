@@ -50,6 +50,8 @@ perpetuality.state.StateModel = function (map) {
 
     this.selectedOverlay = ko.observable('none');
     this.selectedPlantType = ko.observable(this.plantTypes.none);
+
+    this.calculatedPlant = ko.observable(null);
 };
 
 perpetuality.state.StateModel.prototype =
@@ -76,9 +78,42 @@ perpetuality.state.StateModel.prototype =
         return result;
     },
 
-    addPlant: function (event) {
+    installPlant: function () {
         var newPlant = this.selectedPlantType()
         if (newPlant != this.plantTypes.none) {
+
+            var position = this.calculatedPlant().position_;
+
+            $.ajax({
+                type: 'GET',
+                url: '/en/Game/InstallPlant/?longitude=' + position.lng().toString() + '&latitude=' + position.lat().toString() + '&plantTypeID=1&size=' + newPlant.size.toString(),
+                async: false,
+                success: function (data) {
+                }
+            });
+
+            // add plant to state
+            this.plants.push(newPlant);
+
+            // deselect the button
+            this.calculatedPlant(null);
+        } else {
+            // maybe give some info
+        }
+    },
+
+    testPlant: function (event) {
+        var newPlant = this.selectedPlantType()
+        if (newPlant != this.plantTypes.none) {
+
+            $.ajax({
+                type: 'GET',
+                url: '/en/Game/CalculatePlant/?longitude=' + event.latLng.lng() + '&latitude=' + event.latLng.lat() + '&plantTypeID=1&size=' + newPlant.size,
+                async: false,
+                success: function (data) {
+                }
+            });
+
             var newPlantId = newPlant.type + perpetuality.state.numberOfPlants++;
             newPlant.id = newPlantId;
             // place the plant
@@ -86,16 +121,20 @@ perpetuality.state.StateModel.prototype =
                 this.map.root,
                 newPlant.mapImage,
                 newPlantId,
-                { latitude: event.latLng.lat(), longitude: event.latLng.lng() });
-
-            // add plant to state
-            this.plants.push(newPlant);
+                { latitude: event.latLng.lat(), longitude: event.latLng.lng() },
+                newPlant.size);
 
             // deselect the button
-            this.selectedPlantType(this.plantTypes.none);
+            this.calculatedPlant(marker);
         } else {
             // maybe give some info
         }
+    },
+
+    cancelPlant: function () {
+        marker = this.calculatedPlant();
+        marker.setMap(null);
+        this.calculatedPlant(null);
     }
 };
 

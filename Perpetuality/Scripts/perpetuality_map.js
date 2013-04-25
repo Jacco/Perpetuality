@@ -165,6 +165,6 @@ $(document).ready(function () {
   timer.start();
 
   google.maps.event.addListener(map.root, 'click', function (event) {
-      state.addPlant(event);
+      state.testPlant(event);
   });
 });

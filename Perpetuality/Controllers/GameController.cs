@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -24,21 +25,153 @@ namespace Perpetuality.Controllers
             catch
             {
             }
+            decimal? balance = null;
+            decimal? creditProductionRate = null;
+            DateTime? gameDate = null;
+            decimal? installedPower = null;
             if (user != null)
             {
-                var state = ctx.GetPlayerState((user.Identity as GameIdentity).UserID, 1).Single();
+                ctx.GetPlayerState((user.Identity as GameIdentity).UserID, 1, ref balance, ref creditProductionRate, ref gameDate, ref installedPower);
                 // retrieve state
-                ViewBag.PlayerState = new { balance = state.numBalance, rate = state.numCreditProductionRate };
+                ViewBag.PlayerState = new { balance = balance.Value, rate = creditProductionRate.Value, date = gameDate.Value, power = installedPower.Value };
 
                 return View();
             }
             else
             {
-                ViewBag.PlayerState = new { balance = 3000000, rate = 0 };
+                ViewBag.PlayerState = new { balance = 3000000, rate = 0, date = new DateTime(2013, 4, 20), power = 0 };
                 // retrieve state
                 return View();
             }
         }
 
+        [Authorize]
+        public virtual JsonResult InstallPlant(double longitude, double latitude, long plantTypeID, int size)
+        {
+            var result = new JsonResult();
+            result.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
+
+            var ctx = new DatabaseDataContext();
+            GamePrincipal user = null;
+            try
+            {
+                user = HttpContext.User as GamePrincipal;
+            }
+            catch
+            {
+            }
+
+            decimal? balance = null;
+            decimal? creditProductionRate = null;
+            DateTime? gameDate = null;
+            decimal? installedPower = null;
+            decimal? buildingCost = null;
+            decimal? buildingPower = null;
+            decimal? buildingRevenue = null;
+            if (user != null)
+            {
+                decimal power = 0;
+                // call GIS server for solar power
+                var client = new WebClient();
+                var response = client.DownloadString("http://api.perpetuality.org/v1/" + longitude.ToString() + "," + latitude.ToString());
+                var dummyObject = new { @long = 0.0, lat = 0.0, solar_power = 0.0 };
+                var obj = Newtonsoft.Json.JsonConvert.DeserializeAnonymousType(response, dummyObject);
+                power = (decimal)obj.solar_power;
+                // call install plant
+                ctx.InstallPlant(
+                    (user.Identity as GameIdentity).UserID
+                    , 1
+                    , 1
+                    , (decimal)longitude
+                    , (decimal)latitude
+                    , size
+                    , power
+                    , false
+                    , ref balance
+                    , ref creditProductionRate
+                    , ref gameDate
+                    , ref installedPower
+                    , ref buildingCost
+                    , ref buildingPower
+                    , ref buildingRevenue);
+
+                result.Data = new { balance = balance.Value, rate = creditProductionRate.Value, date = gameDate.Value, power = installedPower.Value };
+            }
+            else
+            {
+                // error
+            }
+            return result;
+        }
+
+        [Authorize]
+        public virtual JsonResult CalculatePlant(double longitude, double latitude, long plantTypeID, int size)
+        {
+            var result = new JsonResult();
+            result.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
+
+            var ctx = new DatabaseDataContext();
+            GamePrincipal user = null;
+            try
+            {
+                user = HttpContext.User as GamePrincipal;
+            }
+            catch
+            {
+            }
+
+            decimal? balance = null;
+            decimal? creditProductionRate = null;
+            DateTime? gameDate = null;
+            decimal? installedPower = null;
+            decimal? buildingCost = null;
+            decimal? buildingPower = null;
+            decimal? buildingRevenue = null;
+            if (user != null)
+            {
+                decimal power = 0;
+                // call GIS server for solar power
+                var client = new WebClient();
+                var response = client.DownloadString("http://api.perpetuality.org/v1/" + longitude.ToString() + "," + latitude.ToString());
+                var dummyObject = new { @long = 0.0, lat = 0.0, solar_power = 0.0 };
+                var obj = Newtonsoft.Json.JsonConvert.DeserializeAnonymousType(response, dummyObject);
+                power = (decimal)obj.solar_power;
+                // call calculate plant
+
+                ctx.InstallPlant(
+                    (user.Identity as GameIdentity).UserID
+                    , 1
+                    , 1
+                    , (decimal)longitude
+                    , (decimal)latitude
+                    , size
+                    , power
+                    , true
+                    , ref balance
+                    , ref creditProductionRate
+                    , ref gameDate
+                    , ref installedPower
+                    , ref buildingCost
+                    , ref buildingPower
+                    , ref buildingRevenue);
+
+                result.Data = new { 
+                    balance = balance.Value
+                    , rate = creditProductionRate.Value
+                    , date = gameDate.Value
+                    , power = installedPower.Value
+                    , plant = new {  
+                            cost = buildingCost.Value
+                        ,   power = buildingPower.Value
+                        ,   revenue = buildingRevenue.Value
+                    } 
+                };
+            }
+            else
+            {
+                // error
+            }
+            return result;
+        }
     }
 }
