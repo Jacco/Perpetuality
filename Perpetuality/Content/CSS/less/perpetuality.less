@@ -164,7 +164,7 @@ figcaption{
     width: 100%;
 	width: 100%;
 	height: 100%;
-	
+	padding-bottom:20px;
 	max-height: 675px;
 overflow-y: scroll;
 margin-bottom: 131px;
@@ -265,14 +265,17 @@ box-shadow: 0 0 2px #ccc;
 //FORMS FOR LOGIN AND REGISTER
 #container{
 	.main-container{
-
+		.news-block{
+			margin-top: 30px;
+			font-size: 1.5em;
+		}
 	}
 	form{
 		margin-left: 21px;
 		margin-top: 23px;
 		color: black;
 		.genericInput{
-			width: 400px;
+			width: 90%;
 			height: 30px;
 			margin-top: 10px;
 			margin-bottom: 10px;
@@ -294,7 +297,7 @@ box-shadow: 0 0 2px #ccc;
 		
 			.genericInput;
 			padding: 0;
-			width:415px;
+			width:92%;
 			option{
 				padding-top: 5px;
 			}
@@ -305,11 +308,23 @@ box-shadow: 0 0 2px #ccc;
 			margin-left: 0;
 			padding: 10px;
 			background: rgb(253, 250, 250);
-			border-radius: 20px;
-			box-shadow: 1px 6px 17px;
+			.border-radius(16px);
+			.box-shadow(1px 2px 5px);
+			font-weight: bold;
 			
 		}
-
+		.sociallogin_facebook{
+			height: 40px;
+			margin-top: 10px;
+			margin-left: 30px;
+			padding: 10px;
+		
+			.border-radius(16px);
+			.box-shadow(1px 2px 5px);
+			font-weight: bold;
+			background: rgb(60, 60, 194) !important ;
+			color: white;
+		}
 		label{
 			
 				margin: 10px;
@@ -329,6 +344,13 @@ box-shadow: 0 0 2px #ccc;
 
 	}
 	
+}
+
+.form-middle{
+	p{
+		margin-left: 24px;
+		margin-top: 24px;
+	}
 }
 
 
@@ -370,7 +392,11 @@ box-shadow: 0 0 2px #ccc;
 	}
 	footer{
 		height: 138px;
-		
+		ul{
+			li{
+				margin-right: 27px;
+			}
+		}
 	}
 
 	.startgame{
@@ -383,7 +409,7 @@ box-shadow: 0 0 2px #ccc;
 		right: 0;
 	}
 }
-@media (max-width: 610px) and (max-width: 799px) {
+@media (min-width: 401px) and (max-width: 799px) {
 	
 
 	.btn_image {
@@ -402,7 +428,11 @@ box-shadow: 0 0 2px #ccc;
 	}
 	footer{
 		height: 120px;
-		
+		ul{
+			li{
+				margin-right: 33px;
+			}
+		}
 	}
 
 	.startgame{
@@ -431,10 +461,14 @@ box-shadow: 0 0 2px #ccc;
 	}
 }
 
-@media (max-width: 400px)and (max-width: 609px) { 
+@media (max-width: 400px){ 
 	footer{
 		height: 90px !important;
-		
+		ul{
+			li{
+				margin-right: 15px;
+			}
+		}
 	}
 
 	.btn_image {

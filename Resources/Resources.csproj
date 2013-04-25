@@ -39,6 +39,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Home\RegisterThanks.Designer.cs">
+      <DependentUpon>RegisterThanks.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Home\Profile.Designer.cs">
       <DependentUpon>Profile.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -87,6 +92,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Home\RegisterThanks.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RegisterThanks.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Home\Profile.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Profile.Designer.cs</LastGenOutput>

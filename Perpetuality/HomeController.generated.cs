@@ -205,6 +205,7 @@ namespace Perpetuality.Controllers
                 public readonly string Login = "Login";
                 public readonly string Profile = "Profile";
                 public readonly string Register = "Register";
+                public readonly string RegisterThanks = "RegisterThanks";
                 public readonly string ResetPassword = "ResetPassword";
             }
             public readonly string ChangeEmail = "~/Views/Home/ChangeEmail.cshtml";
@@ -214,6 +215,7 @@ namespace Perpetuality.Controllers
             public readonly string Login = "~/Views/Home/Login.cshtml";
             public readonly string Profile = "~/Views/Home/Profile.cshtml";
             public readonly string Register = "~/Views/Home/Register.cshtml";
+            public readonly string RegisterThanks = "~/Views/Home/RegisterThanks.cshtml";
             public readonly string ResetPassword = "~/Views/Home/ResetPassword.cshtml";
             static readonly _SharedClass s_Shared = new _SharedClass();
             public _SharedClass Shared { get { return s_Shared; } }
