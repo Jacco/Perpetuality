@@ -137,6 +137,14 @@ namespace Perpetuality.Controllers
             public readonly string password = "password";
             public readonly string rememberMe = "rememberMe";
         }
+        static readonly ActionParamsClass_ResetPassword s_params_ResetPassword = new ActionParamsClass_ResetPassword();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_ResetPassword ResetPasswordParams { get { return s_params_ResetPassword; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_ResetPassword
+        {
+            public readonly string userName = "userName";
+        }
         static readonly ActionParamsClass_Confirm s_params_Confirm = new ActionParamsClass_Confirm();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ActionParamsClass_Confirm ConfirmParams { get { return s_params_Confirm; } }
@@ -144,14 +152,6 @@ namespace Perpetuality.Controllers
         public class ActionParamsClass_Confirm
         {
             public readonly string reference = "reference";
-        }
-        static readonly ActionParamsClass_ResetPassword s_params_ResetPassword = new ActionParamsClass_ResetPassword();
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionParamsClass_ResetPassword ResetPasswordParams { get { return s_params_ResetPassword; } }
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionParamsClass_ResetPassword
-        {
-            public readonly string emailAddress = "emailAddress";
         }
         static readonly ActionParamsClass_Register s_params_Register = new ActionParamsClass_Register();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -289,6 +289,16 @@ namespace Perpetuality.Controllers
             return callInfo;
         }
 
+        partial void ResetPasswordOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string userName);
+
+        public override System.Web.Mvc.ActionResult ResetPassword(string userName)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ResetPassword);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "userName", userName);
+            ResetPasswordOverride(callInfo, userName);
+            return callInfo;
+        }
+
         partial void ConfirmOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string reference);
 
         public override System.Web.Mvc.ActionResult Confirm(string reference)
@@ -296,16 +306,6 @@ namespace Perpetuality.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Confirm);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "reference", reference);
             ConfirmOverride(callInfo, reference);
-            return callInfo;
-        }
-
-        partial void ResetPasswordOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string emailAddress);
-
-        public override System.Web.Mvc.ActionResult ResetPassword(string emailAddress)
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ResetPassword);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "emailAddress", emailAddress);
-            ResetPasswordOverride(callInfo, emailAddress);
             return callInfo;
         }
 

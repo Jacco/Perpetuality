@@ -137,6 +137,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Utilities\PasswordGenerator.cs" />
+    <Content Include="App_Code\Model_PasswordRequest.cs" />
     <Compile Include="Utilities\EventLogger.cs" />
     <Content Include="App_Code\Model_EmailConfirmation.cs" />
     <Compile Include="App_Start\AuthConfig.cs" />
