@@ -11,7 +11,7 @@ perpetuality.plant.types = {
     solarroof: {
         type: "solarroof",
         cost: 3000,
-        size: 4,
+        size: 1500,
         energyPerMeter: 2,
         mapImage: "/Content/Images/original/icoon_dakpaneel.png"
     },

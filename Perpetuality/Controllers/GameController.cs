@@ -95,7 +95,11 @@ namespace Perpetuality.Controllers
                     , ref buildingPower
                     , ref buildingRevenue);
 
-                result.Data = new { balance = balance.Value, rate = creditProductionRate.Value, date = gameDate.Value, power = installedPower.Value };
+                result.Data = new { 
+                    balance = balance.Value, 
+                    rate = creditProductionRate.Value, 
+                    date = gameDate.Value, power = installedPower.Value 
+                };
             }
             else
             {
@@ -156,7 +160,7 @@ namespace Perpetuality.Controllers
                     , ref buildingRevenue);
 
                 result.Data = new { 
-                    balance = balance.Value
+                      balance = balance.Value
                     , rate = creditProductionRate.Value
                     , date = gameDate.Value
                     , power = installedPower.Value
@@ -164,6 +168,7 @@ namespace Perpetuality.Controllers
                             cost = buildingCost.Value
                         ,   power = buildingPower.Value
                         ,   revenue = buildingRevenue.Value
+                        ,   sunpower = power
                     } 
                 };
             }

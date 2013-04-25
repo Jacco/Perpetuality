@@ -104,16 +104,21 @@ perpetuality.state.StateModel.prototype =
 
     testPlant: function (event) {
         var newPlant = this.selectedPlantType()
-        if (newPlant != this.plantTypes.none) {
+        if (newPlant != this.plantTypes.none && this.calculatedPlant() == null) {
+
+            var plantData = null;
 
             $.ajax({
                 type: 'GET',
                 url: '/en/Game/CalculatePlant/?longitude=' + event.latLng.lng() + '&latitude=' + event.latLng.lat() + '&plantTypeID=1&size=' + newPlant.size,
                 async: false,
                 success: function (data) {
+                    // update game state
+
+                    // copy plant info
+                    plantData = data.plant;
                 }
             });
-
 
             var newPlantId = newPlant.type + perpetuality.state.numberOfPlants++;
             newPlant.id = newPlantId;
@@ -124,6 +129,7 @@ perpetuality.state.StateModel.prototype =
                 newPlantId,
                 { latitude: event.latLng.lat(), longitude: event.latLng.lng() },
                 newPlant.size);
+            marker.plantData = plantData;
 
             // deselect the button
             this.calculatedPlant(marker);

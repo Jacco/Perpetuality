@@ -94,6 +94,12 @@
               </div>
           </div>
           <div data-bind="visible: calculatedPlant() != null">
+              <div class="map-pane-item" data-bind="with: calculatedPlant" style="font-size: 10px">
+                  Cst <span data-bind="text: plantData.cost"></span> $<br />
+                  Pwr <span data-bind="text: plantData.power"></span> W<br />
+                  Rev <span data-bind="text: plantData.revenue"></span> $/yr<br />
+                  (Sun <span data-bind="text: plantData.sunpower"></span> W/m2/yr)<br />
+              </div>
               <div class="map-pane-item map-pane-item-vertical">
                   <div class="plantbutton" data-bind="click: installPlant"></div>
                   <div>Save Plant</div>
