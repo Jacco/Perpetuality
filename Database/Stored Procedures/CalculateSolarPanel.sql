@@ -27,6 +27,7 @@ BEGIN
 	-- find costs [credits/Wp] for continent
 	declare @costPerWp numeric(18,3) = 0.0                                                         -- [credit]
 	set @costPerWp = case @Continent
+						when 'Africa' then 0.7
 						when 'Antartica' then 5.0
 						when 'Asia' then 0.7
 						when 'Europe' then 1.5
@@ -39,6 +40,7 @@ BEGIN
 					 
 	declare @revenuePer_kWh numeric(18,3) = 0.0                                                    -- [credit]
 	set @revenuePer_kWh = case @Continent
+						when 'Africa' then 0.10
 						when 'Antartica' then 0.0
 						when 'Asia' then 0.10
 						when 'Europe' then 0.20
@@ -62,7 +64,7 @@ BEGIN
 	
 	set @PowerOutput = @powerOfPlant                                                               -- [W]
 	set @Cost = @installationCost                                                                  -- [credits]
-	set @Revenue = @revenuePer_kWh * @energyProduced / 86400.0                                     -- [credits/gamesecond]
+	set @Revenue = @revenuePer_kWh * @energyProduced                                               -- [credits/year]
 
 	return 0
 END

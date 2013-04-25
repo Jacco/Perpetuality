@@ -11,7 +11,7 @@ perpetuality.plant.types = {
     solarroof: {
         type: "solarroof",
         cost: 3000,
-        size: 4,
+        size: 1500,
         energyPerMeter: 2,
         mapImage: "/Content/Images/original/icoon_dakpaneel.png"
     },
@@ -48,11 +48,12 @@ perpetuality.plant.clickable = function (type) {
  *
  * google.maps.OverlayView that also places a div over itself that can be easily used in other code.
  */
-perpetuality.plant.CustomMarker = function (gmap, url, plantId, location) {
+perpetuality.plant.CustomMarker = function (gmap, url, plantId, location, size) {
     this.gmap_ = gmap;
     this.location_ = location;
     this.plantId_ = plantId;
-    this.position_ = new google.maps.LatLng(location.latitude, location.longitude),
+    this.position_ = new google.maps.LatLng(location.latitude, location.longitude);
+    this.size_ = size;
 
     this.div_ = $('<div id="' + plantId + '" style="position: absolute; z-index: 1;"><img style="cursor: pointer; position: relative; left: -50%; top: -7px;" src="' + url + '"/></div>');
     var that = this;

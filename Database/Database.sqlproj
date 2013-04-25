@@ -94,6 +94,7 @@
     <Build Include="Stored Procedures\UpdatePlayerBalance.sql" />
     <Build Include="Tables\tblWorldPlayerPlant.sql" />
     <Build Include="Stored Procedures\ChangeUserPasswordInternal.sql" />
+    <Build Include="Stored Procedures\GetWorldPlayerPlants.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Database.publish.xml" />
