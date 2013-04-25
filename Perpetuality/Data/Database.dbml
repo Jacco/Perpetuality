@@ -87,4 +87,18 @@
     <Parameter Name="CreditRevenuePerYear" Parameter="creditRevenuePerYear" Type="System.Decimal" DbType="Decimal(18,2)" Direction="InOut" />
     <Return Type="System.Int32" />
   </Function>
+  <Function Name="dbo.GetWorldPlayerPlants" Method="GetWorldPlayerPlants">
+    <Parameter Name="PlayerID" Parameter="playerID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="WorldID" Parameter="worldID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="MinLongitude" Parameter="minLongitude" Type="System.Decimal" DbType="Decimal(18,6)" />
+    <Parameter Name="MaxLongitude" Parameter="maxLongitude" Type="System.Decimal" DbType="Decimal(18,6)" />
+    <Parameter Name="MinLatutude" Parameter="minLatutude" Type="System.Decimal" DbType="Decimal(18,6)" />
+    <Parameter Name="MaxLatitude" Parameter="maxLatitude" Type="System.Decimal" DbType="Decimal(18,6)" />
+    <ElementType Name="GetWorldPlayerPlantsResult">
+      <Column Name="autID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="numLongitude" Type="System.Decimal" DbType="Decimal(18,6) NOT NULL" CanBeNull="false" />
+      <Column Name="numLatitude" Type="System.Decimal" DbType="Decimal(18,6) NOT NULL" CanBeNull="false" />
+      <Column Name="intPowerPlantTypeID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
 </Database>

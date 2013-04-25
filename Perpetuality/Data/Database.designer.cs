@@ -154,6 +154,13 @@ namespace Perpetuality.Data
 			creditRevenuePerYear = ((System.Nullable<decimal>)(result.GetParameterValue(14)));
 			return ((int)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetWorldPlayerPlants")]
+		public ISingleResult<GetWorldPlayerPlantsResult> GetWorldPlayerPlants([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PlayerID", DbType="BigInt")] System.Nullable<long> playerID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="WorldID", DbType="BigInt")] System.Nullable<long> worldID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="MinLongitude", DbType="Decimal(18,6)")] System.Nullable<decimal> minLongitude, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="MaxLongitude", DbType="Decimal(18,6)")] System.Nullable<decimal> maxLongitude, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="MinLatutude", DbType="Decimal(18,6)")] System.Nullable<decimal> minLatutude, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="MaxLatitude", DbType="Decimal(18,6)")] System.Nullable<decimal> maxLatitude)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), playerID, worldID, minLongitude, maxLongitude, minLatutude, maxLatitude);
+			return ((ISingleResult<GetWorldPlayerPlantsResult>)(result.ReturnValue));
+		}
 	}
 	
 	public partial class GetConfirmationHashResult
@@ -275,6 +282,86 @@ namespace Perpetuality.Data
 				if ((this._strName != value))
 				{
 					this._strName = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GetWorldPlayerPlantsResult
+	{
+		
+		private long _autID;
+		
+		private decimal _numLongitude;
+		
+		private decimal _numLatitude;
+		
+		private long _intPowerPlantTypeID;
+		
+		public GetWorldPlayerPlantsResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_autID", DbType="BigInt NOT NULL")]
+		public long autID
+		{
+			get
+			{
+				return this._autID;
+			}
+			set
+			{
+				if ((this._autID != value))
+				{
+					this._autID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_numLongitude", DbType="Decimal(18,6) NOT NULL")]
+		public decimal numLongitude
+		{
+			get
+			{
+				return this._numLongitude;
+			}
+			set
+			{
+				if ((this._numLongitude != value))
+				{
+					this._numLongitude = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_numLatitude", DbType="Decimal(18,6) NOT NULL")]
+		public decimal numLatitude
+		{
+			get
+			{
+				return this._numLatitude;
+			}
+			set
+			{
+				if ((this._numLatitude != value))
+				{
+					this._numLatitude = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_intPowerPlantTypeID", DbType="BigInt NOT NULL")]
+		public long intPowerPlantTypeID
+		{
+			get
+			{
+				return this._intPowerPlantTypeID;
+			}
+			set
+			{
+				if ((this._intPowerPlantTypeID != value))
+				{
+					this._intPowerPlantTypeID = value;
 				}
 			}
 		}

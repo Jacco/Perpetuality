@@ -178,5 +178,26 @@ namespace Perpetuality.Controllers
             }
             return result;
         }
+
+        [Authorize]
+        public virtual JsonResult GetPowerPlants(long world, double minlon, double maxlon, double minlat, double maxlat)
+        {
+            var result = new JsonResult();
+            result.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
+
+            var ctx = new DatabaseDataContext();
+            GamePrincipal user = null;
+            try
+            {
+                user = HttpContext.User as GamePrincipal;
+            }
+            catch
+            {
+            }
+
+            var plants = ctx.GetWorldPlayerPlants((user.Identity as GameIdentity).UserID, world, (decimal)minlon, (decimal)maxlon, (decimal)minlat, (decimal)maxlat);
+            result.Data = plants.Select(x => new { lon = x.numLongitude, lat = x.numLatitude, tp = x.intPowerPlantTypeID, id = x.autID }).ToList();
+            return result;
+        }
     }
 }
