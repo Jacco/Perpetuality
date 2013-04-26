@@ -93,33 +93,28 @@ namespace Perpetuality.Controllers
         }
 
         [HttpPost]
-        public virtual ActionResult ResetPassword(string userName)
+        public virtual ActionResult ResetPassword(string emailAddress)
         {
             try
             {
-                userName = userName.Trim();
+                emailAddress = emailAddress.Trim();
                 try
                 {
-                    userName = NormalizeEmailAddress(userName);
+                    emailAddress = NormalizeEmailAddress(emailAddress);
                 }
                 catch
                 {
                     throw new ApplicationException("60040 The supplied username is not a valid email address.");
                 }
                 long? userID = null;
-                bool? confirmed = null;
                 using (var ctx = new DatabaseDataContext())
                 {
                     // find out language
-                    userID = ctx.GetUserIDByEmail(userName.ToLower());
+                    userID = ctx.GetUserIDByEmail(emailAddress.ToLower());
                 }
                 if (!userID.HasValue)
                 {
                     throw new ApplicationException("60041 User not found.");
-                }
-                if (!confirmed.HasValue | !confirmed.Value)
-                {
-                    throw new ApplicationException("60042 The email address of this user has not yet been confirmed.");
                 }
 
                 try
@@ -129,7 +124,7 @@ namespace Perpetuality.Controllers
                     // mail the new password
                     var client = new WebClient();
                     client.Encoding = Encoding.UTF8;
-                    var body = client.DownloadString(Request.Url.Host + "/en/mail/?view=EmailConfirmation&id=" + userID + "," + password);
+                    var body = client.DownloadString(ConfigurationManager.AppSettings["BaseURL"] + "/en/mail/?view=PasswordRequest&id=" + userID + "," + HttpUtility.UrlPathEncode(password));
                     var subject = client.ResponseHeaders["X-JaapMail-Subject"];
                     var recipient = client.ResponseHeaders["X-JaapMail-Recipient-Email"];
                     var name = client.ResponseHeaders["X-JaapMail-Recipient-Name"];
