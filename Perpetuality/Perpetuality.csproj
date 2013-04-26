@@ -219,6 +219,7 @@
     <Content Include="Content\Images\button-water-overlay.png" />
     <Content Include="Content\Images\button-wind-overlay.png" />
     <Content Include="Content\Images\cloudy.jpg" />
+    <Content Include="Content\Images\button-none-overlay.png" />
     <Content Include="Content\Images\Credits.png" />
     <Content Include="Content\Images\default-image.jpeg" />
     <Content Include="Content\Images\down_arrow_select.jpg" />
