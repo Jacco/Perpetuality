@@ -38,16 +38,16 @@ perpetuality.state.StateModel = function (map) {
 
     this.plantTypes = perpetuality.plant.types;
     
-    this.power = ko.computed(function () { return self.computePower(self.plants()) });
-    this.powerText = ko.computed(function () { return self.padZeroes(self.power() / 1000, 14); });
+    this.power = ko.observable(initialPlayerState.power);
+    this.powerText = ko.computed(function () { return self.padZeroes(self.power(), 14); });
     this.credits = ko.observable(initialPlayerState.balance);
     this.creditsText = ko.computed(function () { return self.padZeroes(self.credits(), 14); });
 
-    this.time = ko.observable(new Date());
+    this.time = ko.observable(new Date(initialPlayerState.date));
     this.timeText = ko.computed(function () { return self.computeTime(self.time()); });
 
     // For now I'm assuming 1 credit per hour per 1 power per 1000 square meters.
-    this.creditProduction = ko.computed(function () { return initialPlayerState.rate + self.power() / 3600000 }); // in credits per world-second
+    this.creditProduction = ko.observable(initialPlayerState.rate); // in credits per world-second
 
     this.selectedOverlay = ko.observable('none');
     this.selectedPlantType = ko.observable(this.plantTypes.none);
@@ -84,11 +84,16 @@ perpetuality.state.StateModel.prototype =
 
             var position = this.calculatedPlant().position_;
 
+            var me = this;
             $.ajax({
                 type: 'GET',
                 url: '/en/Game/InstallPlant/?longitude=' + position.lng().toString() + '&latitude=' + position.lat().toString() + '&plantTypeID=1&size=' + newPlant.size.toString(),
                 async: false,
                 success: function (data) {
+                    me.credits(data.balance);
+                    me.creditProduction(data.rate);
+                    me.power(data.power);
+                    me.time(eval('new ' + data.date.replace(new RegExp('/', 'g'), '')));
                 }
             });
 
@@ -108,16 +113,17 @@ perpetuality.state.StateModel.prototype =
 
             var plantData = null;
 
+            var me = this;
             $.ajax({
                 type: 'GET',
                 url: '/en/Game/CalculatePlant/?longitude=' + event.latLng.lng() + '&latitude=' + event.latLng.lat() + '&plantTypeID=1&size=' + newPlant.size,
                 async: false,
                 success: function (data) {
                     // update game state
-                    this.credits(data.balance);
-                    this.creditProduction(data.rate);
-                    this.power(data.power);
-                    this.
+                    me.credits(data.balance);
+                    me.creditProduction(data.rate);
+                    me.power(data.power);
+                    me.time(eval('new ' + data.date.replace(new RegExp('/', 'g'), '')));
                     // copy plant info
                     plantData = data.plant;
                 }
