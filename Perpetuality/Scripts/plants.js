@@ -31,6 +31,11 @@ perpetuality.plant.types = {
    } 
 };
 
+perpetuality.plant.typesIdx = [];
+perpetuality.plant.typesIdx[1] = perpetuality.plant.types.solarroof;
+perpetuality.plant.typesIdx[2] = perpetuality.plant.types.solarfield;
+perpetuality.plant.typesIdx[3] = perpetuality.plant.types.solartower;
+
 /**
  * Returns a function that sets a plant type in a perpetuality.state.StateModel object.
  */
@@ -56,8 +61,9 @@ perpetuality.plant.CustomMarker = function (gmap, url, plantId, location, size) 
     this.size_ = size;
 
     this.div_ = $('<div id="' + plantId + '" style="position: absolute; z-index: 1;"><img style="cursor: pointer; position: relative; left: -50%; top: -7px;" src="' + url + '"/></div>');
+    this.img_ = $('img', this.div_);
     var that = this;
-    google.maps.event.addDomListener($('img', this.div_).get(0), 'click', function () {
+    google.maps.event.addDomListener(this.img_.get(0), 'click', function () {
         google.maps.event.trigger(that, 'click');
     });
 
@@ -78,6 +84,12 @@ perpetuality.plant.CustomMarker.prototype.draw = function () {
     var position = overlayProjection.fromLatLngToDivPixel(this.position_);
     this.div_.css('left', position.x + 'px');
     this.div_.css('top', position.y + 'px');
+    var zoom = 19 - this.gmap_.zoom;
+    if (zoom < 0)
+        zoom = 0;
+    if (zoom > 2)
+        zoom = 2;
+    this.img_.css('width', 120 / Math.pow(2, zoom));
 }
 
 perpetuality.plant.CustomMarker.prototype.onRemove = function () {

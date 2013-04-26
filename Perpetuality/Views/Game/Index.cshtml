@@ -40,31 +40,31 @@
     </div>
     <div id="overlay-pane" class="map-pane map-pane-bottom" style="z-index: 0; position: absolute; bottom: 0px; left: 389px">
         <div class="map-pane-item map-pane-item-horizontal">
-            <div class="overlaybutton" data-bind="click: function(data) { data.selectedOverlay('geo'); }, css: { selected: selectedOverlay() == 'geo' }">
+            <div class="overlaybutton" data-bind="click: function(data) { data.selectedOverlay('geo'); data.setOpacity(0.0); }, css: { selected: selectedOverlay() == 'geo' }">
                 <img src="/Content/Images/button-geothermal-overlay.png">
                 <div class="overlaybuttontext">Geothermal</div>
             </div>
         </div>
         <div class="map-pane-item map-pane-item-horizontal">
-            <div class="overlaybutton" data-bind="click: function(data) { data.selectedOverlay('solar'); }, css: { selected: selectedOverlay() == 'solar' }">
+            <div class="overlaybutton" data-bind="click: function(data) { data.selectedOverlay('solar'); data.setOpacity(0.8); }, css: { selected: selectedOverlay() == 'solar' }">
                 <img src="/Content/Images/button-solar-overlay.png"/>
                 <div class="overlaybuttontext">Solar</div>
             </div>
         </div>
         <div class="map-pane-item map-pane-item-horizontal">
-            <div class="overlaybutton" data-bind="click: function(data) { data.selectedOverlay('water'); }, css: { selected: selectedOverlay() == 'water' }">
+            <div class="overlaybutton" data-bind="click: function(data) { data.selectedOverlay('water'); data.setOpacity(0.0); }, css: { selected: selectedOverlay() == 'water' }">
                 <img src="/Content/Images/button-water-overlay.png"/>
                 <div class="overlaybuttontext">Water</div>
             </div>
         </div>
         <div class="map-pane-item map-pane-item-horizontal">
-            <div class="overlaybutton" data-bind="click: function(data) { data.selectedOverlay('wind'); }, css: { selected: selectedOverlay() == 'wind' }">
+            <div class="overlaybutton" data-bind="click: function(data) { data.selectedOverlay('wind'); data.setOpacity(0.0); }, css: { selected: selectedOverlay() == 'wind' }">
                 <img src="/Content/Images/button-wind-overlay.png"/>
                 <div class="overlaybuttontext">Wind</div>
             </div>
         </div>
         <div class="map-pane-item map-pane-item-horizontal">
-            <div class="overlaybutton" data-bind="click: function(data) { data.selectedOverlay('none'); }, css: { selected: selectedOverlay() == 'none' }">
+            <div class="overlaybutton" data-bind="click: function(data) { data.selectedOverlay('none'); data.setOpacity(0.0); }, css: { selected: selectedOverlay() == 'none' }">
                 <img src="/Content/Images/button-wind-overlay.png"/>
                 <div class="overlaybuttontext">None</div>
             </div>

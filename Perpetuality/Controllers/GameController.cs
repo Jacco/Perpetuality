@@ -45,6 +45,15 @@ namespace Perpetuality.Controllers
             }
         }
 
+        private double GetSolarPower(double longitude, double latitude)
+        {
+            var client = new WebClient();
+            var response = client.DownloadString("http://api.perpetuality.org/v1/" + longitude.ToString() + "," + latitude.ToString());
+            var dummyObject = new { @long = 0.0, lat = 0.0, solar_power = 0.0 };
+            var obj = Newtonsoft.Json.JsonConvert.DeserializeAnonymousType(response, dummyObject);
+            return 550.0 * (obj.solar_power / 255.0) * 8.765813;
+        }
+
         [Authorize]
         public virtual JsonResult InstallPlant(double longitude, double latitude, long plantTypeID, int size)
         {
@@ -70,13 +79,7 @@ namespace Perpetuality.Controllers
             decimal? buildingRevenue = null;
             if (user != null)
             {
-                decimal power = 0;
-                // call GIS server for solar power
-                var client = new WebClient();
-                var response = client.DownloadString("http://api.perpetuality.org/v1/" + longitude.ToString() + "," + latitude.ToString());
-                var dummyObject = new { @long = 0.0, lat = 0.0, solar_power = 0.0 };
-                var obj = Newtonsoft.Json.JsonConvert.DeserializeAnonymousType(response, dummyObject);
-                power = (decimal)obj.solar_power;
+                var power = GetSolarPower(longitude, latitude);
                 // call install plant
                 ctx.InstallPlant(
                     (user.Identity as GameIdentity).UserID
@@ -85,7 +88,7 @@ namespace Perpetuality.Controllers
                     , (decimal)longitude
                     , (decimal)latitude
                     , size
-                    , power
+                    , (decimal)power
                     , false
                     , ref balance
                     , ref creditProductionRate
@@ -133,15 +136,8 @@ namespace Perpetuality.Controllers
             decimal? buildingRevenue = null;
             if (user != null)
             {
-                decimal power = 0;
-                // call GIS server for solar power
-                var client = new WebClient();
-                var response = client.DownloadString("http://api.perpetuality.org/v1/" + longitude.ToString() + "," + latitude.ToString());
-                var dummyObject = new { @long = 0.0, lat = 0.0, solar_power = 0.0 };
-                var obj = Newtonsoft.Json.JsonConvert.DeserializeAnonymousType(response, dummyObject);
-                power = (decimal)obj.solar_power;
+                var power = GetSolarPower(longitude, latitude);
                 // call calculate plant
-
                 ctx.InstallPlant(
                     (user.Identity as GameIdentity).UserID
                     , 1
@@ -149,7 +145,7 @@ namespace Perpetuality.Controllers
                     , (decimal)longitude
                     , (decimal)latitude
                     , size
-                    , power
+                    , (decimal)power
                     , true
                     , ref balance
                     , ref creditProductionRate
@@ -178,6 +174,8 @@ namespace Perpetuality.Controllers
             }
             return result;
         }
+
+        // http://localhost:51127/en/Game/GetPowerPlants/?world=1&minlon=0&maxlon=20&minlat=50&maxlat=60
 
         [Authorize]
         public virtual JsonResult GetPowerPlants(long world, double minlon, double maxlon, double minlat, double maxlat)

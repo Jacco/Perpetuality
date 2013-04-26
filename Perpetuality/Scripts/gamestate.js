@@ -114,7 +114,10 @@ perpetuality.state.StateModel.prototype =
                 async: false,
                 success: function (data) {
                     // update game state
-
+                    this.credits(data.balance);
+                    this.creditProduction(data.rate);
+                    this.power(data.power);
+                    this.
                     // copy plant info
                     plantData = data.plant;
                 }
@@ -142,6 +145,12 @@ perpetuality.state.StateModel.prototype =
         marker = this.calculatedPlant();
         marker.setMap(null);
         this.calculatedPlant(null);
+    },
+
+    setOpacity: function(value)
+    {
+        this.map.root.sunpowerOverlayEast.setOpacity(value);
+        this.map.root.sunpowerOverlayWest.setOpacity(value);
     }
 };
 

@@ -3,7 +3,7 @@
 	,	@Longitude numeric(18, 6)
 	,	@Latitude numeric(18, 6)
 	,	@GameDate datetime
-	,	@SolarPower numeric(18, 2) -- W/m2/year
+	,	@SolarPower numeric(18, 2) -- kWh/m2/year
 	
 	,	@PowerOutput numeric(18,6) output 
 	,	@Cost numeric(18,2) output

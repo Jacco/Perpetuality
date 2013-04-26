@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+    <GroundOverlay>
+      <name>BIG</name>
+      <description>Overlays entire world</description>
+      <Icon>
+        <href>/Content/Images/solarpower.jpg</href>
+      </Icon>
+      <LatLonBox>
+        <north>90</north>
+        <south>-90</south>
+        <east>179.99</east>
+        <west>-179.99</west>
+        <rotation>0</rotation>
+      </LatLonBox>
+    </GroundOverlay>
+</kml>

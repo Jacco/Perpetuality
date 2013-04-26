@@ -45,6 +45,11 @@ perpetuality.map.prototype.init = function() {
         }
   };
   var map = this.buildMap(mapOptions);
+  var oldmap = null;
+  map.sunpowerOverlayWest = new google.maps.GroundOverlay('/Content/Images/solarpower_west.png', new google.maps.LatLngBounds(new google.maps.LatLng(-90, 180.01), new google.maps.LatLng(90, 359.99)), { opacity: 0.0, clickable: false });
+  map.sunpowerOverlayWest.setMap(map);
+  map.sunpowerOverlayEast = new google.maps.GroundOverlay('/Content/Images/solarpower_east.png', new google.maps.LatLngBounds(new google.maps.LatLng(-90, 360.01), new google.maps.LatLng(90, 539.99)), { opacity: 0.0, clickable: false });
+  map.sunpowerOverlayEast.setMap(map);
 
   var me = this;
   var updateMap = function() {
@@ -56,13 +61,31 @@ perpetuality.map.prototype.init = function() {
       lat_r: [ southWest.lat(), northEast.lat() ],
     };
     if (me.dataServer != (window.location.protocol + "//" + window.location.host)) {
-      $.ajax(targetURL, {
+        // fetch the powerplants
+        $.ajax({
+            type: 'GET',
+            url: '/en/Game/GetPowerPlants/?world=1&minlon=' + data.lon_r[0] + '&maxlon=' + data.lon_r[1] + '&minlat=' + data.lat_r[0] + '&maxlat=' + data.lat_r[1],
+            async: false,
+            success: function (data) {
+                if (data) {
+                    for (var i = 0; i < data.length; i++) {
+                        var marker = new perpetuality.plant.CustomMarker(
+                            map,
+                            perpetuality.plant.typesIdx[data[i].tp].mapImage,
+                            data[i].id,
+                            { latitude: data[i].lat, longitude: data[i].lon },
+                            0);
+                    }
+                }
+            }
+        });
+        $.ajax(targetURL, {
         data: data,
         dataType: "jsonp",
         success: function(data) {
-          me.buildHeatMapLayer(data);
+            me.buildHeatMapLayer(data);
         }
-      });
+        });
     } else {
       $.ajax(targetURL, {
         data: data,
