@@ -33,7 +33,7 @@ namespace Perpetuality.Controllers
             {
                 ctx.GetPlayerState((user.Identity as GameIdentity).UserID, 1, ref balance, ref creditProductionRate, ref gameDate, ref installedPower);
                 // retrieve state
-                ViewBag.PlayerState = new { balance = balance.Value, rate = creditProductionRate.Value, date = gameDate.Value, power = installedPower.Value };
+                ViewBag.PlayerState = new { balance = balance.Value, rate = creditProductionRate.Value, date = (gameDate.Value - new DateTime(1970, 1, 1)).TotalMilliseconds, power = installedPower.Value };
 
                 return View();
             }
