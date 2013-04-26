@@ -101,4 +101,10 @@
       <Column Name="intPowerPlantTypeID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
+  <Function Name="dbo.ChangeUserPasswordInternal" Method="ChangeUserPasswordInternal">
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="Password" Parameter="password" Type="System.String" DbType="NVarChar(256)" />
+    <Parameter Name="DeactivateSessions" Parameter="deactivateSessions" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
 </Database>

@@ -161,6 +161,13 @@ namespace Perpetuality.Data
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), playerID, worldID, minLongitude, maxLongitude, minLatutude, maxLatitude);
 			return ((ISingleResult<GetWorldPlayerPlantsResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.ChangeUserPasswordInternal")]
+		public int ChangeUserPasswordInternal([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="BigInt")] System.Nullable<long> userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Password", DbType="NVarChar(256)")] string password, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DeactivateSessions", DbType="Bit")] System.Nullable<bool> deactivateSessions)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userID, password, deactivateSessions);
+			return ((int)(result.ReturnValue));
+		}
 	}
 	
 	public partial class GetConfirmationHashResult

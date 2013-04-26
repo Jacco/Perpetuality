@@ -89,9 +89,73 @@ namespace Perpetuality.Controllers
 
         public virtual ActionResult ResetPassword()
         {
-            var ctx = new DatabaseDataContext();
+            return View();
+        }
 
+        [HttpPost]
+        public virtual ActionResult ResetPassword(string userName)
+        {
+            try
+            {
+                userName = userName.Trim();
+                try
+                {
+                    userName = NormalizeEmailAddress(userName);
+                }
+                catch
+                {
+                    throw new ApplicationException("60040 The supplied username is not a valid email address.");
+                }
+                long? userID = null;
+                bool? confirmed = null;
+                using (var ctx = new DatabaseDataContext())
+                {
+                    // find out language
+                    userID = ctx.GetUserIDByEmail(userName.ToLower());
+                }
+                if (!userID.HasValue)
+                {
+                    throw new ApplicationException("60041 User not found.");
+                }
+                if (!confirmed.HasValue | !confirmed.Value)
+                {
+                    throw new ApplicationException("60042 The email address of this user has not yet been confirmed.");
+                }
 
+                try
+                {
+                    var password = Perpetuality.Utilities.ReadablePassword.GenerateReadablePassword();
+
+                    // mail the new password
+                    var client = new WebClient();
+                    client.Encoding = Encoding.UTF8;
+                    var body = client.DownloadString(Request.Url.Host + "/en/mail/?view=EmailConfirmation&id=" + userID + "," + password);
+                    var subject = client.ResponseHeaders["X-JaapMail-Subject"];
+                    var recipient = client.ResponseHeaders["X-JaapMail-Recipient-Email"];
+                    var name = client.ResponseHeaders["X-JaapMail-Recipient-Name"];
+                    if (!string.IsNullOrWhiteSpace(name))
+                    {
+                        name = name.Replace("<", "");
+                        name = name.Replace(">", "");
+                    }
+                    var error = client.ResponseHeaders["X-JaapMail-Error"];
+                    SendMail(recipient, name, subject, body);
+                    
+                    // update the database with the new password
+                    using (var ctx = new DatabaseDataContext())
+                    {
+                        ctx.ChangeUserPasswordInternal(userID, password, true);
+                   } 
+                }
+                catch (Exception e)
+                {
+                    throw new ApplicationException("60043 Password retrieval failed.", e);
+                }
+            }
+            catch (Exception e)
+            {
+                EventLogger.WriteEvent(e.Message, EventLogger.EventType.Error, "Perpetuality");
+            }
 
             return View();
         }
@@ -128,30 +192,6 @@ namespace Perpetuality.Controllers
                     mailClient.Send(lMsg);
                 }
             }
-        }
-
-        [HttpPost]
-        public virtual ActionResult ResetPassword(string emailAddress)
-        {
-            // find out language
-            var ctx = new DatabaseDataContext();
-            var id = ctx.GetUserIDByEmail(emailAddress.ToLower());
-
-            var client = new WebClient();
-            client.Encoding = Encoding.UTF8;
-            var body = client.DownloadString(Request.Url.Host + "/en/mail/?view=EmailConfirmation&id=" + id.ToString());
-            var subject = client.ResponseHeaders["X-JaapMail-Subject"];
-            var recipient = client.ResponseHeaders["X-JaapMail-Recipient-Email"];
-            var name = client.ResponseHeaders["X-JaapMail-Recipient-Name"];
-            if (!string.IsNullOrWhiteSpace(name))
-            {
-                name = name.Replace("<", "");
-                name = name.Replace(">", "");
-            }
-            var error = client.ResponseHeaders["X-JaapMail-Error"];
-            SendMail(recipient, name, subject, body);
-
-            return View();
         }
 
         public virtual ActionResult Register()
