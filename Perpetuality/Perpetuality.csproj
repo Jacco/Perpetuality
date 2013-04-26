@@ -394,12 +394,12 @@
       <LastGenOutput>T4CSS1.log</LastGenOutput>
     </Content>
     <Content Include="Content\Images\sources" />
+    <Content Include="Content\solarpower.xml" />
     <None Include="Content\CSS\T4CSS1.log">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>T4CSS.tt</DependentUpon>
     </None>
-    <Content Include="Content\solarpower.xml" />
     <None Include="Properties\PublishProfiles\ToWeb.pubxml" />
     <None Include="Scripts\lib\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\lib\jquery-1.7.1.js" />

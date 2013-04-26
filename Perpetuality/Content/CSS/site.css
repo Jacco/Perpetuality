@@ -1427,18 +1427,21 @@ footer ul li a:hover .btn_image {
     margin-right: 15px;
   }
   .btn_image {
-    height: 60px !important;
-    width: 75px !important;
+    height: 55px !important;
+    width: 65px !important;
   }
   .btn_image p {
-    width: 65px !important;
+    width: 55px !important;
     font-size: 0.8em !important;
   }
   #container {
-    width: 350px;
+    width: 315px;
     min-height: 350px;
-    margin-left: 5x;
+    margin-left: 5px;
     margin-top: 38px;
+  }
+  #container .main-container .news-block {
+    font-size: 1em;
   }
   .startgame {
     width: 50px;
