@@ -74,6 +74,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Common.resx</DependentUpon>
     </Compile>
+    <Compile Include="Mail\PasswordRequest.Designer.cs">
+      <DependentUpon>PasswordRequest.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Mail\EmailConfirmation.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -144,6 +149,10 @@
     <EmbeddedResource Include="Mail\Common.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Common.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mail\PasswordRequest.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PasswordRequest.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Mail\EmailConfirmation.de.resx" />
     <EmbeddedResource Include="Mail\EmailConfirmation.es.resx">
