@@ -10,7 +10,7 @@
    
         MyModel = new Perpetuality.App_Code.Model_EmailConfirmation(Model);
         ViewBag.PlayerName = MyModel.RecipientEmail;
-        this.Response.AddHeader("X-JaapMail-Subject", @Resources.Mail.EmailConfirmation.Subject);
+        this.Response.AddHeader("X-JaapMail-Subject", "Perpetuality - Your new e-mail address");
         this.Response.AddHeader("X-JaapMail-Recipient-Email", MyModel.RecipientEmail);
         this.Response.AddHeader("X-JaapMail-Recipient-Name", "");
     } 
