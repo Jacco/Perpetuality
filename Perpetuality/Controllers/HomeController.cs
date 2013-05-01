@@ -124,7 +124,7 @@ namespace Perpetuality.Controllers
                     // mail the new password
                     var client = new WebClient();
                     client.Encoding = Encoding.UTF8;
-                    var body = client.DownloadString(ConfigurationManager.AppSettings["BaseURL"] + "/en/mail/?view=PasswordRequest&id=" + userID + "," + HttpUtility.UrlPathEncode(password));
+                    var body = client.DownloadString(ConfigurationManager.AppSettings["BaseURL"] + "/en/mail/?view=PasswordRequest&id=" + userID + "," + HttpUtility.UrlEncode(password));
                     var subject = client.ResponseHeaders["X-JaapMail-Subject"];
                     var recipient = client.ResponseHeaders["X-JaapMail-Recipient-Email"];
                     var name = client.ResponseHeaders["X-JaapMail-Recipient-Name"];
